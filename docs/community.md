@@ -95,4 +95,5 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Ханты-Мансийск | [@meshtastic_hm](https://t.me/meshtastic_hm) |
 | Челябинск | [@meshtastic_chel](https://t.me/meshtastic_chel) |
 | Чехов | [@Meshtastic_Chekhov](https://t.me/Meshtastic_Chekhov) |
+| Чувашия / Чебоксары | [@meshtastic_chuv](https://t.me/meshtastic_chuv) |
 | Ярославль | [@meshtastic_yar](https://t.me/meshtastic_yar) |
