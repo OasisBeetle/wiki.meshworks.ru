@@ -61,6 +61,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Москва | [@meshtastic_moscow](https://t.me/meshtastic_moscow) |
 | Мурманск | [@meshtastic_51](https://t.me/meshtastic_51) |
 | Набережные Челны | [@meshtastic_chelny](https://t.me/meshtastic_chelny) |
+| Нижнекамск | [@meshtastic_nkmsk](https://t.me/meshtastic_nkmsk) |
 | Нижний Новгород | [@meshtastic_nnov](https://t.me/meshtastic_nnov) |
 | Новосибирск | [@meshtastic_nsk](https://t.me/meshtastic_nsk) |
 | Обнинск | [@Meshtastic_Obninsk](https://t.me/Meshtastic_Obninsk) |
