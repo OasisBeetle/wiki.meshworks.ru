@@ -34,6 +34,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Брянск | [@meshtastic_Bryansk](https://t.me/meshtastic_Bryansk) |
 | Великий Новгород | [@meshtastic_vnov](https://t.me/meshtastic_vnov) |
 | Владивосток | [@meshtastic_vld](https://t.me/meshtastic_vld) |
+| Владикавказ | [@mesh_vladikavkaz_com](https://t.me/mesh_vladikavkaz_com) |
 | Волгоград и Волжский | [@meshtastic_vlg](https://t.me/meshtastic_vlg) |
 | Воронеж | [@meshtastic_vrn](https://t.me/meshtastic_vrn) |
 | Геленджик | [@meshtastic_gel](https://t.me/meshtastic_gel) |
