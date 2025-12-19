@@ -26,6 +26,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | 🏙️ Город / Регион | 🔗 Ссылка |
 |----|----|
 | Алушта | [@meshtastic_alushta](https://t.me/meshtastic_alushta) |
+| Анапа | [@meshtastic_anapa](https://t.me/meshtastic_anp) |
 | Астрахань | [@meshtastic_astrakhan](https://t.me/meshtastic_astrakhan) |
 | Барнаул | [@meshtastic_barnaul](https://t.me/meshtastic_barnaul) |
 | Белая Калитва | [@meshkalitva](https://t.me/meshkalitva) |
