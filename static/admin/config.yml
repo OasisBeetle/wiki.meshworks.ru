@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: MeshWorksRussia/wiki.meshworks.ru
+  branch: main
+  base_url: https://auth.meshworks.ru
+  auth_endpoint: decap/auth
+
+site_url: https://wiki.meshworks.ru
+display_url: https://wiki.meshworks.ru
+
+publish_mode: editorial_workflow
+
+media_folder: static/uploads
+public_folder: /uploads
+
+collections:
+  - name: docs
+    label: Документация
+    folder: docs
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    nested:
+      depth: 5
+      summary: "{{title}}"
+      subfolders: false
+    fields:
+      - { label: Заголовок, name: title, widget: string }
+      - { label: Позиция в сайдбаре, name: sidebar_position, widget: number, required: false }
+      - { label: Описание, name: description, widget: string, required: false }
+      - { label: Теги, name: tags, widget: list, required: false }
+      - { label: Контент, name: body, widget: markdown }
+
+  - name: pages
+    label: Страницы
+    folder: static-pages
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    nested:
+      depth: 3
+      summary: "{{title}}"
+      subfolders: false
+    fields:
+      - { label: Заголовок, name: title, widget: string }
+      - { label: Описание, name: description, widget: string, required: false }
+      - { label: Контент, name: body, widget: markdown }

@@ -5,20 +5,15 @@ sidebar_label: Платы
 sidebar_position: 3
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Самодельные ноды", "Платы"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-<IdealImage img={require('@site/static/img/wiki/diy-boards-hero.png')} alt="Diy boards hero" className="docImage" />
+<img src="/img/wiki/diy-boards-hero.png" alt="Diy boards hero" class="docImage" />
 
 В этом разделе собраны **DIY-проекты и Gerber-платы** — это готовые макеты для самостоятельного изготовления и сборки нод Meshtastic
 
-
-
-:::info
+::::info
 В отличие от **готовых плат** (например, Heltec или T-Beam), такие решения требуют больше времени и навыков: нужно самостоятельно заказать печатную плату, подобрать компоненты и произвести монтаж.
 
-:::
-
-
+::::
 
 ---
 
@@ -30,7 +25,6 @@ import IdealImage from '@theme/IdealImage';
 
 * [GitHub проекта](https://github.com/gargomoma/fakeTec_pcb)
 
-
 ---
 
 ### WashTastic
@@ -38,7 +32,6 @@ import IdealImage from '@theme/IdealImage';
 Компактная одноватная DIY-нода на базе **NRF** с поддержкой LoRa, разработанная для установки в **влагозащищённых корпусах**. Предназначена для уличных ретрансляторов, автономных станций и долгосрочной эксплуатации на открытом воздухе. Поддерживает питание от аккумулятора или внешнего источника.
 
 * [GitHub проекта](https://github.com/valzzu/meshtastic-pcbs/tree/main/WashTastic)
-
 
 ---
 
@@ -50,7 +43,6 @@ DIY-плата с усиленной мощностью до **1 Вт (30 dBm)**
 
 * [GitHub проекта](https://github.com/Hydra-Designs/project-hydra-meshtastic-pcb)
 
-
 ---
 
 ### Solar Meshtastic Node
@@ -58,7 +50,6 @@ DIY-плата с усиленной мощностью до **1 Вт (30 dBm)**
 Солнечная DIY-нода на базе **Heltec HT-CT62 (ESP32)** с контроллером заряда **BQ25185**. Поддерживает питание от солнечной панели, LiPo-батарею и автоматическое переключение питания. Отлично подходит для автономных ретрансляторов.
 
 * [GitHub проекта](https://github.com/dm5tt/SolarMeshtasticNode)
-
 
 ---
 
@@ -68,7 +59,6 @@ DIY-плата с усиленной мощностью до **1 Вт (30 dBm)**
 Поддерживается версия v2 с улучшенным GPS (LK67) и BMS.
 
 * [GitHub проекта](https://github.com/azlan-works/Icarus)
-
 
 ---
 

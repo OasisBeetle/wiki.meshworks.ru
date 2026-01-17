@@ -5,26 +5,22 @@ sidebar_label: Солнечные
 sidebar_position: 2
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Готовые ноды", "Солнечные"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-:::favorite
+::::favorite
 Некоторые ссылки могут быть партнёрскими. Если вы ими пользуетесь, MeshWorks получает небольшую поддержку — без изменения цены для вас. Спасибо, что помогаете проекту развиваться без рекламы.
+::::
 
-:::
-
-
-:::warning
+::::warning
 Обращайте внимания под какой диапазон заказывайте ваше устройство.
 Основная частота Meshtastic в России - **868mhz**
 
-:::
-<IdealImage img={require('@site/static/img/wiki/d5-mini-solar-kit.png')} alt="D5 mini solar kit" className="docImage" />
+::::
+<img src="/img/wiki/d5-mini-solar-kit.png" alt="D5 mini solar kit" class="docImage" />
 
 # D5 Mini Solar Kit (Heltec V3)
 
 Надёжная и универсальная панель на базе Heltec V3, предназначенная для построения автономных ретрансляторов и стационарных узлов сети. 
 В комплекте мощная солнечная панель
-
 
 **Bluetooth:** ✅ **Wi-Fi:** ✅
 
@@ -35,22 +31,18 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** стационарные ретрансляторы, метеостанции, сенсорные узлы, автономные точки покрытия сети.
 
-
-
-:::success
+::::success
 Стоимость: \~6.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005008487010403.html?sku_id=12000045362595840)
 
-:::
-
-
+::::
 
 ---
 
 ## 
-<IdealImage img={require('@site/static/img/wiki/sensecap-solar-node.png')} alt="Sensecap solar node" className="docImage" />
+<img src="/img/wiki/sensecap-solar-node.png" alt="Sensecap solar node" class="docImage" />
 
 ## **SenseCAP Solar Node**
 
@@ -67,11 +59,10 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** стационарные ретрансляторы, датчики мониторинга окружающей среды, автономные узлы для удалённых территорий и полевых условий.
 
-
-:::success
+::::success
 Стоимость: \~7.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005008917538805.html?sku_id=12000051717147886)
 
-:::
+::::

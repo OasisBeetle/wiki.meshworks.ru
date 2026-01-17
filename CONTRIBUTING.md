@@ -1,5 +1,3 @@
-import IdealImage from '@theme/IdealImage';
-
 # Изменения в базе знаний MeshWorks
 
 Спасибо, что помогаете развивать MeshWorks Wiki!  
@@ -40,7 +38,7 @@ import IdealImage from '@theme/IdealImage';
   ---
   ```
 - `description` должен быть человекочитаемым описанием страницы (1–2 предложения), соответствовать содержимому и нормально смотреться как сниппет в поиске.
-- **Структура**: `docs/<section>/<page>.mdx`. Используйте осмысленные директории (`devices/ready-made/portable.md` и т.д.).
+- **Структура**: `docs/<section>/<page>.md`. Используйте осмысленные директории (`devices/ready-made/portable.md` и т.д.).
 - **Язык**: русский, единый стиль (повествовательный, без жаргона).
 
 ## 3. Что вы хотите сделать
@@ -55,9 +53,7 @@ import IdealImage from '@theme/IdealImage';
 1. Выберите папку раздела, например:
    - `docs/node-setup/`
    - `docs/devices/ready-made/`
-2. Создайте новый файл:
-   - если на странице будет только текст и обычный Markdown — `new-topic.md`;
-   - если нужны компоненты Docusaurus (например, `<IdealImage>`, `<Link>` и т.п.) — `new-topic.mdx`.
+2. Создайте новый файл `new-topic.md`.
    В начале файла добавьте блок `---` (front matter) по образцу из раздела 2 или просто скопируйте его из ближайшей страницы и замените значения.
 3. Задайте:
    - `slug` — человекочитаемый путь, например `/devices/ready-made/new-board`;
@@ -67,17 +63,17 @@ import IdealImage from '@theme/IdealImage';
 
 ### Добавить новый раздел
 1. Создайте папку `docs/<section>/`, например `docs/monitoring/`.
-2. Внутри заведите главную страницу раздела `index.mdx` с front matter вида:
+2. Внутри заведите главную страницу раздела `index.md` с front matter вида:
   ```yaml
   ---
   slug: /monitoring
-   title: Мониторинг
-   description: "Общий раздел о мониторинге и алертах для MeshWorks."
-   sidebar_label: Мониторинг
-   sidebar_position: 5
-   ---
-   ```
-3. Дополнительные страницы раздела кладите в ту же папку: `docs/monitoring/alerts.md`, `docs/monitoring/dashboards.mdx` и т.п.
+  title: Мониторинг
+  description: "Общий раздел о мониторинге и алертах для MeshWorks."
+  sidebar_label: Мониторинг
+  sidebar_position: 5
+  ---
+  ```
+3. Дополнительные страницы раздела кладите в ту же папку: `docs/monitoring/alerts.md`, `docs/monitoring/dashboards.md` и т.п.
 4. Если нужен отдельный подпункт в сайдбаре для вложенной группы (как `USB-драйверы` внутри `node-setup`), используйте `_category_.json` в подпапке, по аналогии с `docs/node-setup/serial-drivers/_category_.json`.
 
 ## 4. Оформление текста
@@ -94,12 +90,15 @@ import IdealImage from '@theme/IdealImage';
   Аналогично работают `:::info`, `:::warning`, `:::note` и т.д.
 
 ### Изображения
-- Кладите файлы в `static/img/<topic>/` и ссылайтесь как `<IdealImage img={require('@site/static/img/<topic>/image.png')} alt="alt" className="docImage" />`.
+- Кладите файлы в `static/img/<topic>/` и ссылайтесь как:
+  ```html
+  <img src="/img/<topic>/image.png" alt="alt" class="docImage" />
+  ```
 - Используйте web-friendly размеры (ширина ≤ 1600px) и сжимайте PNG/JPG перед коммитом.
 - Если заменяете изображение, убедитесь, что оно не переиспользуется в других страницах (`rg -l filename.png`).
 
 ### Ссылки и код
-- Внешние ссылки лучше открывать в новой вкладке: `<a href="..." target="_blank" rel="noreferrer noopener">`. Если не хочется писать HTML, используйте компонент `Link` из Docusaurus.
+- Для ссылок используйте Markdown: `[текст](https://example.com)`.
 - Названия команд и файлов обрамляем обратными кавычками (символ `` ` `` рядом с клавишей `Esc`). Пример: `` `meshtastic --help` ``.
 - Длинные примеры оформляем тройными кавычками с указанием языка:
   ````

@@ -5,20 +5,18 @@ sidebar_label: ESP (WIFI, BT)
 sidebar_position: 1
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Самодельные ноды", "ESP (WIFI, BT)"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-:::favorite
+::::favorite
 Некоторые ссылки могут быть партнёрскими. Если вы ими пользуетесь, MeshWorks получает небольшую поддержку — без изменения цены для вас. Спасибо, что помогаете проекту развиваться без рекламы.
 
-:::
+::::
 
-
-:::warning
+::::warning
 Обращайте внимания под какой диапазон заказывайте ваше устройство.
 Основная частота Meshtastic в России - **868mhz**
 
-:::
-<IdealImage img={require('@site/static/img/wiki/heltec-wifi-lora32-v3.png')} alt="Heltec wifi lora32 v3" className="docImage" />
+::::
+<img src="/img/wiki/heltec-wifi-lora32-v3.png" alt="Heltec wifi lora32 v3" class="docImage" />
 
 ## **Heltec WiFi LoRa 32 (V3)**
 
@@ -34,7 +32,7 @@ import IdealImage from '@theme/IdealImage';
 * **Bluetooth:** есть
 
   
-:::success
+::::success
   Стоимость: \~1.500p
 
 Купить:
@@ -42,10 +40,8 @@ import IdealImage from '@theme/IdealImage';
 
   :::
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/lilygo-ttgo-t-beam.png')} alt="Lilygo ttgo t beam" className="docImage" />
+<img src="/img/wiki/lilygo-ttgo-t-beam.png" alt="Lilygo ttgo t beam" class="docImage" />
 
 ## **LILYGO TTGO T-Beam**
 
@@ -60,20 +56,16 @@ import IdealImage from '@theme/IdealImage';
 
 Подходит для **портативных нод**, **автомобильных станций**, **ретрансляторов** и полевых тестов. 
 
-
-
-:::success
+::::success
 Стоимость: \~3.500p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005005854982382.html)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/heltec-wireless-stick-lite.png')} alt="Heltec wireless stick lite" className="docImage" />
+<img src="/img/wiki/heltec-wireless-stick-lite.png" alt="Heltec wireless stick lite" class="docImage" />
 
 ## **Heltec Wireless Stick Lite / Mesh Nod**
 
@@ -88,19 +80,19 @@ import IdealImage from '@theme/IdealImage';
 
 Используются для **сенсорных станций**, **ретрансляторов**, **дальних нод на солнечных панелях**.
 
-
-
-:::success
+::::success
 Стоимость: \~1.300p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005005443311259.html)
 
-:::
+::::
 
 ---
 
-##  <IdealImage img={require('@site/static/img/wiki/heltec-wireless-paper.png')} alt="Heltec wireless paper" className="docImage" />**Heltec LoRa Wireless Paper**
+<img src="/img/wiki/heltec-wireless-paper.png" alt="Heltec wireless paper" class="docImage" />
+
+## **Heltec LoRa Wireless Paper**
 
 Готовое решение на базе **ESP32-S3FN8** с радиомодулем **SX1262** и **E-Ink дисплеем 2.9″**. Отличается сверхнизким энергопотреблением и отличной читаемостью при любом освещении. Благодаря тонкому корпусу и малому весу подходит для **мобильного и автономного использования**.
 
@@ -108,17 +100,16 @@ import IdealImage from '@theme/IdealImage';
 * **Bluetooth:** есть
 * **GPS:** нет
 
-
-:::success
+::::success
 Стоимость: \~1.500р
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005007747207784.html?sku_id=12000042077885822)
 
-:::
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/heltec-stick-gps.png')} alt="Heltec stick gps" className="docImage" />
+<img src="/img/wiki/heltec-stick-gps.png" alt="Heltec stick gps" class="docImage" />
 
 ## **Heltec Stick /GPS**
 
@@ -131,19 +122,16 @@ import IdealImage from '@theme/IdealImage';
 
 Используются для **сенсорных станций**, **ретрансляторов**, **дальних нод на солнечных панелях**.
 
-
-
-:::success
+::::success
 Стоимость: \~1.800p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009295030670.html?sku_id=12000050554954565)
 
-:::
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/lilygo-lora32-t3.png')} alt="Lilygo lora32 t3" className="docImage" />
+<img src="/img/wiki/lilygo-lora32-t3.png" alt="Lilygo lora32 t3" class="docImage" />
 
 ## **LoRa 32 LILYGO / LILYGO T3 S3**
 
@@ -161,20 +149,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** сенсорные узлы, переносные и стационарные ретрансляторы, компактные DIY-проекты, выездные станции связи.
 
-
-
-:::success
+::::success
 Стоимость: \~2.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005004627139838.html)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/heltec-wireless-stick-lite-v4.png')} alt="Heltec wireless stick lite v4" className="docImage" />
+<img src="/img/wiki/heltec-wireless-stick-lite-v4.png" alt="Heltec wireless stick lite v4" class="docImage" />
 
 ## **Heltec V4 / Heltec Wireless Stick Lite V4** 
 
@@ -192,21 +176,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные и стационарные ретрансляторы, сенсорные узлы, автономные устройства, мобильные Meshtastic-станции, DIY-проекты.
 
-
-
-:::success
+::::success
 Стоимость: \~2.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005010134873366.html?sku_id=12000051267466381)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/heltec-v4-case.png')} alt="Heltec v4 case" className="docImage" />
-
+<img src="/img/wiki/heltec-v4-case.png" alt="Heltec v4 case" class="docImage" />
 
 ## **Heltec V4 + Case**
 
@@ -222,12 +201,10 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** личные пейджеры, переносные узлы, выездные тестовые стенды, локальные системы обмена сообщениями.
 
-
-
-:::success
+::::success
 Стоимость: \~3.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005010017665425.html)
 
-:::
+::::
