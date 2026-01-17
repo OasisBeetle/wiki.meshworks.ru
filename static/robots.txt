@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /search
+Disallow: /custom-pages
 
 Sitemap: https://wiki.meshworks.ru/sitemap.xml
