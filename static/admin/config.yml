@@ -18,9 +18,12 @@ collections:
     label: Документация
     folder: docs
     create: true
-    extension: mdx
     format: frontmatter
     slug: "{{slug}}"
+    nested:
+      depth: 5
+      summary: "{{title}}"
+      subfolders: false
     fields:
       - { label: Заголовок, name: title, widget: string }
       - { label: Позиция в сайдбаре, name: sidebar_position, widget: number, required: false }
@@ -32,9 +35,12 @@ collections:
     label: Страницы
     folder: static-pages
     create: true
-    extension: mdx
     format: frontmatter
     slug: "{{slug}}"
+    nested:
+      depth: 3
+      summary: "{{title}}"
+      subfolders: false
     fields:
       - { label: Заголовок, name: title, widget: string }
       - { label: Описание, name: description, widget: string, required: false }
