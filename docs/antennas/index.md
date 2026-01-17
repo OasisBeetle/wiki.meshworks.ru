@@ -6,13 +6,11 @@ sidebar_label: Антенны
 sidebar_position: 3
 breadcrumbs: ["База знаний Meshtastic", "Антенны"]
 ---
-import IdealImage from '@theme/IdealImage';
 
 # **Типы антенн для LoRa / Meshtastic**
-<IdealImage img={require('@site/static/img/wiki/antennas-overview.png')} alt="Antennas overview" className="docImage" />
+<img src="/img/wiki/antennas-overview.png" alt="Antennas overview" class="docImage" />
 
 В этом разделе мы разберём, какие антенны используются в сетях Meshtastic, и чем они отличаются по характеристикам и области применения.
-
 
 Антенна — это один из самых важных элементов любой LoRa-ноды: от её формы, длины и установки напрямую зависит дальность, стабильность и направление сигнала.
 
@@ -22,10 +20,8 @@ import IdealImage from '@theme/IdealImage';
 > связь — подойдёт штырь или диполь.
 Если важна дальность и направленность — стоит рассмотреть Яги или Моксон.
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/antenna-monopole.png')} alt="Antenna monopole" className="docImage" />
+<img src="/img/wiki/antenna-monopole.png" alt="Antenna monopole" class="docImage" />
 
 ## **Монопольная антенна (Штырь)**
 
@@ -45,10 +41,8 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы, ретрансляторы малой мощности, автоустановки.
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/antenna-dipole.png')} alt="Antenna dipole" className="docImage" />
+<img src="/img/wiki/antenna-dipole.png" alt="Antenna dipole" class="docImage" />
 
 ## **Дипольная антенна (Dipole)**
 
@@ -68,10 +62,8 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** домашние установки, ретрансляторы, базовые станции.
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/antenna-collinear.png')} alt="Antenna collinear" className="docImage" />
+<img src="/img/wiki/antenna-collinear.png" alt="Antenna collinear" class="docImage" />
 
 ## **Коллинеарная антенна (Collinear)**
 
@@ -91,10 +83,8 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** мачты, крыши зданий, стационарные базовые узлы.
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/antenna-yagi.png')} alt="Antenna yagi" className="docImage" />
+<img src="/img/wiki/antenna-yagi.png" alt="Antenna yagi" class="docImage" />
 
 ## **Яги (Yagi–Uda)**
 
@@ -115,10 +105,8 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** точечная связь между удалёнными нодами, дальние ретрансляторы.
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/antenna-moxon.png')} alt="Antenna moxon" className="docImage" />
+<img src="/img/wiki/antenna-moxon.png" alt="Antenna moxon" class="docImage" />
 
 ## **Моксон (Moxon)**
 
@@ -139,10 +127,8 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** переносные направленные узлы, стационарные установки на мачтах или крышах.
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/antenna-jpole.png')} alt="Antenna jpole" className="docImage" />
+<img src="/img/wiki/antenna-jpole.png" alt="Antenna jpole" class="docImage" />
 
 ## **J-Pole антенна (J-образная)**
 
@@ -166,11 +152,11 @@ J-Pole — это вертикальная антенна с питанием п
 стационарные базовые узлы, ретрансляторы на мачтах и крышах,
 а также как альтернатива штырю для улучшения дальности без усложнения конструкции.
 
-
-
 ---
 
-##  <IdealImage img={require('@site/static/img/wiki/antenna-ground-plane.png')} alt="Antenna ground plane" className="docImage" />**Ground Plane (GP)**
+<img src="/img/wiki/antenna-ground-plane.png" alt="Antenna ground plane" class="docImage" />
+
+## **Ground Plane (GP)**
 
 Простая и эффективная всенаправленная антенна вертикального типа.
 Состоит из одного вертикального излучателя и нескольких наклонённых вниз противовесов (радиалов). Часто используется в любительских и профессиональных радиосетях.

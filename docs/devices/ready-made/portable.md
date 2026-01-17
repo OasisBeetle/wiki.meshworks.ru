@@ -5,26 +5,23 @@ sidebar_label: Портативные
 sidebar_position: 1
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Готовые ноды", "Портативные"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-:::favorite
+::::favorite
 Некоторые ссылки могут быть партнёрскими. Если вы ими пользуетесь, MeshWorks получает небольшую поддержку — без изменения цены для вас. Спасибо, что помогаете проекту развиваться без рекламы.
 
-:::
+::::
 
-
-:::info
+::::info
 Ноды в данном разделе можно использовать не только в портативном, но и в стационарном варианте.
 
-:::
+::::
 
-
-:::warning
+::::warning
 Обращайте внимания под какой диапазон заказывайте ваше устройство.
 Основная частота Meshtastic в России - **868mhz**
 
-:::
-<IdealImage img={require('@site/static/img/wiki/thinknode-m1.png')} alt="Thinknode m1" className="docImage" />
+::::
+<img src="/img/wiki/thinknode-m1.png" alt="Thinknode m1" class="docImage" />
 
 ## **ThinkNode M1**
 
@@ -39,20 +36,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы, выездные ретрансляторы, навигационные устройства в походах.
 
-
-
-:::success
+::::success
 Стоимость: \~5.800p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005008707135974.html?sku_id=12000046331918861)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/sensecap-t1000e.png')} alt="Sensecap t1000e" className="docImage" />
+<img src="/img/wiki/sensecap-t1000e.png" alt="Sensecap t1000e" class="docImage" />
 
 ## **SenseCAP T1000-E**
 
@@ -70,20 +63,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы, мобильные ретрансляторы, трекинговые и навигационные решения.
 
-
-
-:::success
+::::success
 Стоимость: \~4.500p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005007586503939.html?sku_id=12000041530437508)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/heltec-meshpocket.png')} alt="Heltec meshpocket" className="docImage" />
+<img src="/img/wiki/heltec-meshpocket.png" alt="Heltec meshpocket" class="docImage" />
 
 ## **Heltec MeshPocket**
 
@@ -102,21 +91,17 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы
 
-
-
-:::success
+::::success
 Стоимость: \~7.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009016165068.html)
 - [OZON](https://www.ozon.ru/product/meshtastic-heltec-meshpocket-qi2-magnitnyy-vneshniy-akkumulyator-dlya-telefona-a-2447425687/?at=x6tPNPPy4CXP3pEvTX4MJL1u5XkxYQinOn2JmIXQGB2M)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/lilygo-ttgo-t-echo.png')} alt="Lilygo ttgo t echo" className="docImage" />
+<img src="/img/wiki/lilygo-ttgo-t-echo.png" alt="Lilygo ttgo t echo" class="docImage" />
 
 ## **LILYGO TTGO T-Echo**
 
@@ -134,19 +119,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы, выездные ретрансляторы, трекинговые устройства, навигационные решения в полевых условиях.
 
-
-
-:::success
+::::success
 Стоимость: \~5.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005003026107533.html?sku_id=12000037263598502)
 
-:::
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/wio-tracker-l1-pro.png')} alt="Wio tracker l1 pro" className="docImage" />
+<img src="/img/wiki/wio-tracker-l1-pro.png" alt="Wio tracker l1 pro" class="docImage" />
 
 ## **Wio Tracker L1 Pro**
 
@@ -163,19 +145,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы, мобильные ретрансляторы, автономные станции, навигационные и трекинговые решения.
 
-
-
-:::success
+::::success
 Стоимость: \~6.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009183237292.html)
 
-:::
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/lilygo-t-deck-plus.png')} alt="Lilygo t deck plus" className="docImage" />
+<img src="/img/wiki/lilygo-t-deck-plus.png" alt="Lilygo t deck plus" class="docImage" />
 
 ## **LILYGO T-Deck Plus**
 
@@ -192,20 +171,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** портативные узлы, выездные ретрансляторы, мобильные станции, навигационные решения и управление сетью в полевых условиях.
 
-
-
-:::success
+::::success
 Стоимость: \~8.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009074862574.html?sku_id=12000047823707772)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/t-lora-pager.png')} alt="T lora pager" className="docImage" />
+<img src="/img/wiki/t-lora-pager.png" alt="T lora pager" class="docImage" />
 
 ## **T-LoRa Pager**
 
@@ -221,20 +196,16 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** личные пейджеры, переносные узлы, выездные тестовые стенды, локальные системы обмена сообщениями.
 
-
-
-:::success
+::::success
 Стоимость: \~8.000p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009782586146.html?sku_id=12000050143121884)
 
-:::
-
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/meshtiny-mini-pocket.png')} alt="Meshtiny mini pocket" className="docImage" />
+<img src="/img/wiki/meshtiny-mini-pocket.png" alt="Meshtiny mini pocket" class="docImage" />
 
 ## **Meshtiny Meshtastic Mini Pocket**
 
@@ -249,16 +220,12 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** карманный Meshtastic-клиент, компактные DIY-устройства.
 
-
-
-:::success
+::::success
 **Стоимость:** \~5.500 ₽
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005010115422665.html)
 
-:::
-
-
+::::
 
 ---

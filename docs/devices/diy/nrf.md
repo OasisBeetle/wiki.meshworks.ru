@@ -5,22 +5,21 @@ sidebar_label: NRF (BT)
 sidebar_position: 2
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Самодельные ноды", "NRF (BT)"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-:::favorite
+::::favorite
 Некоторые ссылки могут быть партнёрскими. Если вы ими пользуетесь, MeshWorks получает небольшую поддержку — без изменения цены для вас. Спасибо, что помогаете проекту развиваться без рекламы.
 
-:::
+::::
 
-
-:::warning
+::::warning
 Обращайте внимания под какой диапазон заказывайте ваше устройство.
 Основная частота Meshtastic в России - **868mhz**
 
-:::
+::::
 
+<img src="/img/wiki/heltec-t114.png" alt="Heltec t114" class="docImage" />
 
-##  <IdealImage img={require('@site/static/img/wiki/heltec-t114.png')} alt="Heltec t114" className="docImage" />**Heltec T114**
+## **Heltec T114**
 
 Готовое решение на базе **nRF52840**, оснащённое **TFT-дисплеем 1.14″** и **GPS-модулем** (при выборе комплекта с GPS)
 Корпус присутствует в комплекте
@@ -31,19 +30,16 @@ import IdealImage from '@theme/IdealImage';
 * **Wi-Fi:** нет
 * **Bluetooth:** есть
 
-
-
-:::success
+::::success
 Стоимость: \~3.300p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009187736693.html?sku_id=12000050903276936)
 
-:::
-
+::::
 
 ---
-<IdealImage img={require('@site/static/img/wiki/heltec-t114-naked.png')} alt="Heltec t114 naked" className="docImage" />
+<img src="/img/wiki/heltec-t114-naked.png" alt="Heltec t114 naked" class="docImage" />
 
 ## Heltec T114 Naked
 
@@ -55,9 +51,8 @@ import IdealImage from '@theme/IdealImage';
 
   
 
-
   
-:::success
+::::success
   Стоимость: \~2.200p
 
 Купить:
@@ -65,10 +60,8 @@ import IdealImage from '@theme/IdealImage';
 
   :::
 
-
-
 ---
-<IdealImage img={require('@site/static/img/wiki/wio-tracker-l1-eink.png')} alt="Wio tracker l1 eink" className="docImage" />
+<img src="/img/wiki/wio-tracker-l1-eink.png" alt="Wio tracker l1 eink" class="docImage" />
 
 ## **Wio Tracker L1 E-ink**
 
@@ -77,10 +70,8 @@ import IdealImage from '@theme/IdealImage';
 * **Wi-Fi:** нет
 * **Bluetooth:** есть
 
-
-
 * 
-:::success
+::::success
   Стоимость: \~3.900p
 
 Купить:

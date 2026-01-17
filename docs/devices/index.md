@@ -6,9 +6,8 @@ sidebar_label: Meshtastic устройства
 sidebar_position: 2
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-<IdealImage img={require('@site/static/img/wiki/devices-overview.png')} alt="Devices overview" className="docImage" />
+<img src="/img/wiki/devices-overview.png" alt="Devices overview" class="docImage" />
 
 ## **Готовые и DIY-ноды Meshtastic — в чём разница**
 
@@ -25,7 +24,6 @@ import IdealImage from '@theme/IdealImage';
 * Часто имеют встроенные функции (Wi-Fi, Bluetooth, дисплей)
 * Подходят для пользователей без опыта сборки
 
-
 ---
 
 ### **DIY-ноды**
@@ -39,13 +37,9 @@ import IdealImage from '@theme/IdealImage';
 * Часто дешевле готовых решений
 * Требуют базовых знаний электроники и прошивки
 
-
 ---
 
-
-
-:::success
+::::success
 Готовые ноды удобны для быстрого развёртывания сети
 DIY-сборка — для экспериментов, кастомных решений и снижения стоимости.
-
-:::
+::::

@@ -6,27 +6,20 @@ sidebar_label: Самодельные ноды
 sidebar_position: 2
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Самодельные ноды"]
 ---
-import IdealImage from '@theme/IdealImage';
 
-<IdealImage img={require('@site/static/img/wiki/diy-overview.png')} alt="Diy overview" className="docImage" />
+<img src="/img/wiki/diy-overview.png" alt="Diy overview" class="docImage" />
 
 В этом разделе мы с вами поговорим о том какие у вас есть варианты для самостоятельной сборки ноды для Meshtastic 
 
-
 В данном разделе мы рассматриваем как kit платы с уже разведенными разьемами, дисплеем, LORA модулем, так проекты под полную самостоятельную сборку, на макетной плате или на текстолите.
 
-
-
-:::info
+::::info
 Но сначала нужно определиться, какая платформа (микроконтроллере) подойдет под ваши задачи.
 Каждая платформа имеет свои сильные стороны — одни лучше подходят для портативных устройств, другие для автономных ретрансляторов или экспериментов.
 
-:::
-
-
+::::
 
 ---
-
 
 ## **[ESP32 / ESP32-S3](/devices/diy/esp)**
 
@@ -47,8 +40,6 @@ import IdealImage from '@theme/IdealImage';
 * Не оптимален для полностью автономных узлов
 
 **Примеры устройств:** Heltec LoRa 32 V3, LilyGO T-Beam, T-Deck, Wio Tracker
-
-
 
 ---
 
@@ -72,7 +63,6 @@ import IdealImage from '@theme/IdealImage';
 
 **Примеры устройств:** ThinkNode M1, Heltec MeshPocket, RAK4631, Faketec
 
-
 ---
 
 ## **RP2040 (Raspberry Pi Pico / Pico W)**
@@ -94,11 +84,7 @@ import IdealImage from '@theme/IdealImage';
 
 **Применение:** DIY-устройства, прототипы на Waveshare RP2040 LoRa
 
-
-
-
-
-:::tip
+::::tip
 Используйте боковое или нижнее меню для выбора типов платы
 
-:::
+::::
