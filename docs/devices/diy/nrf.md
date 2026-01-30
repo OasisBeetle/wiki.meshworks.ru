@@ -57,8 +57,9 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009187736693.html)
+::::
 
-  :::
+
 
 ---
 <img src="/img/wiki/wio-tracker-l1-eink.png" alt="Wio tracker l1 eink" class="docImage" />

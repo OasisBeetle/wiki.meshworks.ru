@@ -63,6 +63,37 @@ const config: Config = {
       }),
     },
     {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'MeshWorks Wiki',
+        url: 'https://wiki.meshworks.ru',
+        inLanguage: 'ru',
+      }),
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'MeshWorks',
+        url: 'https://meshworks.ru',
+        logo: 'https://wiki.meshworks.ru/img/logo-light.png',
+        sameAs: [
+          'https://t.me/meshwrks',
+          'https://www.youtube.com/@meshwrks',
+          'https://boosty.to/meshworks',
+        ],
+      }),
+    },
+    {
       tagName: 'link',
       attributes: {
         rel: 'preconnect',
@@ -145,6 +176,12 @@ const config: Config = {
           changefreq: 'daily',
           priority: 0.7,
           filename: 'sitemap.xml',
+          ignorePatterns: [
+            '**/search',
+            '**/search/**',
+            '**/custom-pages',
+            '**/custom-pages/**',
+          ],
         },
       } satisfies Preset.Options,
     ],

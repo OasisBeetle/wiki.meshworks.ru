@@ -7,7 +7,8 @@ breadcrumbs: ["База знаний Meshtastic", "Настройка ноды",
 ---
 ## Установка прошивки Meshtastic
 
-Инструкция основана на официальной документации Meshtastic и подходит для большинства популярных плат — **TTGO T-Beam**, **Heltec WiFi LoRa 32 V3**, **LILYGO T-Echo**, **ThinkNode** и других.
+Это инструкция по прошивке Meshtastic на русском для большинства популярных плат и USB‑флешеров. Инструкция основана на официальной документации Meshtastic и подходит для **TTGO T-Beam**, **Heltec WiFi LoRa 32 V3**, **LILYGO T-Echo**, **ThinkNode** и других.
+После прошивки переходите к разделу [конфигурации ноды](/node-setup/configuration).
 
 ## Драйвера
 

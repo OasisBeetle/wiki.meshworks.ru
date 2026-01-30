@@ -38,7 +38,7 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005007752194012.html)
 
-  :::
+::::
 
 ---
 <img src="/img/wiki/lilygo-ttgo-t-beam.png" alt="Lilygo ttgo t beam" class="docImage" />

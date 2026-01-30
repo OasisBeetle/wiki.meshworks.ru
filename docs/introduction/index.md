@@ -4,7 +4,7 @@ sidebar_label: Введение в Meshtastic
 sidebar_position: 1
 slug: /introduction
 breadcrumbs: ["База знаний Meshtastic", "Введение в Meshtastic"]
-description: "MeshWorks Wiki — базовое введение в технологию Meshtastic: цели, возможности и примеры использования автономных LoRa mesh-сетей."
+description: "Meshtastic на русском: базовое введение в технологию, цели, возможности и примеры использования LoRa mesh‑сетей."
 ---
 
 <img src="/img/wiki/intro-overview.png" alt="Схема возможностей Meshtastic" class="introImage" loading="eager" />
@@ -76,3 +76,12 @@ description: "MeshWorks Wiki — базовое введение в технол
 ### Кратко
 
 Meshtastic — это надёжный способ организовать собственную автономную радиосеть. Она не требует инфраструктуры, проста в развёртывании и хорошо подходит для экспедиций, резервной связи, локальных сетей и любых проектов, где важна независимость от операторов и интернета.
+
+---
+
+## Следующие шаги
+
+- [Meshtastic на русском: с чего начать](/)
+- [Настройка ноды Meshtastic](/node-setup)
+- [Устройства Meshtastic: готовые и DIY‑ноды](/devices)
+- [Антенны для Meshtastic и LoRa](/antennas)
