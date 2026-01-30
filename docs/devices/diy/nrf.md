@@ -71,11 +71,11 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 * **Wi-Fi:** нет
 * **Bluetooth:** есть
 
-* 
 ::::success
   Стоимость: \~3.900p
 
 Купить:
 - [Aliexpress](https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005009761846970.html)
-
-  :::
+::::  
+  
+    
