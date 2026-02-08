@@ -49,6 +49,15 @@
   --docsearch-hit-color: var(--ifm-font-color-base);
 }
 
+[data-theme='light'] {
+  --ifm-navbar-background-color: #3a4350;
+  --ifm-footer-background-color: var(--ifm-navbar-background-color);
+  --ifm-footer-color: #f0f4fb;
+  --ifm-footer-title-color: #f0f4fb;
+  --ifm-footer-link-color: #f0f4fb;
+  --ifm-footer-link-hover-color: #cdd9ea;
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
 }
@@ -122,13 +131,45 @@ body {
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   text-align: center;
-  background: #ffffff;
+  background: var(--ifm-footer-background-color);
   color: var(--ifm-footer-color);
+}
+
+[data-theme='light'] .navbar {
+  background: rgba(58, 67, 80, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: saturate(122%) blur(5px);
+  -webkit-backdrop-filter: saturate(122%) blur(5px);
+  box-shadow: 0 3px 9px rgba(16, 24, 38, 0.06);
+}
+
+[data-theme='light'] .navbar .navbar__title,
+[data-theme='light'] .navbar .navbar__link,
+[data-theme='light'] .navbar .navbar__item,
+[data-theme='light'] .navbar .clean-btn,
+[data-theme='light'] .navbar [class*='colorModeToggle'] {
+  color: #eef4f8;
+}
+
+[data-theme='light'] .navbar .navbar__link:hover {
+  color: #e3ebf7;
+}
+
+[data-theme='light'] .navbar__logo img {
+  content: url('/img/logo-dark.png');
 }
 
 [data-theme='dark'] .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: var(--ifm-navbar-background-color);
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(30, 35, 41, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(120%) blur(5px);
+  -webkit-backdrop-filter: saturate(120%) blur(5px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.22);
 }
 
 .footer__links-row {
@@ -152,11 +193,11 @@ body {
 [data-theme='light'] .footer.footer--dark .footer__links-row a,
 [data-theme='light'] .footer.footer--dark .footer__copyright,
 [data-theme='light'] .footer.footer--dark .footer__trademark {
-  color: #1b1f28 !important;
+  color: var(--ifm-footer-color) !important;
 }
 
 [data-theme='light'] .footer.footer--dark .footer__links-row a:hover {
-  color: #5d8c13 !important;
+  color: var(--ifm-footer-link-hover-color) !important;
 }
 
 [data-theme='dark'] .footer.footer--dark,
