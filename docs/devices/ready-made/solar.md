@@ -17,7 +17,7 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 ::::
 <img src="/img/wiki/d5-mini-solar-kit.png" alt="D5 mini solar kit" class="docImage" />
 
-# D5 Mini Solar Kit (Heltec V3)
+## D5 Mini Solar Kit (Heltec V3)
 
 Надёжная и универсальная панель на базе Heltec V3, предназначенная для построения автономных ретрансляторов и стационарных узлов сети. 
 В комплекте мощная солнечная панель
@@ -40,8 +40,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 ::::
 
 ---
-
-## 
 <img src="/img/wiki/sensecap-solar-node.png" alt="Sensecap solar node" class="docImage" />
 
 ## **SenseCAP Solar Node**
