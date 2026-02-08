@@ -243,7 +243,7 @@ const config: Config = {
           {
             tagName: 'meta',
             name: 'theme-color',
-            content: '#9ecb63',
+            content: '#7eb81b',
           },
         ],
       },
@@ -319,12 +319,9 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.vsDark,
+      darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
 };
 
 export default config;
-
-
-
