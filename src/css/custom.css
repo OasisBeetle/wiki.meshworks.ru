@@ -75,7 +75,9 @@ body {
   --ifm-color-primary-lighter: #99d641;
   --ifm-color-primary-lightest: #b5e574;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
-  --ifm-navbar-background-color: #242526;
+  --ifm-background-color: #111318;
+  --ifm-background-surface-color: #191c22;
+  --ifm-navbar-background-color: var(--ifm-background-surface-color);
   --ifm-footer-background-color: var(--ifm-navbar-background-color);
   --ifm-footer-color: #ffffff;
   --ifm-footer-title-color: #ffffff;
@@ -116,7 +118,7 @@ body {
 
 [data-theme='dark'] .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: #242526;
+  background: var(--ifm-background-surface-color);
 }
 
 .footer__links-row {
