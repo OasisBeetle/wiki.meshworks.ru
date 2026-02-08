@@ -112,7 +112,7 @@ const config: Config = {
       tagName: 'noscript',
       attributes: {},
       innerHTML:
-        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"/>',
+        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap"/>',
     },
     {
       tagName: 'noscript',
@@ -128,7 +128,7 @@ const config: Config = {
   baseUrl: '/',
   stylesheets: [
     {
-      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap',
       rel: 'preload',
       as: 'style',
       onload: "this.onload=null;this.rel='stylesheet'",
@@ -325,3 +325,4 @@ const config: Config = {
 };
 
 export default config;
+
