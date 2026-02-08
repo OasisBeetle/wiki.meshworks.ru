@@ -56,13 +56,20 @@ body {
 .introImage {
   border-radius: 18px;
   margin: 1rem 0 1.5rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.035);
 }
 
 .docImage {
   border-radius: 14px;
   margin: 0.75rem 0 1.25rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.028);
+}
+
+[data-theme='dark'] .introImage,
+[data-theme='dark'] .docImage {
+  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.29), 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -77,48 +84,55 @@ body {
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
   --ifm-background-color: #111318;
   --ifm-background-surface-color: #191c22;
-  --ifm-navbar-background-color: var(--ifm-background-surface-color);
-  --ifm-footer-background-color: var(--ifm-navbar-background-color);
-  --ifm-footer-color: #ffffff;
-  --ifm-footer-title-color: #ffffff;
-  --ifm-footer-link-color: #ffffff;
-  --ifm-footer-link-hover-color: #ffffff;
-  --mesh-alert-text-color: #f7faff;
-  --mesh-alert-neutral-bg: #1d202a;
-  --mesh-alert-neutral-border: rgba(255, 255, 255, 0.08);
-  --mesh-alert-neutral-icon: #4c5870;
-  --mesh-alert-tip-bg: #242012;
-  --mesh-alert-tip-border: #5a4c1f;
-  --mesh-alert-tip-icon: #f4d360;
-  --mesh-alert-info-bg: #1a2536;
-  --mesh-alert-info-border: #2c3860;
-  --mesh-alert-info-icon: #7ea2ff;
-  --mesh-alert-success-bg: #13241a;
-  --mesh-alert-success-border: #1f3d2a;
-  --mesh-alert-success-icon: #74e2a2;
-  --mesh-alert-warning-bg: #2e1718;
-  --mesh-alert-warning-border: #4a2528;
-  --mesh-alert-warning-icon: #ff978b;
-  --mesh-alert-note-bg: #171e2d;
-  --mesh-alert-note-border: #2a3249;
-  --mesh-alert-note-icon: #94a5ff;
-  --mesh-alert-favorite-bg: #2a2115;
-  --mesh-alert-favorite-border: #4a351f;
-  --mesh-alert-favorite-icon: #ffd782;
+  --ifm-navbar-background-color: #191c22;
+  --ifm-footer-background-color: #191c22;
+  --ifm-footer-color: #f2efe7;
+  --ifm-footer-title-color: #f2efe7;
+  --ifm-footer-link-color: #f2efe7;
+  --ifm-footer-link-hover-color: #cfe9b8;
+  --mesh-alert-text-color: #f2efe7;
+  --mesh-alert-neutral-bg: #1c1f25;
+  --mesh-alert-neutral-border: rgba(255, 255, 255, 0.1);
+  --mesh-alert-neutral-icon: #586273;
+  --mesh-alert-tip-bg: #2a2416;
+  --mesh-alert-tip-border: #5d5124;
+  --mesh-alert-tip-icon: #f1d36b;
+  --mesh-alert-info-bg: #1d2836;
+  --mesh-alert-info-border: #2f3c5f;
+  --mesh-alert-info-icon: #87a8ff;
+  --mesh-alert-success-bg: #16261d;
+  --mesh-alert-success-border: #244133;
+  --mesh-alert-success-icon: #7ae2a6;
+  --mesh-alert-warning-bg: #311b1c;
+  --mesh-alert-warning-border: #4d292c;
+  --mesh-alert-warning-icon: #ff9f92;
+  --mesh-alert-note-bg: #1a2130;
+  --mesh-alert-note-border: #2c354b;
+  --mesh-alert-note-icon: #9aaaff;
+  --mesh-alert-favorite-bg: #2d2418;
+  --mesh-alert-favorite-border: #4f3a24;
+  --mesh-alert-favorite-icon: #ffd78a;
   --docsearch-primary-color: var(--ifm-color-primary);
   --docsearch-text-color: var(--ifm-font-color-base);
 }
 
+[data-theme='dark'] body {
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(255, 255, 255, 0.04), transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(255, 255, 255, 0.03), transparent 55%),
+    var(--ifm-background-color);
+}
+
+
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   text-align: center;
-  background: #ffffff;
+  background: var(--ifm-footer-background-color);
   color: var(--ifm-footer-color);
 }
 
 [data-theme='dark'] .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--ifm-background-surface-color);
+  background: #191c22 !important;
 }
 
 .footer__links-row {
@@ -154,6 +168,10 @@ body {
 [data-theme='dark'] .footer.footer--dark .footer__copyright,
 [data-theme='dark'] .footer.footer--dark .footer__trademark {
   color: #ffffff !important;
+}
+
+[data-theme='dark'] .footer.footer--dark {
+  background: #191c22 !important;
 }
 
 [data-theme='dark'] .footer.footer--dark .footer__links-row a:hover {
