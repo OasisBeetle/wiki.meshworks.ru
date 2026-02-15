@@ -439,3 +439,140 @@ kbd.searchHint_iIMx,
 .navbar-icon--youtube::before {
   content: 'smart_display';
 }
+
+/* ===== КАРТОЧКА ===== */
+
+.deviceCardRT{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:20px;
+
+  padding:18px 22px 44px 22px; /* важный нижний паддинг */
+  margin:24px 0;
+
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:12px;
+  background:rgba(255,255,255,.02);
+
+  position:relative;
+  overflow:hidden; /* ВАЖНО: обрезает нижнюю часть кнопки */
+}
+
+.deviceImageRT{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(0,0,0,.20);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.deviceImageRT img{
+  width:100%;
+  max-width:240px;
+  object-fit:contain;
+  display:block;
+}
+
+.deviceTitleRT{
+  margin:0 0 6px;
+  font-size:22px;
+  font-weight:800;
+}
+
+/* ===== БЕЙДЖИ ===== */
+
+.deviceSpecsRT{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.badgeRT{
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.95);
+  line-height:1;
+}
+
+.badgeEnergyRT{
+  background:rgba(46,204,113,.15);
+  border-color:rgba(46,204,113,.38);
+  color:#2ecc71;
+}
+
+/* ===== ТЕКСТ ===== */
+
+.deviceDescRT{
+  font-size:15px;
+  line-height:1.5;
+  margin:6px 0 12px;
+  color:rgba(255,255,255,.90);
+}
+
+/* ===== ЦЕНА ===== */
+
+.deviceFooterRT{
+  display:flex;
+  align-items:center;
+}
+
+.priceRT{
+  font-size:18px;
+  font-weight:800;
+  color:rgba(255,255,255,.92);
+}
+
+/* ===== CTA КНОПКА (как на твоём скрине) ===== */
+
+.ctaRT{
+  position:absolute;
+  right:22px;
+  bottom:-18px; /* ВАЖНО: кнопка уходит вниз и обрезается */
+
+  padding:14px 28px;
+  border-radius:12px;
+
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+
+  text-decoration:none;
+  color:#fff;
+
+  background:linear-gradient(90deg,#ff3b30 0%, #ffb020 100%);
+
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.35),
+    inset 0 -2px 0 rgba(0,0,0,.20);
+
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+
+.ctaRT:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.40),
+    inset 0 -2px 0 rgba(0,0,0,.18);
+}
+
+/* ===== АДАПТИВ ===== */
+
+@media (max-width: 860px){
+  .deviceCardRT{
+    grid-template-columns:1fr;
+    padding-bottom:62px;
+  }
+
+  .ctaRT{
+    left:22px;
+    right:22px;
+    text-align:center;
+  }
+}
