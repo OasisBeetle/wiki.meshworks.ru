@@ -1,5 +1,5 @@
 ---
-title: portable copy
+title: Все ноды
 description: "Портативные готовые ноды Meshtastic в формате карточек."
 sidebar_label: portable copy
 sidebar_position: 3
@@ -9,6 +9,8 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 <style>{`
   .deviceFilterTabsRT {
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .deviceFilterInputRT {
     position: absolute;
@@ -81,12 +83,24 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
   }
   .deviceFilterRowRT {
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(8, auto);
     align-items: stretch;
     gap: 10px;
     margin: 0 0 16px;
     width: max-content;
     max-width: 100%;
+  }
+  .deviceFilterGroupLabelRT {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ifm-color-emphasis-700);
+    padding: 0 2px;
+    white-space: nowrap;
+  }
+  [data-theme='light'] .deviceFilterGroupLabelRT {
+    color: rgba(17, 24, 39, .62);
   }
   .deviceFilterHintRT {
     border: 1px solid rgba(255, 255, 255, .10);
@@ -150,17 +164,15 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
       display: none;
     }
   }
-  #filter-universal:checked ~ .devicePanelSolarRT,
-  #filter-universal:checked ~ .devicePanelBoardsRT {
+  #filter-universal:checked ~ .devicePanelRT,
+  #filter-solar:checked ~ .devicePanelRT,
+  #filter-boards:checked ~ .devicePanelRT {
     display: none;
   }
-  #filter-solar:checked ~ .devicePanelUniversalRT,
-  #filter-solar:checked ~ .devicePanelBoardsRT {
-    display: none;
-  }
-  #filter-boards:checked ~ .devicePanelUniversalRT,
-  #filter-boards:checked ~ .devicePanelSolarRT {
-    display: none;
+  #filter-universal:checked ~ .devicePanelUniversalRT,
+  #filter-solar:checked ~ .devicePanelSolarRT,
+  #filter-boards:checked ~ .devicePanelBoardsRT {
+    display: block;
   }
   #filter-nrf:checked ~ .devicePanelRT .deviceCardRT:not(.deviceTechNRF) {
     display: none;
@@ -172,18 +184,70 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
   #filter-nrf:checked ~ #filter-esp:checked ~ .devicePanelRT .deviceCardRT.deviceTechESP {
     display: grid;
   }
-  .theme-doc-markdown h3:not(.deviceTitleRT) {
-    margin: 0;
-    height: 1px;
-    margin-bottom: -1px;
-    overflow: hidden;
-    opacity: 0.01;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    pointer-events: none;
-  }
   .deviceBodyRT .deviceSpecsRT {
     margin-top: 20px !important;
+  }
+  .devicePanelBoardsRT {
+    order: 1;
+  }
+  .devicePanelUniversalRT {
+    order: 2;
+  }
+  .devicePanelSolarRT {
+    order: 3;
+  }
+  .deviceSideHelpRT {
+    position: absolute;
+    top: 76px;
+    right: -260px;
+    width: 240px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 12px;
+    background: rgba(255,255,255,.02);
+    z-index: 30;
+  }
+  .deviceSideHelpTitleRT {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .deviceSideHelpListRT {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 6px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--ifm-color-emphasis-700);
+  }
+  .deviceSideHelpListRT strong {
+    color: var(--ifm-font-color-base);
+    font-weight: 600;
+  }
+  .deviceSideHelpSepRT {
+    height: 1px;
+    margin: 8px 0;
+    background: rgba(255,255,255,.10);
+  }
+  .deviceSideHelpSubTitleRT {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ifm-color-emphasis-800);
+  }
+  [data-theme='light'] .deviceSideHelpRT {
+    border-color: rgba(17, 24, 39, .10);
+    background: #ffffff;
+  }
+  [data-theme='light'] .deviceSideHelpSepRT {
+    background: rgba(17, 24, 39, .10);
+  }
+  @media (max-width: 1320px) {
+    .deviceSideHelpRT {
+      display: none;
+    }
   }
   .deviceCardRT.deviceCardPopularRT {
     border: 1px solid rgba(255,255,255,.10) !important;
@@ -231,12 +295,13 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 `}</style>
 
 <div className="deviceFilterTabsRT">
-  <input className="deviceFilterInputRT" type="radio" name="device-filter" id="filter-universal" defaultChecked />
-  <input className="deviceFilterInputRT" type="radio" name="device-filter" id="filter-solar" />
-  <input className="deviceFilterInputRT" type="radio" name="device-filter" id="filter-boards" />
+  <input className="deviceFilterInputRT" type="checkbox" id="filter-universal" />
+  <input className="deviceFilterInputRT" type="checkbox" id="filter-solar" />
+  <input className="deviceFilterInputRT" type="checkbox" id="filter-boards" />
   <input className="deviceFilterInputRT" type="checkbox" id="filter-nrf" />
   <input className="deviceFilterInputRT" type="checkbox" id="filter-esp" />
   <div className="deviceFilterRowRT">
+    <div className="deviceFilterGroupLabelRT">Тип</div>
     <label className="deviceFilterHintRT deviceFilterHintUniversalRT" htmlFor="filter-universal">
       <div className="deviceFilterHintTitleRT">🧭 Универсальные</div>
       <div className="deviceFilterHintTextRT">Портативные ноды для повседневных сценариев и походов.</div>
@@ -250,18 +315,32 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
       <div className="deviceFilterHintTextRT">DIY-платы и проекты для самостоятельной сборки нод.</div>
     </label>
     <div className="deviceFilterRowSepRT" />
+    <div className="deviceFilterGroupLabelRT">Чип</div>
     <label className="deviceFilterHintRT deviceFilterHintNRFRT" htmlFor="filter-nrf">
-      <div className="deviceFilterHintTitleRT">🟢 nRF: экономичный выбор</div>
+      <div className="deviceFilterHintTitleRT">🟢 NRF</div>
       <div className="deviceFilterHintTextRT">Меньше мощности, зато дольше работает от батареи.</div>
     </label>
     <label className="deviceFilterHintRT deviceFilterHintESPRT" htmlFor="filter-esp">
-      <div className="deviceFilterHintTitleRT">⚡ ESP: мощнее, но прожорливее</div>
+      <div className="deviceFilterHintTitleRT">⚡ ESP</div>
       <div className="deviceFilterHintTextRT">Больше производительность и функций, но выше расход энергии.</div>
     </label>
   </div>
+  <aside className="deviceSideHelpRT">
+    <p className="deviceSideHelpTitleRT">Что означают фильтры</p>
+    <ul className="deviceSideHelpListRT">
+      <li><strong>🧭 Универсальные</strong> - готовые переносные ноды.</li>
+      <li><strong>☀️ Солнечные</strong> - автономные комплекты для стационара.</li>
+      <li><strong>🧩 Платы</strong> - DIY-платы для самостоятельной сборки.</li>
+    </ul>
+    <div className="deviceSideHelpSepRT" />
+    <p className="deviceSideHelpSubTitleRT">Чип-платформы</p>
+    <ul className="deviceSideHelpListRT">
+      <li><strong>🟢 NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.</li>
+      <li><strong>⚡ ESP</strong> - выше производительность и функции, но быстрее расходует батарею.</li>
+    </ul>
+  </aside>
   <div className="devicePanelRT devicePanelUniversalRT">
 
-### ThinkNode M1
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -300,7 +379,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### SenseCAP T1000-E
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -339,7 +417,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec MeshPocket
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -378,7 +455,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### LILYGO TTGO T-Echo
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -417,7 +493,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Wio Tracker L1 Pro
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -456,7 +531,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### LILYGO T-Deck Plus
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -495,7 +569,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### T-LoRa Pager
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -534,7 +607,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Meshtiny Mini Pocket
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -573,7 +645,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### ThinkNode M1 (868 MHz)
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -612,7 +683,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### TTGO T-Echo (походный вариант)
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -654,7 +724,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
   </div>
   <div className="devicePanelRT devicePanelSolarRT">
 
-### D5 Mini Solar Kit (Heltec V3)
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -692,7 +761,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### SenseCAP Solar Node
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -734,7 +802,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
   </div>
   <div className="devicePanelRT devicePanelBoardsRT">
 
-### Heltec WiFi LoRa 32 (V3)
 
 <div class="deviceCardRT deviceTechESP deviceCardPopularRT">
 
@@ -759,7 +826,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec V4 / Heltec Wireless Stick Lite V4
 
 <div class="deviceCardRT deviceTechESP deviceCardPopularRT">
 
@@ -784,7 +850,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec V4 + Case
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -810,7 +875,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec T114
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -835,7 +899,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec T114 Naked
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -860,7 +923,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Wio Tracker L1 E-ink
 
 <div class="deviceCardRT deviceTechNRF">
 
@@ -885,7 +947,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### LILYGO TTGO T-Beam
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -910,7 +971,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec Wireless Stick Lite / Mesh Nod
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -935,7 +995,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec LoRa Wireless Paper
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -960,7 +1019,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### Heltec Stick /GPS
 
 <div class="deviceCardRT deviceTechESP">
 
@@ -985,7 +1043,6 @@ breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройств
 
 </div>
 
-### LoRa 32 LILYGO / LILYGO T3 S3
 
 <div class="deviceCardRT deviceTechESP">
 
