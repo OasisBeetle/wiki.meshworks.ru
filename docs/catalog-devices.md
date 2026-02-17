@@ -14,6 +14,7 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
     position: relative;
     display: flex;
     flex-direction: column;
+    gap: 0;
   }
   .deviceHeroIntroRT {
     margin: 0 0 12px;
@@ -120,12 +121,11 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
   }
   .deviceFilterRowRT {
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: auto repeat(3, minmax(150px, 1fr)) 1px auto repeat(2, minmax(140px, 1fr));
     align-items: stretch;
     gap: 10px;
     margin: 0 0 16px;
-    width: max-content;
-    max-width: 100%;
+    width: 100%;
   }
   .deviceFilterGroupLabelRT {
     display: inline-flex;
@@ -192,13 +192,41 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
     border-color: rgba(126, 184, 27, .55);
     background: #eef7de;
   }
-  @media (max-width: 860px) {
+  @media (max-width: 996px) {
+    .deviceHeroIntroRT {
+      max-width: 100%;
+    }
     .deviceFilterRowRT {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-wrap: wrap;
       width: 100%;
+      gap: 8px;
+    }
+    .deviceFilterGroupLabelRT {
+      width: 100%;
+      padding: 2px 0;
+      margin-top: 2px;
+    }
+    .deviceFilterHintRT {
+      flex: 1 1 220px;
+      min-width: 0;
     }
     .deviceFilterRowSepRT {
       display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    .deviceFilterHintRT {
+      flex: 1 1 calc(50% - 8px);
+      padding: 9px 10px;
+    }
+    .deviceFilterHintTitleRT {
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 480px) {
+    .deviceFilterHintRT {
+      flex: 1 1 100%;
     }
   }
   #filter-universal:checked ~ .devicePanelRT,
@@ -281,9 +309,13 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
   [data-theme='light'] .deviceSideHelpSepRT {
     background: rgba(17, 24, 39, .10);
   }
-  @media (max-width: 1320px) {
+  @media (max-width: 1200px) {
     .deviceSideHelpRT {
-      display: none;
+      position: static;
+      top: auto;
+      right: auto;
+      width: 100%;
+      margin: 4px 0 14px;
     }
   }
   .deviceCardRT.deviceCardPopularRT {
@@ -296,26 +328,23 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
     content: none;
   }
   .deviceCardRT.deviceCardPopularRT::after {
+    content: none;
+  }
+  .deviceCardRT.deviceCardPopularRT .deviceBodyRT {
+    position: relative;
+  }
+  .deviceCardRT.deviceCardPopularRT .deviceBodyRT::before {
     content: "Выбор сообщества";
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    padding: 0;
-    border-radius: 0;
+    display: inline-block;
+    margin: 0 0 8px;
     font-size: 11.5px;
     font-weight: 600;
     letter-spacing: .01em;
     line-height: 1;
     color: var(--ifm-font-color-base);
-    background: transparent;
-    border: 0;
-    pointer-events: none;
-    z-index: 2;
   }
-  [data-theme='dark'] .deviceCardRT.deviceCardPopularRT::after {
+  [data-theme='dark'] .deviceCardRT.deviceCardPopularRT .deviceBodyRT::before {
     color: var(--ifm-font-color-base);
-    background: transparent;
-    border: 0;
   }
   [data-theme='light'] .deviceCardRT.deviceCardPopularRT {
     border-color: rgba(17, 24, 39, .10) !important;
@@ -330,12 +359,13 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
       rgba(255,255,255,.02) !important;
   }
   .deviceActionsRT {
-    position: absolute;
-    right: 22px;
-    bottom: 18px;
-    display: inline-flex;
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
     align-items: center;
     gap: 8px;
+    margin-top: 14px;
   }
   .deviceActionsRT .ctaRT {
     position: static;
@@ -375,17 +405,15 @@ import PortableCopyCatalog from '@site/src/components/PortableCopyCatalog';
     background: #eef7de;
     color: #2f4b09;
   }
-  @media (max-width: 860px) {
+  @media (max-width: 768px) {
     .deviceActionsRT {
-      left: 22px;
-      right: 22px;
-      bottom: 18px;
+      justify-content: stretch;
+      flex-direction: column;
       gap: 6px;
     }
     .deviceActionsRT .ctaRT,
     .ctaVideoRT {
-      flex: 1 1 0;
-      width: auto;
+      width: 100%;
       padding: 0 10px;
       justify-content: center;
     }

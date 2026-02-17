@@ -444,11 +444,11 @@ kbd.searchHint_iIMx,
 
 .deviceCardRT{
   display:grid;
-  grid-template-columns:331px 1fr;
-  gap:0;
+  grid-template-columns:minmax(280px, 38%) minmax(0, 1fr);
+  gap:18px;
   align-items:stretch;
 
-  padding:18px 22px 18px 22px;
+  padding:18px 22px;
   margin:20px 0;
 
   border:1px solid rgba(255,255,255,.10);
@@ -456,7 +456,7 @@ kbd.searchHint_iIMx,
   background:rgba(255,255,255,.02);
 
   position:relative;
-  overflow:hidden; /* ВАЖНО: обрезает нижнюю часть кнопки */
+  overflow:hidden;
 }
 
 .deviceImageRT{
@@ -476,7 +476,7 @@ kbd.searchHint_iIMx,
 }
 
 .deviceBodyRT{
-  padding:12px 0 56px 20px;
+  padding:8px 0 0;
 }
 
 .deviceImageRT img{
@@ -543,12 +543,12 @@ kbd.searchHint_iIMx,
 /* ===== CTA КНОПКА (как на твоём скрине) ===== */
 
 .ctaRT{
-  display:inline-block;
-  position:absolute;
-  right:22px;
-  bottom:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  position:static;
 
-  height:40px;
+  height:38px;
   padding:0 24px;
   border-radius:10px;
   border:1px solid rgba(255,255,255,.10);
@@ -556,7 +556,7 @@ kbd.searchHint_iIMx,
   font-size:13px;
   font-weight:800;
   letter-spacing:.34px;
-  line-height:38px;
+  line-height:1;
   text-transform:uppercase;
   white-space:nowrap;
   text-align:center;
@@ -617,7 +617,8 @@ kbd.searchHint_iIMx,
 @media (max-width: 860px){
   .deviceCardRT{
     grid-template-columns:1fr;
-    padding-bottom:62px;
+    gap:14px;
+    padding:14px;
   }
 
   .deviceImageRT{
@@ -626,12 +627,55 @@ kbd.searchHint_iIMx,
   }
 
   .deviceBodyRT{
-    padding:14px 0 0;
+    padding:0;
+  }
+}
+
+@media (max-width: 996px){
+  .deviceCardRT{
+    grid-template-columns:minmax(240px, 44%) minmax(0, 1fr);
+    gap:14px;
+    padding:16px 18px;
   }
 
-  .ctaRT{
-    left:22px;
-    right:22px;
-    text-align:center;
+  .deviceTitleRT{
+    font-size:20px;
+  }
+
+  .deviceDescRT{
+    font-size:14px;
+  }
+}
+
+@media (max-width: 768px){
+  .deviceCardRT{
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:14px;
+    margin:14px 0;
+  }
+
+  .deviceImageRT{
+    aspect-ratio:1.4 / 1;
+  }
+
+  .deviceTitleRT{
+    font-size:19px;
+  }
+}
+
+@media (max-width: 480px){
+  .deviceCardRT{
+    padding:12px;
+    margin:12px 0;
+  }
+
+  .deviceTitleRT{
+    font-size:18px;
+  }
+
+  .badgeRT{
+    font-size:12px;
+    padding:5px 8px;
   }
 }

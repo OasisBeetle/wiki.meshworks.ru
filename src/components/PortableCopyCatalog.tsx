@@ -15,6 +15,7 @@ type Device = {
   description: ReactNode;
   price: string;
   href: string;
+  ctaLabel?: string;
   tech: DeviceTech;
   popular?: boolean;
   videoHref?: string;
@@ -143,6 +144,66 @@ const UNIVERSAL_DEVICES: Device[] = [
     tech: 'NRF',
   },
   {
+    title: 'Heltec V4 18650 Touchscreen',
+    image: '/img/wiki/heltecv4-touchscreen.png',
+    alt: 'Heltec V4 18650 Touchscreen',
+    badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
+    description: (
+      <>
+        Функциональное устройство на базе ESP32-S3 с увеличенным экраном и версией с тачскрином.
+        Батарея покупается отдельно, хорошо подходит для сценариев, где нужен дисплей и расширенное управление.
+      </>
+    ),
+    price: '≈ 7 000 ₽',
+    href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010610881189.html',
+    tech: 'ESP',
+  },
+  {
+    title: 'Heltec V4 Case Ready',
+    image: '/img/wiki/v4-case-ready.png',
+    alt: 'Heltec V4 Case Ready',
+    badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
+    description: (
+      <>
+        Нода на Heltec V4 в комплекте с корпусом, GPS и антенной.
+        Требует самостоятельной сборки, батарея покупается отдельно.
+      </>
+    ),
+    price: '≈ 3 200 ₽',
+    href: 'https://trk.ppdu.ru/click?uid=297663&oid=1393&erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010710909444.html?sku_id=12000053289529151',
+    tech: 'ESP',
+  },
+  {
+    title: 'T-Beam 1W',
+    image: '/img/wiki/1w-node.png',
+    alt: 'T-Beam 1W',
+    badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
+    description: (
+      <>
+        Сверхмощное устройство на базе ESP32 с GPS.
+        Рекомендуется для специальных сценариев вне плотной городской сети, где действительно нужна повышенная мощность.
+      </>
+    ),
+    price: '≈ 5 000 ₽',
+    href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005011566811117.html?sku_id=12000055940254344',
+    tech: 'ESP',
+  },
+  {
+    title: 'T-Echo Plus',
+    image: '/img/wiki/techoplus.png',
+    alt: 'T-Echo Plus',
+    badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
+    description: (
+      <>
+        Экономичная nRF52840-нода с BME280 и GPS, рассчитанная на длительную автономную работу.
+        Оснащается увеличенной батареей и подходит для портативных сценариев.
+      </>
+    ),
+    price: '≈ 6 000 ₽',
+    href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010658273299.html?sku_id=12000053102647412',
+    tech: 'NRF',
+  },
+  {
     title: 'ThinkNode M1 (868 MHz)',
     image: '/img/wiki/thinknode-m1.png',
     alt: 'ThinkNode M1 (868 MHz)',
@@ -189,6 +250,21 @@ const SOLAR_DEVICES: Device[] = [
     price: '≈ 6 000 ₽',
     href: 'https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005008487010403.html?sku_id=12000045362595840',
     tech: 'ESP',
+  },
+  {
+    title: 'Gitfus Solar Node',
+    image: '/img/wiki/gitfus-solar-node.png',
+    alt: 'Gitfus Solar Node',
+    badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
+    description: (
+      <>
+        Экономичная солнечная нода на NRF для автономных установок.
+        В зимних условиях штатной панели может быть недостаточно, лучше ориентироваться на сезонные сценарии.
+      </>
+    ),
+    price: '≈ 2 000 ₽',
+    href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009348506226.html',
+    tech: 'NRF',
   },
   {
     title: 'SenseCAP Solar Node',
@@ -241,6 +317,22 @@ const BOARDS_DEVICES: Device[] = [
     href: 'https://trk.ppdu.ru/click/i33IoX8q?erid=2SDnjcM2X3K&tl=https://aliexpress.ru/item/1005010134873366.html?sku_id=12000051267466381',
     tech: 'ESP',
     popular: true,
+  },
+  {
+    title: 'FakeTec V5.5',
+    image: '/img/wiki/faketec.png',
+    alt: 'FakeTec V5.5',
+    badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
+    description: (
+      <>
+        Компактная плата на NRF (FakeTec v5.5) с возможностью подключения GPS и датчиков.
+        Подходит для бюджетных и компактных DIY-сборок.
+      </>
+    ),
+    price: '≈ 2 000 ₽',
+    href: 'https://www.avito.ru/domodedovo/telefony/faketec_v5_rev_b_meshtasticmeshcore_7914693905',
+    ctaLabel: 'Заказать на Avito',
+    tech: 'NRF',
   },
   {
     title: 'Heltec V4 + Case',
@@ -403,17 +495,16 @@ function renderDeviceCard(device: Device) {
         <div className="deviceFooterRT">
           <div className="priceRT">{device.price}</div>
         </div>
-      </div>
-
-      <div className="deviceActionsRT">
-        <a className="ctaRT" href={device.href} target="_blank" rel="noopener noreferrer">
-          ЗАКАЗАТЬ НА ALIEXPRESS
-        </a>
-        {device.videoHref ? (
-          <a className="ctaVideoRT" href={device.videoHref} target="_blank" rel="noopener noreferrer">
-            {device.videoLabel ?? 'Смотреть видео'}
+        <div className="deviceActionsRT">
+          <a className="ctaRT" href={device.href} target="_blank" rel="noopener noreferrer">
+            {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
           </a>
-        ) : null}
+          {device.videoHref ? (
+            <a className="ctaVideoRT" href={device.videoHref} target="_blank" rel="noopener noreferrer">
+              {device.videoLabel ?? 'Смотреть видео'}
+            </a>
+          ) : null}
+        </div>
       </div>
     </div>
   );
@@ -498,4 +589,5 @@ export default function PortableCopyCatalog(): ReactNode {
     </div>
   );
 }
+
 
