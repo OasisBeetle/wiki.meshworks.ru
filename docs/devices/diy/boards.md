@@ -1,7 +1,7 @@
 ---
-title: Платы
+title: DIY‑платы
 description: "DIY‑платы для Meshtastic: Gerber‑файлы, примеры проектов и печатных плат для самостоятельного изготовления и сборки нод."
-sidebar_label: Платы
+sidebar_label: DIY‑платы
 sidebar_position: 3
 breadcrumbs: ["База знаний Meshtastic", "Meshtastic устройства", "Самодельные ноды", "Платы"]
 ---
