@@ -58,13 +58,16 @@
 
 .filterGroups {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 12px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 10px 14px;
 }
 
 .filterGroup {
   display: grid;
-  gap: 8px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
 }
 
 .filterLabel {
@@ -72,7 +75,7 @@
   font-weight: 600;
   color: var(--ifm-color-emphasis-700);
   white-space: nowrap;
-  padding: 0 2px;
+  padding: 0;
 }
 
 :global([data-theme='light']) .filterLabel {
@@ -81,17 +84,24 @@
 
 .filterButtons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
-  align-content: start;
+  min-width: 0;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
 }
 
 .filterButton {
-  min-width: 0;
+  flex: 0 0 auto;
+  white-space: nowrap;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
-  padding: 10px 12px;
+  padding: 9px 12px;
   font-size: 13px;
   line-height: 1.2;
   cursor: pointer;
@@ -125,6 +135,7 @@
 .sideHelp {
   position: static;
   width: 100%;
+  margin-top: 12px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -438,6 +449,21 @@
   color: #2f4b09;
 }
 
+@media (max-width: 1180px) {
+  .filterGroups {
+    grid-template-columns: 1fr;
+  }
+
+  .filterGroup {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+
+  .filterButtons {
+    overflow-x: auto;
+  }
+}
+
 @media (max-width: 996px) {
   .heroIntro {
     max-width: 100%;
@@ -449,6 +475,15 @@
 
   .filterGroups {
     grid-template-columns: 1fr;
+  }
+
+  .filterGroup {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+
+  .filterButtons {
+    overflow-x: auto;
   }
 
   .deviceCard {
@@ -475,17 +510,27 @@
 
   .deviceImageWrap {
     min-height: 0;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
+    max-height: 210px;
   }
 
   .deviceBody {
     padding: 0;
   }
+
+  .deviceTitle {
+    font-size: 21px;
+  }
+
+  .deviceDesc {
+    font-size: 15px;
+    line-height: 1.55;
+  }
 }
 
 @media (max-width: 768px) {
   .filterButton {
-    flex: 1 1 calc(50% - 8px);
+    flex: 0 0 auto;
     padding: 9px 10px;
   }
 
@@ -501,7 +546,12 @@
   }
 
   .deviceTitle {
-    font-size: 19px;
+    font-size: 20px;
+  }
+
+  .deviceDesc {
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .deviceActions {
@@ -519,10 +569,6 @@
 }
 
 @media (max-width: 480px) {
-  .filterButton {
-    flex: 1 1 100%;
-  }
-
   .deviceCard {
     padding: 12px;
     margin: 12px 0;
