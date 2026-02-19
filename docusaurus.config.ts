@@ -126,6 +126,7 @@ const config: Config = {
   },
   url: 'https://wiki.meshworks.ru',
   baseUrl: '/',
+  trailingSlash: false,
   stylesheets: [
     {
       href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap',
@@ -250,7 +251,7 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    image: 'img/logo-light.png',
+    image: 'img/social/wiki-share-1200x630.png',
     metadata: [
       {
         name: 'description',
