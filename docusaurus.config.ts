@@ -233,11 +233,6 @@ const config: Config = {
         pwaHead: [
           {
             tagName: 'link',
-            rel: 'icon',
-            href: '/img/logo-light.png',
-          },
-          {
-            tagName: 'link',
             rel: 'manifest',
             href: '/manifest.json',
           },
