@@ -1,4 +1,4 @@
-import React, { type ReactNode, useMemo, useState } from 'react';
+import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
@@ -50,7 +50,16 @@ function filterByTech(devices: DeviceItem[], techFilter: TechFilter): DeviceItem
   return devices.filter((device) => device.tech === techFilter);
 }
 
-function renderDeviceCard(device: DeviceItem): ReactNode {
+type PurchaseConfirmState = {
+  device: DeviceItem;
+  open: boolean;
+};
+
+function openHrefInNewTab(href: string): void {
+  window.open(href, '_blank', 'noopener,noreferrer');
+}
+
+function renderDeviceCard(device: DeviceItem, onPurchaseClick: (device: DeviceItem) => void): ReactNode {
   return (
     <article className={`${styles.deviceCard} ${device.popular ? styles.deviceCardPopular : ''}`} key={`${device.title}-${device.href}`}>
       <div className={styles.deviceImageWrap}>
@@ -82,9 +91,15 @@ function renderDeviceCard(device: DeviceItem): ReactNode {
           </div>
 
           <div className={styles.deviceActions}>
-            <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer">
-              {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
-            </a>
+            {device.purchaseConfirm ? (
+              <button className={styles.cta} type="button" onClick={() => onPurchaseClick(device)}>
+                {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
+              </button>
+            ) : (
+              <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer">
+                {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
+              </a>
+            )}
             {device.videoHref ? (
               <a className={styles.ctaVideo} href={device.videoHref} target="_blank" rel="noopener noreferrer">
                 {device.videoLabel ?? 'Смотреть видео'}
@@ -100,6 +115,8 @@ function renderDeviceCard(device: DeviceItem): ReactNode {
 export default function PortableCopyCatalog(): ReactNode {
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
   const [techFilter, setTechFilter] = useState<TechFilter>('all');
+  const [purchaseConfirmState, setPurchaseConfirmState] = useState<PurchaseConfirmState | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
 
   const visibleCategories = useMemo(() => {
     const categories: DeviceCategory[] = categoryFilter === 'all' ? ['universal', 'solar', 'boards'] : [categoryFilter];
@@ -112,6 +129,55 @@ export default function PortableCopyCatalog(): ReactNode {
       }))
       .filter((entry) => entry.devices.length > 0);
   }, [categoryFilter, techFilter]);
+
+  useEffect(() => {
+    if (!purchaseConfirmState?.open) {
+      return;
+    }
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setPurchaseConfirmState(null);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [purchaseConfirmState?.open]);
+
+  useEffect(() => {
+    if (!purchaseConfirmState?.open) {
+      return;
+    }
+
+    dialogRef.current?.focus();
+  }, [purchaseConfirmState?.open]);
+
+  const onPurchaseClick = (device: DeviceItem) => {
+    if (!device.purchaseConfirm) {
+      openHrefInNewTab(device.href);
+      return;
+    }
+
+    setPurchaseConfirmState({ device, open: true });
+  };
+
+  const closePurchaseConfirm = () => setPurchaseConfirmState(null);
+
+  const confirmPurchase = () => {
+    const href = purchaseConfirmState?.device.href;
+    if (href) {
+      openHrefInNewTab(href);
+    }
+    closePurchaseConfirm();
+  };
 
   return (
     <section className={styles.catalog} aria-label="Каталог устройств Meshtastic">
@@ -175,7 +241,7 @@ export default function PortableCopyCatalog(): ReactNode {
             ) : (
               visibleCategories.map(({ category, label, devices }) => (
                 <section key={category} className={styles.categorySection} aria-label={label}>
-                  <div>{devices.map(renderDeviceCard)}</div>
+                  <div>{devices.map((device) => renderDeviceCard(device, onPurchaseClick))}</div>
                 </section>
               ))
             )}
@@ -207,6 +273,38 @@ export default function PortableCopyCatalog(): ReactNode {
           </ul>
         </aside>
       </div>
+
+      {purchaseConfirmState?.open && purchaseConfirmState.device.purchaseConfirm ? (
+        <div className={styles.modalOverlay} role="presentation" onMouseDown={closePurchaseConfirm}>
+          <div
+            className={styles.modal}
+            role="dialog"
+            aria-modal="true"
+            aria-label={purchaseConfirmState.device.purchaseConfirm.title}
+            tabIndex={-1}
+            ref={dialogRef}
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <div className={styles.modalHeader}>
+              <p className={styles.modalTitle}>{purchaseConfirmState.device.purchaseConfirm.title}</p>
+              <button className={styles.modalClose} type="button" onClick={closePurchaseConfirm} aria-label="Закрыть окно">
+                ×
+              </button>
+            </div>
+
+            <p className={styles.modalText}>{purchaseConfirmState.device.purchaseConfirm.description}</p>
+
+            <div className={styles.modalActions}>
+              <button className={styles.modalButtonSecondary} type="button" onClick={closePurchaseConfirm}>
+                {purchaseConfirmState.device.purchaseConfirm.cancelLabel ?? 'Отмена'}
+              </button>
+              <button className={styles.modalButtonPrimary} type="button" onClick={confirmPurchase}>
+                {purchaseConfirmState.device.purchaseConfirm.confirmLabel ?? 'Подтверждаю'}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

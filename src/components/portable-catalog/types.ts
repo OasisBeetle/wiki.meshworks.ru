@@ -15,6 +15,12 @@ export type DeviceItem = {
   descriptionLines: [string, string];
   price: string;
   href: string;
+  purchaseConfirm?: {
+    title: string;
+    description: string;
+    confirmLabel?: string;
+    cancelLabel?: string;
+  };
   ctaLabel?: string;
   tech: DeviceTech;
   popular?: boolean;
