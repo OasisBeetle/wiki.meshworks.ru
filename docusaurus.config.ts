@@ -24,7 +24,7 @@ if (typeof globalThis !== 'undefined' && 'localStorage' in globalThis) {
 }
 
 const config: Config = {
-  title: 'MeshWorks Wiki',
+  title: 'MeshWorks',
   tagline: 'База знаний MeshWorks',
   favicon: 'img/favicon-light.png',
   headTags: [
@@ -161,6 +161,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
+          breadcrumbs: false,
           editUrl: 'https://github.com/MeshWorksRussia/wiki.meshworks.ru/edit/main/',
           admonitions: {
             keywords: ['favorite'],
@@ -267,7 +268,7 @@ const config: Config = {
     },
     // Algolia is disabled; using local search plugin
     navbar: {
-      title: 'MeshWorks Wiki',
+      title: 'MeshWorks',
       logo: {
         alt: 'MeshWorks',
         src: 'img/logo-light.png',
@@ -321,4 +322,3 @@ const config: Config = {
 };
 
 export default config;
-
