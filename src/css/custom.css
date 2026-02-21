@@ -393,6 +393,24 @@ kbd.searchHint_iIMx,
     -webkit-backdrop-filter: none !important;
   }
 
+  /* Mobile sidebar inherits a dark background in light theme; force readable (white) text. */
+  [data-theme='light'] .navbar-sidebar {
+    color: #ffffff;
+  }
+
+  [data-theme='light'] .navbar-sidebar .menu__link,
+  [data-theme='light'] .navbar-sidebar .menu__list-item-collapsible {
+    color: #ffffff;
+  }
+
+  [data-theme='light'] .navbar-sidebar .menu__link--active {
+    color: var(--ifm-color-primary-lightest);
+  }
+
+  [data-theme='light'] .navbar-sidebar .menu__caret:before {
+    border-top-color: #ffffff;
+  }
+
   [class*='navbarSearchContainer'] {
     position: static;
     transform: none;
