@@ -1,0 +1,143 @@
+---
+title: MeshWorks Wiki
+slug: /home-old
+unlisted: true
+description: Русскоязычная база знаний о Meshtastic, LoRa mesh-сетях и устройствах для автономной связи.
+---
+
+import Link from '@docusaurus/Link';
+import styles from './home.module.css';
+
+<div className={styles.hero}>
+  <div className="container">
+    <div className={styles.heroInner}>
+      <div>
+        <h1 className={styles.title}>Meshtastic на русском</h1>
+        <p className={styles.subtitle}>
+          Автономная связь на LoRa для сообщений, телеметрии и координат — без интернета и операторов. MeshWorks Wiki
+          помогает быстро разобраться, подобрать железо и настроить ноды.
+        </p>
+
+        <div className={styles.ctaRow}>
+          <Link className="button button--primary button--lg" to="/start">
+            Начать
+          </Link>
+          <Link className="button button--secondary button--lg" to="/catalog-devices">
+            Выбрать устройство
+          </Link>
+          <Link className="button button--secondary button--lg" to="/node-setup">
+            Настроить ноду
+          </Link>
+        </div>
+
+        <p className={styles.note}>
+          Это независимая вики. Официальный сайт проекта: <a href="https://meshtastic.org/">meshtastic.org</a>.
+        </p>
+      </div>
+
+      <div className={styles.heroCard}>
+        <div className={styles.heroCardTitle}>Быстрый маршрут</div>
+        <ul className={styles.heroList}>
+          <li>
+            <Link to="/introduction">Понять, как работает сеть</Link>
+          </li>
+          <li>
+            <Link to="/devices">Выбрать тип ноды</Link>
+          </li>
+          <li>
+            <Link to="/node-setup/firmware">Прошить устройство</Link>
+          </li>
+          <li>
+            <Link to="/node-setup/configuration">Настроить регион/каналы</Link>
+          </li>
+          <li>
+            <Link to="/troubleshooting">Решить типовые проблемы</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="container">
+  <div className={styles.sectionHeader}>
+    <h2>Почему Meshtastic</h2>
+    <p>Три практичных причины, почему это работает в реальной жизни — и где обычно ломается.</p>
+  </div>
+
+  <div className={styles.grid3}>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Без инфраструктуры</div>
+      <p className={styles.cardText}>
+        Ноды общаются напрямую и ретранслируют сообщения по mesh‑сети. Не нужен оператор, Wi‑Fi или SIM‑карта.
+      </p>
+      <Link to="/introduction/network-basics">Как работает сеть</Link>
+    </div>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Дальность и энергоэффективность</div>
+      <p className={styles.cardText}>
+        LoRa рассчитана на дальнюю связь и экономию батареи. Результат зависит от антенны, высоты и зашумлённости.
+      </p>
+      <Link to="/antennas">Антенны и дальность</Link>
+    </div>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Безопасность по умолчанию</div>
+      <p className={styles.cardText}>
+        Закрытые каналы и ключи шифрования помогают отделять «своих» от «общего эфира» и уменьшать риск утечек.
+      </p>
+      <Link to="/node-setup/configuration">Каналы и ключи</Link>
+    </div>
+  </div>
+
+  <div className={styles.sectionHeader}>
+    <h2>Клиенты и инструменты</h2>
+    <p>Официальные приложения и веб‑клиент (внешние ссылки).</p>
+  </div>
+
+  <div className={styles.grid3}>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Android</div>
+      <p className={styles.cardText}>Управление нодой и чаты прямо со смартфона.</p>
+      <a href="https://meshtastic.org/downloads/" target="_blank" rel="noopener noreferrer">
+        Скачать
+      </a>
+    </div>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Apple (iOS)</div>
+      <p className={styles.cardText}>Официальный клиент для iPhone и iPad.</p>
+      <a href="https://meshtastic.org/downloads/" target="_blank" rel="noopener noreferrer">
+        Скачать
+      </a>
+    </div>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Web Client</div>
+      <p className={styles.cardText}>Карта/чат/устройства в браузере.</p>
+      <a href="https://client.meshtastic.org/" target="_blank" rel="noopener noreferrer">
+        Открыть
+      </a>
+    </div>
+  </div>
+
+  <div className={styles.sectionHeader}>
+    <h2>Наша документация</h2>
+    <p>Русскоязычная практическая база знаний: с чего начать, как выбрать железо и как настроить.</p>
+  </div>
+
+  <div className={styles.grid3}>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>С чего начать</div>
+      <p className={styles.cardText}>Короткий маршрут по разделам и типовым шагам.</p>
+      <Link to="/start">Открыть</Link>
+    </div>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Каталог устройств</div>
+      <p className={styles.cardText}>Готовые ноды, платы, подбор по фильтрам.</p>
+      <Link to="/catalog-devices">Открыть</Link>
+    </div>
+    <div className={styles.card}>
+      <div className={styles.cardTitle}>Траблшутинг</div>
+      <p className={styles.cardText}>Что делать, если нода «не видна», не шьётся или ведёт себя странно.</p>
+      <Link to="/troubleshooting">Открыть</Link>
+    </div>
+  </div>
+</div>
