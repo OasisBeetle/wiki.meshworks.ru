@@ -809,18 +809,16 @@ html[data-theme='light']{
 
 .navbar__link--active{
   color: var(--mw-accent) !important;
-  position: relative;
 }
 
-.navbar__link--active::after{
-  content: "";
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 4px;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, rgba(179,255,0,.95), rgba(179,255,0,0));
+/* Override any earlier theme underline/indicator rules */
+.mwNavbar .navbar__link--active{
+  box-shadow: none !important;
+}
+
+.mwNavbar .navbar__link--active::after{
+  content: none !important;
+  display: none !important;
 }
 
 .mwIconBtn{
@@ -857,88 +855,4 @@ html[data-theme='light']{
 @media (max-width: 996px){
   .mwBrand{ min-width: 160px; }
   .mwLogo{ width: 48px; }
-}
-
-/* =========================================
-   FORCE REMOVE ANY NAVBAR BORDER / LINE
-   ========================================= */
-
-/* Убираем внутренний бордер обёртки */
-.mwNavbarInner{
-  border-bottom: none !important;
-}
-
-/* Убираем дефолтный бордер Docusaurus */
-.navbar,
-.navbar--fixed-top,
-.navbar--dark,
-.navbar--light{
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
-/* Убираем тени темы */
-:root{
-  --ifm-navbar-shadow: none !important;
-}
-html[data-theme='light']{
-  --ifm-navbar-shadow: none !important;
-}
-html[data-theme='dark']{
-  --ifm-navbar-shadow: none !important;
-}
-
-/* Убираем псевдоэлементы если тема рисует линию через ::after */
-.navbar::before,
-.navbar::after,
-.mwNavbar::before{
-  content: none !important;
-  display: none !important;
-}
-
-/* Убираем возможный градиент фона */
-.mwNavbar{
-  background-image: none !important;
-  box-shadow: none !important; /* если хочешь совсем плоско */
-}
-
-/* Если вдруг линия идёт от wrapper */
-.theme-layout-navbar,
-.theme-layout-navbar > div{
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
-/* Страховка от любых внутренних border */
-.navbar *{
-  border-bottom: none !important;
-}
-
-/* =========================================
-   КОНЕЦ FIX
-   ========================================= */
-
-/* =========================================
-   MeshWorks Navbar Bottom Fade
-   ========================================= */
-
-.mwNavbar{
-  position: relative;
-}
-
-.mwNavbar::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -60px;
-  height: 60px;
-  pointer-events: none;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(11,15,20,0.9) 0%,
-    rgba(11,15,20,0.6) 40%,
-    rgba(11,15,20,0) 100%
-  );
 }
