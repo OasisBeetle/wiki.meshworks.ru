@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import path from 'node:path';
 
 // Node.js ≥20 exposes `globalThis.localStorage` as an experimental getter that
 // throws unless the `--localstorage-file` flag is provided. During the static
@@ -22,6 +23,8 @@ if (typeof globalThis !== 'undefined' && 'localStorage' in globalThis) {
     }
   }
 }
+
+const enablePwa = process.env.NODE_ENV === 'production';
 
 const config: Config = {
   title: 'MeshWorks',
@@ -189,6 +192,18 @@ const config: Config = {
     ],
   ],
   plugins: [
+    () => ({
+      name: 'webpack-alias-at-src',
+      configureWebpack() {
+        return {
+          resolve: {
+            alias: {
+              '@': path.resolve(__dirname, 'src'),
+            },
+          },
+        };
+      },
+    }),
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
@@ -226,25 +241,29 @@ const config: Config = {
         editUrl: 'https://github.com/MeshWorksRussia/wiki.meshworks.ru/edit/main/',
       },
     ],
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: process.env.NODE_ENV === 'development',
-        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
-        pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json',
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: '#7eb81b',
-          },
-        ],
-      },
-    ],
+    ...(enablePwa
+      ? ([
+          [
+            '@docusaurus/plugin-pwa',
+            {
+              debug: false,
+              offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
+              pwaHead: [
+                {
+                  tagName: 'link',
+                  rel: 'manifest',
+                  href: '/manifest.json',
+                },
+                {
+                  tagName: 'meta',
+                  name: 'theme-color',
+                  content: '#b3ff00',
+                },
+              ],
+            },
+          ],
+        ] satisfies Config['plugins'])
+      : []),
   ],
   themeConfig: {
     image: 'img/social/wiki-share-1200x630.png',
@@ -278,8 +297,14 @@ const config: Config = {
         {
           to: '/',
           position: 'left',
+          label: 'Главная',
+          activeBaseRegex: '^/$',
+        },
+        {
+          to: '/start',
+          position: 'left',
           label: 'База знаний',
-          activeBaseRegex: '^(?!/(?:about|wiki)).*$',
+          activeBaseRegex: '^(?!/$)(?!/(?:about|wiki)(?:/|$)).*$',
         },
         {
           to: '/wiki/how-to-edit',
@@ -289,9 +314,13 @@ const config: Config = {
         },
         {
           to: '/about',
-          position: 'left',
           label: 'О нас',
+          position: 'left',
           activeBaseRegex: '^/about/?$',
+        },
+        {
+          type: 'search',
+          position: 'right',
         },
       ],
     },

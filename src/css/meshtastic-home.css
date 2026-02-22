@@ -1,0 +1,72 @@
+/* Homepage-scoped tokens and helpers for Meshtastic-styled landing. */
+.meshtastic-home {
+  /* MeshWorks brand palette (light) */
+  --background: 216 33% 97%;
+  --foreground: 222 22% 12%;
+  --radius: 0.625rem;
+
+  --surface: 216 33% 99%;
+  --surface-foreground: 222 22% 12%;
+  --surface-alt: 216 25% 96%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 22% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 22% 12%;
+
+  --btn-primary: 78 100% 50%;
+  --btn-primary-hover: 78 100% 44%;
+  --btn-primary-foreground: 0 0% 100%;
+
+  --accent-primary: 78 100% 50%;
+  --accent-foreground: 222 22% 12%;
+  --primary-foreground: 0 0% 100%;
+  --secondary-foreground: 222 22% 12%;
+
+  --muted: 221 36% 92%;
+  --muted-foreground: 220 12% 30%;
+  --subtle: 220 12% 30%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 221 54% 90%;
+  --input: 214 47% 97%;
+  --ring: 78 100% 50%;
+
+  --overlay: 217 50% 97% / 0.92;
+}
+
+[data-theme="dark"] .meshtastic-home {
+  /* MeshWorks brand palette (dark) */
+  --background: 214 19% 7%;
+  --foreground: 218 100% 98%;
+
+  --surface: 223 17% 8%;
+  --surface-foreground: 0 0% 85%;
+  --surface-alt: 215 22% 11%;
+
+  --card: 215 22% 11%;
+  --card-foreground: 0 0% 98%;
+  --popover: 215 22% 11%;
+  --popover-foreground: 0 0% 98%;
+
+  --btn-primary: 78 100% 50%;
+  --btn-primary-hover: 78 100% 44%;
+  --btn-primary-foreground: 214 19% 7%;
+
+  --accent-primary: 78 100% 50%;
+  --accent-foreground: 222 20% 10%;
+  --primary-foreground: 223 17% 8%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 213 15% 14%;
+  --muted-foreground: 220 10% 65%;
+  --subtle: 0 0% 75%;
+
+  --border: 214 18% 20%;
+  --input: 215 22% 11%;
+  --ring: 78 100% 50%;
+
+  --overlay: 223 17% 8% / 0.82;
+}

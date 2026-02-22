@@ -2,117 +2,7 @@
  * Global theme overrides for Docusaurus classic.
  */
 
-/* === Base Tokens === */
-:root {
-  --ifm-color-primary: #7eb81b;
-  --ifm-color-primary-dark: #6da116;
-  --ifm-color-primary-darker: #5d8c13;
-  --ifm-color-primary-darkest: #3a550b;
-  --ifm-color-primary-light: #8ccc2c;
-  --ifm-color-primary-lighter: #99d641;
-  --ifm-color-primary-lightest: #b5e574;
-  --ifm-font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif;
-  --ifm-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  --ifm-font-size-base: 16px;
-  --ifm-line-height-base: 1.6;
-  --ifm-heading-line-height: 1.2;
-  --ifm-code-font-size: 95%;
-  --mesh-navbar-height: 4.25rem;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-
-  --ifm-navbar-background-color: #ffffff;
-  --ifm-footer-background-color: var(--ifm-navbar-background-color);
-  --ifm-footer-color: #1b1f28;
-  --ifm-footer-title-color: #1b1f28;
-  --ifm-footer-link-color: #1b1f28;
-  --ifm-footer-link-hover-color: #5d8c13;
-
-  --mesh-alert-radius: 6px;
-  --mesh-alert-text-color: #1a1c1f;
-  --mesh-alert-neutral-bg: #ffffff;
-  --mesh-alert-neutral-border: rgba(19, 23, 32, 0.12);
-  --mesh-alert-neutral-icon: #cdd5e0;
-  --mesh-alert-tip-bg: #fffef9;
-  --mesh-alert-tip-border: #f0d976;
-  --mesh-alert-tip-icon: #c59a1a;
-  --mesh-alert-info-bg: #f5f7ff;
-  --mesh-alert-info-border: #c5d1ff;
-  --mesh-alert-info-icon: #5d7bff;
-  --mesh-alert-success-bg: #f4fbf5;
-  --mesh-alert-success-border: #cdeed5;
-  --mesh-alert-success-icon: #43b169;
-  --mesh-alert-warning-bg: #fff7f6;
-  --mesh-alert-warning-border: #ffd0c8;
-  --mesh-alert-warning-icon: #de5b48;
-  --mesh-alert-note-bg: #f7f9fd;
-  --mesh-alert-note-border: #d7e0f3;
-  --mesh-alert-note-icon: #7a8acd;
-  --mesh-alert-favorite-bg: rgba(255, 247, 227, 0.5);
-  --mesh-alert-favorite-border: rgba(246, 213, 150, 0.35);
-  --mesh-alert-favorite-icon: #d08e1f;
-
-  --docsearch-primary-color: var(--ifm-color-primary);
-  --docsearch-text-color: var(--ifm-font-color-base);
-  --docsearch-hit-color: var(--ifm-font-color-base);
-}
-
-[data-theme='light'] {
-  --ifm-background-color: #f3f6fb;
-  --ifm-background-surface-color: #fafcff;
-  --ifm-navbar-background-color: #f4f7fb;
-  --ifm-footer-background-color: var(--ifm-navbar-background-color);
-  --ifm-footer-color: #2a2f37;
-  --ifm-footer-title-color: #2a2f37;
-  --ifm-footer-link-color: #2a2f37;
-  --ifm-footer-link-hover-color: var(--ifm-color-primary-dark);
-}
-
-[data-theme='dark'] {
-  --ifm-color-primary: #7eb81b;
-  --ifm-color-primary-dark: #6da116;
-  --ifm-color-primary-darker: #5d8c13;
-  --ifm-color-primary-darkest: #3a550b;
-  --ifm-color-primary-light: #8ccc2c;
-  --ifm-color-primary-lighter: #99d641;
-  --ifm-color-primary-lightest: #b5e574;
-
-  --ifm-background-color: #111318;
-  --ifm-background-surface-color: #191e25;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
-
-  --ifm-navbar-background-color: #1e2329;
-  --ifm-footer-background-color: var(--ifm-navbar-background-color);
-  --ifm-footer-color: #ffffff;
-  --ifm-footer-title-color: #ffffff;
-  --ifm-footer-link-color: #ffffff;
-  --ifm-footer-link-hover-color: #ffffff;
-
-  --mesh-alert-text-color: #f7faff;
-  --mesh-alert-neutral-bg: #1d202a;
-  --mesh-alert-neutral-border: rgba(255, 255, 255, 0.08);
-  --mesh-alert-neutral-icon: #4c5870;
-  --mesh-alert-tip-bg: #242012;
-  --mesh-alert-tip-border: #5a4c1f;
-  --mesh-alert-tip-icon: #f4d360;
-  --mesh-alert-info-bg: #1a2536;
-  --mesh-alert-info-border: #2c3860;
-  --mesh-alert-info-icon: #7ea2ff;
-  --mesh-alert-success-bg: #13241a;
-  --mesh-alert-success-border: #1f3d2a;
-  --mesh-alert-success-icon: #74e2a2;
-  --mesh-alert-warning-bg: #2e1718;
-  --mesh-alert-warning-border: #4a2528;
-  --mesh-alert-warning-icon: #ff978b;
-  --mesh-alert-note-bg: #171e2d;
-  --mesh-alert-note-border: #2a3249;
-  --mesh-alert-note-icon: #94a5ff;
-  --mesh-alert-favorite-bg: #2a2115;
-  --mesh-alert-favorite-border: #4a351f;
-  --mesh-alert-favorite-icon: #ffd782;
-
-  --docsearch-primary-color: var(--ifm-color-primary);
-  --docsearch-text-color: var(--ifm-font-color-base);
-}
+@import './theme-tokens.css';
 
 /* === Base Typography === */
 body {
@@ -122,6 +12,42 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Buttons (Docs-style) === */
+.button {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.button--primary {
+  background: var(--mesh-accent);
+  border-color: color-mix(in srgb, var(--mesh-accent) 80%, #000 20%);
+  color: #0f1216;
+  box-shadow: none;
+}
+
+.button--primary:hover {
+  background: var(--mesh-accent-strong);
+  border-color: var(--mesh-accent-strong);
+  color: #0f1216;
+}
+
+.button--primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mesh-accent) 18%, transparent);
+}
+
+.button--secondary {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--ifm-font-color-base) 18%, transparent);
+  color: var(--ifm-font-color-base);
+}
+
+.button--secondary:hover {
+  background: color-mix(in srgb, var(--mesh-accent) 10%, transparent);
+  border-color: color-mix(in srgb, var(--mesh-accent) 30%, transparent);
+  color: var(--ifm-font-color-base);
 }
 
 .theme-doc-markdown,
@@ -225,10 +151,12 @@ body {
 .navbar {
   min-height: var(--mesh-navbar-height);
   padding: 0;
-  border-bottom: 1px solid transparent;
-  box-shadow: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 14%, transparent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   backdrop-filter: saturate(120%) blur(10px);
   -webkit-backdrop-filter: saturate(120%) blur(10px);
+  top: 0;
+  background: var(--ifm-navbar-background-color);
 }
 
 .navbar__inner {
@@ -236,10 +164,26 @@ body {
   min-height: var(--mesh-navbar-height);
   margin-inline: auto;
   padding: 0 1.25rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.navbar__items {
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.navbar__item {
+  white-space: nowrap;
 }
 
 .navbar__logo {
   margin-right: 1rem;
+}
+
+.navbar__logo img {
+  height: 2.25rem;
+  width: auto;
 }
 
 .navbar__title {
@@ -249,71 +193,153 @@ body {
 }
 
 .navbar__link {
-  font-size: 0.98rem;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 400;
-  transition: color 0.12s ease, opacity 0.12s ease;
+  transition: color 0.12s ease, opacity 0.12s ease, box-shadow 0.12s ease;
+  color: var(--ifm-font-color-secondary);
+  box-shadow: inset 0 -2px 0 transparent;
 }
 
 .navbar__link:hover {
   text-decoration: none;
-  opacity: 0.88;
-}
-
-[data-theme='light'] .navbar {
-  background: var(--ifm-navbar-background-color);
-  border-bottom-color: rgba(39, 45, 56, 0.14);
-}
-
-[data-theme='light'] .navbar .navbar__title,
-[data-theme='light'] .navbar .navbar__item,
-[data-theme='light'] .navbar .clean-btn,
-[data-theme='light'] .navbar [class*='colorModeToggle'] {
-  color: #262a31;
-}
-
-[data-theme='light'] .navbar .navbar__link {
-  color: rgba(38, 42, 49, 0.78);
-}
-
-[data-theme='light'] .navbar .navbar__link:hover {
-  color: #1f242c;
   opacity: 1;
+  color: var(--ifm-font-color-base);
+  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--mesh-accent) 45%, transparent);
 }
 
-[data-theme='light'] .navbar .navbar__link--active {
-  color: var(--ifm-color-primary-dark);
+.navbar .navbar__title,
+.navbar .navbar__item,
+.navbar .clean-btn,
+.navbar [class*='colorModeToggle'] {
+  color: var(--ifm-font-color-base);
 }
 
-[data-theme='dark'] .navbar {
-  background: var(--ifm-navbar-background-color);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
+.navbar .navbar__link--active,
+.navbar .navbar__link--active:hover {
+  color: var(--mesh-accent);
+  box-shadow: inset 0 -2px 0 var(--mesh-accent);
 }
 
-[data-theme='dark'] .navbar .navbar__title,
-[data-theme='dark'] .navbar .navbar__item,
-[data-theme='dark'] .navbar .clean-btn,
-[data-theme='dark'] .navbar [class*='colorModeToggle'] {
-  color: #f3f6fa;
+/* === Generic Cards === */
+.card {
+  border-radius: var(--ifm-card-border-radius);
+  background: var(--ifm-card-background-color);
+  border: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 12%, transparent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
 }
 
-[data-theme='dark'] .navbar .navbar__link {
-  color: rgba(243, 246, 250, 0.78);
-}
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+  }
 
-[data-theme='dark'] .navbar .navbar__link--active {
-  color: var(--ifm-color-primary-lightest);
+  .card:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--mesh-accent) 24%, transparent);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
+  }
 }
 
 /* === Docs Left Sidebar (Meshtastic-inspired) === */
+.theme-doc-sidebar-menu .menu__link {
+  font-weight: 350;
+}
+
+.theme-doc-sidebar-menu .menu__link--active,
+.theme-doc-sidebar-menu .menu__link:hover {
+  font-weight: 450;
+}
+
+/* Sidebar icons for top-level sections (autogenerated sidebar). */
+.theme-doc-sidebar-item-link-level-1 > .menu__link,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.theme-doc-sidebar-item-link-level-1 > .menu__link::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link::before {
+  content: 'folder';
+  font-family: 'Material Symbols Rounded';
+  font-size: 1.15rem;
+  line-height: 1;
+  flex: 0 0 auto;
+  width: 1.15rem;
+  text-align: center;
+  color: color-mix(in srgb, var(--ifm-font-color-base) 45%, transparent);
+  font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+}
+
+.theme-doc-sidebar-item-link-level-1 > .menu__link:hover::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover::before,
+.theme-doc-sidebar-item-link-level-1 > .menu__link.menu__link--active::before,
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link.menu__link--active::before {
+  color: var(--mesh-accent);
+}
+
+/* Icon mapping by section route (level-1 only) */
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/start']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/start']::before {
+  content: 'rocket_launch';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/introduction']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/introduction']::before {
+  content: 'menu_book';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/devices']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/devices']::before {
+  content: 'devices';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices']::before,
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > a.menu__link[href^='/catalog-devices']::before {
+  content: 'inventory_2';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/node-setup']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/node-setup']::before {
+  content: 'tune';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/antennas']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/antennas']::before {
+  content: 'settings_input_antenna';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/troubleshooting']::before,
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > a.menu__link[href^='/troubleshooting']::before {
+  content: 'build';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/community']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/community']::before {
+  content: 'forum';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/regulations']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/regulations']::before {
+  content: 'gavel';
+}
+
 @media (min-width: 997px) {
   .theme-doc-sidebar-container {
-    border-right: 1px solid rgba(31, 35, 42, 0.12);
-    background: linear-gradient(180deg, rgba(246, 249, 252, 0.92) 0%, rgba(241, 246, 252, 0.8) 100%);
+    border-right: 1px solid rgba(18, 24, 35, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(245, 247, 251, 0.8) 100%);
   }
 
   [data-theme='dark'] .theme-doc-sidebar-container {
-    border-right-color: rgba(255, 255, 255, 0.12);
-    background: linear-gradient(180deg, rgba(21, 25, 31, 0.86) 0%, rgba(19, 23, 28, 0.76) 100%);
+    border-right-color: rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(17, 19, 24, 0.8) 0%, rgba(15, 18, 22, 0.76) 100%);
   }
 
   .theme-doc-sidebar-menu {
@@ -328,7 +354,6 @@ body {
     border-radius: 0.55rem;
     padding: 0.43rem 0.62rem;
     font-size: 0.98rem;
-    font-weight: 500;
     line-height: 1.25;
     transition: background-color 0.12s ease, color 0.12s ease;
   }
@@ -338,13 +363,13 @@ body {
   }
 
   [data-theme='light'] .theme-doc-sidebar-menu .menu__link:hover {
-    color: var(--ifm-color-primary-darkest);
-    background: rgba(126, 184, 27, 0.09);
+    color: var(--ifm-font-color-base);
+    background: color-mix(in srgb, var(--mesh-accent) 10%, transparent);
   }
 
   [data-theme='light'] .theme-doc-sidebar-menu .menu__link--active {
-    color: var(--ifm-color-primary-darkest);
-    background: rgba(126, 184, 27, 0.18);
+    color: var(--ifm-font-color-base);
+    background: color-mix(in srgb, var(--mesh-accent) 16%, transparent);
   }
 
   [data-theme='dark'] .theme-doc-sidebar-menu .menu__link {
@@ -352,13 +377,13 @@ body {
   }
 
   [data-theme='dark'] .theme-doc-sidebar-menu .menu__link:hover {
-    color: var(--ifm-color-primary-lightest);
-    background: rgba(126, 184, 27, 0.14);
+    color: var(--mesh-accent);
+    background: color-mix(in srgb, var(--mesh-accent) 10%, transparent);
   }
 
   [data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active {
-    color: var(--ifm-color-primary-lightest);
-    background: rgba(126, 184, 27, 0.24);
+    color: var(--mesh-accent);
+    background: color-mix(in srgb, var(--mesh-accent) 14%, transparent);
   }
 }
 
@@ -575,12 +600,11 @@ body {
   content: 'Поиск';
   position: absolute;
   inset: 0;
-  color: currentColor;
+  color: var(--ifm-navbar-search-input-placeholder-color, currentColor);
 }
 
 .searchHintContainer_Pkmr,
-kbd.searchHint_iIMx,
-.navbar kbd {
+kbd.searchHint_iIMx {
   display: none !important;
 }
 
@@ -588,7 +612,26 @@ kbd.searchHint_iIMx,
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding-right: 2.2rem;
+  height: 2.35rem;
+  padding: 0 2.4rem 0 0.85rem;
+  border-radius: 999px;
+  background: var(--ifm-navbar-search-input-background-color);
+  border: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 16%, transparent);
+  box-shadow: none;
+  color: var(--ifm-navbar-search-input-color, var(--ifm-font-color-base));
+  transition: border-color 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+[class*='navbarSearchContainer'] .DocSearch-Button:hover {
+  border-color: color-mix(in srgb, var(--mesh-accent) 28%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mesh-accent) 12%, transparent);
+}
+
+[class*='navbarSearchContainer'] .DocSearch-Button:focus-visible,
+[class*='navbarSearchContainer'] .DocSearch-Button:focus-within {
+  outline: none;
+  border-color: color-mix(in srgb, var(--mesh-accent) 55%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mesh-accent) 16%, transparent);
 }
 
 [class*='navbarSearchContainer'] .DocSearch-Button-Keys {
@@ -599,12 +642,36 @@ kbd.searchHint_iIMx,
   margin: 0 !important;
 }
 
+.DocSearch-Button-Keys :first-child {
+  font-size: 1.3em;
+}
+
+.DocSearch-Button-Keys :last-child {
+  font-size: 1em;
+}
+
+@media (min-width: 768px) {
+  .DocSearch-Button {
+    width: 10.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .DocSearch-Button {
+    width: 14rem;
+  }
+}
+
 @media (max-width: 996px) {
   [data-theme='light'] .navbar,
   [data-theme='dark'] .navbar {
     /* Prevent fixed mobile sidebar from being constrained by filtered navbar */
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+
+  [class*='navbarSearchContainer'] .DocSearch-Button-Keys {
+    display: none;
   }
 
   [class*='navbarSearchContainer'] {

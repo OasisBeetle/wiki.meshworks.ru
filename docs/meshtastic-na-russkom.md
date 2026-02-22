@@ -1,5 +1,5 @@
 ---
-slug: /
+slug: /start
 title: "Meshtastic на русском: с чего начать"
 sidebar_label: С чего начать
 sidebar_position: 0
