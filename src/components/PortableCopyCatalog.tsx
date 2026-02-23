@@ -149,7 +149,6 @@ function renderDeviceCard(
 
         <p className={styles.deviceDesc}>
           <span className={styles.deviceDescMain}>{device.descriptionLines[0]}</span>
-          <span className={styles.deviceDescExtra}>{device.descriptionLines[1]}</span>
         </p>
 
         <div className={styles.deviceFooter}>
