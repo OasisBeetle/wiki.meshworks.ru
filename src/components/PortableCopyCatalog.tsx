@@ -3,6 +3,8 @@ import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
 
+import '../css/meshtastic-home.css';
+
 type CategoryFilter = DeviceCategory | 'all';
 type TechFilter = DeviceTech | 'all';
 
@@ -55,21 +57,37 @@ type PurchaseConfirmState = {
   open: boolean;
 };
 
+function getDeviceKey(device: DeviceItem): string {
+  return `${device.title}-${device.href}`;
+}
+
 function openHrefInNewTab(href: string): void {
   window.open(href, '_blank', 'noopener,noreferrer');
 }
 
-function renderDeviceCard(device: DeviceItem, onPurchaseClick: (device: DeviceItem) => void): ReactNode {
+function renderDeviceCard(
+  device: DeviceItem,
+  onPurchaseClick: (device: DeviceItem) => void,
+  opts?: { featured?: boolean },
+): ReactNode {
+  const featured = Boolean(opts?.featured);
   return (
-    <article className={`${styles.deviceCard} ${device.popular ? styles.deviceCardPopular : ''}`} key={`${device.title}-${device.href}`}>
-      <div className={styles.deviceImageWrap}>
+    <article
+      className={[
+        styles.deviceCard,
+        device.popular ? styles.deviceCardPopular : '',
+        featured ? styles.deviceCardFeatured : '',
+      ].join(' ')}
+      key={getDeviceKey(device)}
+    >
+      <div className={styles.deviceMedia}>
         <img className={styles.deviceImage} src={device.image} alt={device.alt} loading="lazy" />
+        {device.popular ? <span className={styles.popularPill}>Выбор сообщества</span> : null}
       </div>
 
-      <div className={styles.deviceBody}>
-        <div className={styles.deviceMain}>
+      <div className={styles.deviceContent}>
+        <div className={styles.deviceHeader}>
           <h3 className={styles.deviceTitle}>{device.title}</h3>
-
           <div className={styles.deviceSpecs}>
             <span className={styles.badge}>{`Чип: ${device.tech}`}</span>
             {device.badges.map((badge) => (
@@ -78,26 +96,23 @@ function renderDeviceCard(device: DeviceItem, onPurchaseClick: (device: DeviceIt
               </span>
             ))}
           </div>
-
-          <p className={styles.deviceDesc}>
-            <span className={styles.deviceDescMain}>{device.descriptionLines[0]}</span>
-            <span className={styles.deviceDescExtra}>{device.descriptionLines[1]}</span>
-          </p>
         </div>
 
-        <div className={styles.deviceBottom}>
-          <div className={styles.deviceFooter}>
-            <div className={styles.price}>{device.price}</div>
-          </div>
+        <p className={styles.deviceDesc}>
+          <span className={styles.deviceDescMain}>{device.descriptionLines[0]}</span>
+          <span className={styles.deviceDescExtra}>{device.descriptionLines[1]}</span>
+        </p>
 
+        <div className={styles.deviceFooter}>
+          <div className={styles.price}>{device.price}</div>
           <div className={styles.deviceActions}>
             {device.purchaseConfirm ? (
               <button className={styles.cta} type="button" onClick={() => onPurchaseClick(device)}>
-                {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
+                {device.ctaLabel ?? 'Заказать на AliExpress'}
               </button>
             ) : (
               <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer">
-                {device.ctaLabel ?? 'ЗАКАЗАТЬ НА ALIEXPRESS'}
+                {device.ctaLabel ?? 'Заказать на AliExpress'}
               </a>
             )}
             {device.videoHref ? (
@@ -118,6 +133,29 @@ export default function PortableCopyCatalog(): ReactNode {
   const [purchaseConfirmState, setPurchaseConfirmState] = useState<PurchaseConfirmState | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
+  const featuredDevices = useMemo(() => {
+    const all: Array<{ category: DeviceCategory; device: DeviceItem }> = [];
+    (Object.keys(DEVICE_DATA) as DeviceCategory[]).forEach((category) => {
+      DEVICE_DATA[category].forEach((device) => {
+        if (device.popular) {
+          all.push({ category, device });
+        }
+      });
+    });
+
+    const byCategory =
+      categoryFilter === 'all' ? all : all.filter((entry) => entry.category === categoryFilter);
+
+    return filterByTech(
+      byCategory.map((entry) => entry.device),
+      techFilter,
+    );
+  }, [categoryFilter, techFilter]);
+
+  const featuredKeys = useMemo(() => {
+    return new Set(featuredDevices.map(getDeviceKey));
+  }, [featuredDevices]);
+
   const visibleCategories = useMemo(() => {
     const categories: DeviceCategory[] = categoryFilter === 'all' ? ['universal', 'solar', 'boards'] : [categoryFilter];
 
@@ -125,10 +163,17 @@ export default function PortableCopyCatalog(): ReactNode {
       .map((category) => ({
         category,
         label: DEVICE_CATEGORY_LABELS[category],
-        devices: filterByTech(DEVICE_DATA[category], techFilter),
+        devices: filterByTech(DEVICE_DATA[category], techFilter)
+          .slice()
+          .sort((a, b) => Number(Boolean(b.popular)) - Number(Boolean(a.popular)))
+          .filter((device) => !featuredKeys.has(getDeviceKey(device))),
       }))
       .filter((entry) => entry.devices.length > 0);
-  }, [categoryFilter, techFilter]);
+  }, [categoryFilter, techFilter, featuredKeys]);
+
+  const visibleCount = useMemo(() => {
+    return visibleCategories.reduce((acc, entry) => acc + entry.devices.length, 0);
+  }, [visibleCategories]);
 
   useEffect(() => {
     if (!purchaseConfirmState?.open) {
@@ -180,24 +225,39 @@ export default function PortableCopyCatalog(): ReactNode {
   };
 
   return (
-    <section className={styles.catalog} aria-label="Каталог устройств Meshtastic">
+    <section className={`${styles.catalog} ${styles.vibe} meshtastic-home`} aria-label="Каталог устройств Meshtastic">
       <div className={styles.heroBlock}>
-        <p className={styles.heroIntro}>
-          <span className={styles.heroLine}>Здесь вы можете подобрать ноду под свои задачи.</span>
-          <span className={styles.heroLine}>От бюджетных плат без корпуса до полноразмерных нод с клавиатурой и цветным дисплеем.</span>
-          <span className={styles.heroLine}>Фильтры позволяют выбрать тип ноды и тип чипа.</span>
-          <span className={`${styles.heroLine} ${styles.heroMeta}`}>
+        <div className={styles.heroIntro}>
+          <p className={styles.heroText}>
+            Подберите ноду под свои задачи: от бюджетных плат без корпуса до полноразмерных устройств с клавиатурой и цветным дисплеем.
+          </p>
+          <p className={styles.heroText}>
+            Используйте фильтры по типу и чипу, чтобы быстро сузить выбор. Сейчас отображается: <strong>{visibleCount}</strong>.
+          </p>
+          <p className={`${styles.heroText} ${styles.heroMeta}`}>
             Вопросы можно уточнить в нашем{' '}
             <a href="https://t.me/meshwrks/2751" target="_blank" rel="noopener noreferrer">
               Telegram-чате
             </a>
             .
-          </span>
-        </p>
+          </p>
+        </div>
       </div>
 
       <div className={styles.layoutGrid}>
         <div className={styles.mainColumn}>
+          {featuredDevices.length > 0 ? (
+            <section className={styles.featuredSection} aria-label="Выбор сообщества">
+              <header className={styles.categoryHeader}>
+                <h2 className={styles.categoryTitle}>Выбор сообщества</h2>
+                <p className={styles.categoryMeta}>{featuredDevices.length} шт.</p>
+              </header>
+              <div className={styles.featuredGrid}>
+                {featuredDevices.map((device) => renderDeviceCard(device, onPurchaseClick, { featured: true }))}
+              </div>
+            </section>
+          ) : null}
+
           <div className={styles.filterArea}>
             <div className={styles.filterGroups}>
               <div className={styles.filterGroup} role="group" aria-label="Фильтр по типу">
@@ -235,43 +295,51 @@ export default function PortableCopyCatalog(): ReactNode {
             </div>
           </div>
 
+          <section className={styles.helpStrip} aria-label="Что означают фильтры">
+            <div className={styles.helpBlock}>
+              <p className={styles.helpTitle}>Тип ноды</p>
+              <ul className={styles.helpList}>
+                <li>
+                  <strong>🧭 Универсальные</strong> - готовые переносные ноды.
+                </li>
+                <li>
+                  <strong>☀️ Солнечные</strong> - автономные комплекты для стационара.
+                </li>
+                <li>
+                  <strong>🧩 Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.
+                </li>
+              </ul>
+            </div>
+
+            <div className={styles.helpBlock}>
+              <p className={styles.helpTitle}>Чип-платформы</p>
+              <ul className={styles.helpList}>
+                <li>
+                  <strong>🟢 NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.
+                </li>
+                <li>
+                  <strong>⚡ ESP</strong> - выше производительность и функции, но быстрее расходует батарею.
+                </li>
+              </ul>
+            </div>
+          </section>
+
           <div className={styles.devicePanels}>
             {visibleCategories.length === 0 ? (
               <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
             ) : (
               visibleCategories.map(({ category, label, devices }) => (
                 <section key={category} className={styles.categorySection} aria-label={label}>
-                  <div>{devices.map((device) => renderDeviceCard(device, onPurchaseClick))}</div>
+                  <header className={styles.categoryHeader}>
+                    <h2 className={styles.categoryTitle}>{label}</h2>
+                    <p className={styles.categoryMeta}>{devices.length} шт.</p>
+                  </header>
+                  <div className={styles.deviceGrid}>{devices.map((device) => renderDeviceCard(device, onPurchaseClick))}</div>
                 </section>
               ))
             )}
           </div>
         </div>
-
-        <aside className={styles.sideHelp}>
-          <p className={styles.sideHelpTitle}>Что означают фильтры</p>
-          <ul className={styles.sideHelpList}>
-            <li>
-              <strong>🧭 Универсальные</strong> - готовые переносные ноды.
-            </li>
-            <li>
-              <strong>☀️ Солнечные</strong> - автономные комплекты для стационара.
-            </li>
-            <li>
-              <strong>🧩 Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.
-            </li>
-          </ul>
-          <div className={styles.sideHelpSep} />
-          <p className={styles.sideHelpSubTitle}>Чип-платформы</p>
-          <ul className={styles.sideHelpList}>
-            <li>
-              <strong>🟢 NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.
-            </li>
-            <li>
-              <strong>⚡ ESP</strong> - выше производительность и функции, но быстрее расходует батарею.
-            </li>
-          </ul>
-        </aside>
       </div>
 
       {purchaseConfirmState?.open && purchaseConfirmState.device.purchaseConfirm ? (

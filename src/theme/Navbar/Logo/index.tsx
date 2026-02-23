@@ -4,7 +4,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import ThemedImage from "@theme/ThemedImage";
 
-export default function Logo(): JSX.Element {
+export default function Logo() {
   const { siteConfig } = useDocusaurusContext();
   const home = useBaseUrl("/");
 
