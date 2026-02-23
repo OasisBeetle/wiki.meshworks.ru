@@ -1,4 +1,5 @@
 import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowUpDown, LayoutGrid, List } from './icons/lucide';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
@@ -7,6 +8,8 @@ import '../css/meshtastic-home.css';
 
 type CategoryFilter = DeviceCategory | 'all';
 type TechFilter = DeviceTech | 'all';
+type ViewMode = 'grid' | 'list';
+type SortOption = 'default' | 'price-asc' | 'price-desc';
 
 type FilterOption<T extends string> = {
   value: T;
@@ -18,7 +21,7 @@ const CATEGORY_OPTIONS: Array<FilterOption<CategoryFilter>> = [
   { value: 'all', label: 'Все' },
   { value: 'universal', label: '🧭 Универсальные' },
   { value: 'solar', label: '☀️ Солнечные' },
-  { value: 'boards', label: '🧩 Отдельные платы', shortLabel: '🧩 Платы' },
+  { value: 'boards', label: '🧩 Платы', shortLabel: '🧩 Платы' },
 ];
 
 const TECH_OPTIONS: Array<FilterOption<TechFilter>> = [
@@ -50,6 +53,23 @@ function filterByTech(devices: DeviceItem[], techFilter: TechFilter): DeviceItem
   }
 
   return devices.filter((device) => device.tech === techFilter);
+}
+
+function parsePrice(priceStr: string): number {
+  const digits = priceStr.replace(/\D/g, '');
+  return digits ? parseInt(digits, 10) : 0;
+}
+
+function sortDevices(devices: DeviceItem[], sortOption: SortOption): DeviceItem[] {
+  if (sortOption === 'default') {
+    return devices;
+  }
+
+  return [...devices].sort((a, b) => {
+    const priceA = parsePrice(a.price);
+    const priceB = parsePrice(b.price);
+    return sortOption === 'price-asc' ? priceA - priceB : priceB - priceA;
+  });
 }
 
 type PurchaseConfirmState = {
@@ -132,6 +152,8 @@ function renderDeviceCard(
 export default function PortableCopyCatalog(): ReactNode {
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
   const [techFilter, setTechFilter] = useState<TechFilter>('all');
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
+  const [sortOption, setSortOption] = useState<SortOption>('default');
   const [purchaseConfirmState, setPurchaseConfirmState] = useState<PurchaseConfirmState | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
@@ -156,16 +178,18 @@ export default function PortableCopyCatalog(): ReactNode {
     const categories: DeviceCategory[] = categoryFilter === 'all' ? ['universal', 'solar', 'boards'] : [categoryFilter];
 
     return categories
-      .map((category) => ({
-        category,
-        label: DEVICE_CATEGORY_LABELS[category],
-        devices: filterByTech(DEVICE_DATA[category], techFilter)
-          .slice()
-          .sort((a, b) => Number(Boolean(b.popular)) - Number(Boolean(a.popular)))
-          .filter((device) => !featuredKeys.has(getDeviceKey(device))),
-      }))
+      .map((category) => {
+        const filtered = filterByTech(DEVICE_DATA[category], techFilter)
+          .filter((device) => !featuredKeys.has(getDeviceKey(device)));
+        
+        return {
+          category,
+          label: DEVICE_CATEGORY_LABELS[category],
+          devices: sortDevices(filtered, sortOption),
+        };
+      })
       .filter((entry) => entry.devices.length > 0);
-  }, [categoryFilter, techFilter, featuredKeys]);
+  }, [categoryFilter, techFilter, featuredKeys, sortOption]);
 
   useEffect(() => {
     if (!purchaseConfirmState?.open) {
@@ -232,39 +256,70 @@ export default function PortableCopyCatalog(): ReactNode {
             </section>
           ) : null}
 
-          <div className={styles.filterArea}>
+          <div className={styles.controlBar}>
             <div className={styles.filterGroups}>
-              <div className={styles.filterGroup} role="group" aria-label="Фильтр по типу">
-                <div className={`${styles.filterButtons} ${styles.filterControlChips}`}>
-                  {CATEGORY_OPTIONS.map((option) => (
-                    <button
-                      key={option.value}
-                      className={`${styles.filterButton} ${categoryFilter === option.value ? styles.filterButtonActive : ''}`}
-                      type="button"
-                      aria-label={option.label}
-                      aria-pressed={categoryFilter === option.value}
-                      onClick={() => setCategoryFilter(option.value)}
-                    >
-                      {renderOptionLabel(option)}
-                    </button>
-                  ))}
-                </div>
+              <div className={`${styles.filterButtons} ${styles.filterControlChips}`}>
+                {CATEGORY_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    className={`${styles.filterButton} ${categoryFilter === option.value ? styles.filterButtonActive : ''}`}
+                    type="button"
+                    aria-label={option.label}
+                    aria-pressed={categoryFilter === option.value}
+                    onClick={() => setCategoryFilter(option.value)}
+                  >
+                    {renderOptionLabel(option)}
+                  </button>
+                ))}
               </div>
+              <div className={styles.divider} />
+              <div className={`${styles.filterButtons} ${styles.filterControlChips}`}>
+                {TECH_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    className={`${styles.filterButton} ${techFilter === option.value ? styles.filterButtonActive : ''}`}
+                    type="button"
+                    aria-pressed={techFilter === option.value}
+                    onClick={() => setTechFilter(option.value)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-              <div className={styles.filterGroup} role="group" aria-label="Фильтр по чипу">
-                <div className={`${styles.filterButtons} ${styles.filterControlChips}`}>
-                  {TECH_OPTIONS.map((option) => (
-                    <button
-                      key={option.value}
-                      className={`${styles.filterButton} ${techFilter === option.value ? styles.filterButtonActive : ''}`}
-                      type="button"
-                      aria-pressed={techFilter === option.value}
-                      onClick={() => setTechFilter(option.value)}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
+            <div className={styles.viewControls}>
+              <div className={styles.sortWrapper}>
+                <ArrowUpDown className={styles.sortIcon} />
+                <select 
+                  className={styles.sortSelect} 
+                  value={sortOption} 
+                  onChange={(e) => setSortOption(e.target.value as SortOption)}
+                  aria-label="Сортировка"
+                >
+                  <option value="default">По умолчанию</option>
+                  <option value="price-asc">Сначала дешевле</option>
+                  <option value="price-desc">Сначала дороже</option>
+                </select>
+              </div>
+              
+              <div className={styles.viewToggle}>
+                <button
+                  className={`${styles.viewBtn} ${viewMode === 'grid' ? styles.viewBtnActive : ''}`}
+                  onClick={() => setViewMode('grid')}
+                  aria-label="Сетка"
+                  title="Сетка"
+                >
+                  <LayoutGrid />
+                </button>
+                <button
+                  className={`${styles.viewBtn} ${viewMode === 'list' ? styles.viewBtnActive : ''}`}
+                  onClick={() => setViewMode('list')}
+                  aria-label="Список"
+                  title="Список"
+                >
+                  <List />
+                </button>
               </div>
             </div>
           </div>
@@ -298,7 +353,7 @@ export default function PortableCopyCatalog(): ReactNode {
             </div>
           </section>
 
-          <div className={styles.devicePanels}>
+          <div className={`${styles.devicePanels} ${viewMode === 'list' ? styles.listView : ''}`}>
             {visibleCategories.length === 0 ? (
               <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
             ) : (

@@ -70,9 +70,14 @@
   gap: var(--space-2);
 }
 
-.filterArea {
-  display: grid;
-  gap: var(--space-1);
+/* === Control Bar === */
+
+.controlBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
   padding: var(--surface-pad);
   border: 0;
   border-radius: calc(var(--surface-radius) + 2px);
@@ -82,35 +87,24 @@
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
   min-width: 0;
   width: 100%;
+  position: sticky;
+  top: 70px; /* Adjust based on navbar height */
+  z-index: 100;
 }
 
 .filterGroups {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  column-gap: var(--space-3);
-  row-gap: var(--space-1);
-  min-width: 0;
-}
-
-.filterGroup {
   display: flex;
-  align-items: flex-start;
-  min-width: 0;
-}
-
-.filterGroup:first-child {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
   flex: 1 1 auto;
-  min-width: 0;
 }
 
-.filterGroup:last-child {
-  justify-self: end;
-}
-
-.filterGroup + .filterGroup {
-  padding-left: var(--space-3);
-  border-left: 1px solid var(--divider);
+.divider {
+  width: 1px;
+  height: 24px;
+  background: var(--divider);
+  margin: 0 4px;
 }
 
 .filterButtons {
@@ -118,8 +112,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-1);
-  min-width: 0;
-  width: 100%;
 }
 
 .filterControlChips {
@@ -129,14 +121,6 @@
 
 .filterLabelMobile {
   display: none;
-}
-
-.filterGroup:first-child .filterButtons {
-  justify-content: flex-start;
-}
-
-.filterGroup:last-child .filterButtons {
-  justify-content: flex-end;
 }
 
 .filterButton {
@@ -170,6 +154,86 @@
 .filterButtonActive {
   background: hsl(var(--btn-primary, 99 100% 26%) / 0.16);
 }
+
+.viewControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.sortWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.sortIcon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+}
+
+.sortSelect {
+  appearance: none;
+  border: 1px solid transparent;
+  background: hsl(var(--card, 0 0% 100%) / 0.5);
+  border-radius: 999px;
+  padding: 0 12px 0 34px;
+  height: 34px;
+  font-size: 13px;
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.sortSelect:hover {
+  background: hsl(var(--card, 0 0% 100%) / 0.8);
+}
+
+.viewToggle {
+  display: flex;
+  background: hsl(var(--card, 0 0% 100%) / 0.5);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.viewBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.viewBtn svg {
+  width: 100%;
+  height: 100%;
+}
+
+.viewBtn:hover {
+  color: var(--text-main);
+  background: rgba(0,0,0,0.05);
+}
+
+.viewBtnActive {
+  background: var(--surface-bg) !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* === Help Strip === */
 
 .helpStrip {
   margin-top: 0;
@@ -211,6 +275,8 @@
   color: var(--text-main);
   font-weight: 650;
 }
+
+/* === Device Panels === */
 
 .devicePanels {
   display: flex;
@@ -299,6 +365,7 @@
   );
   overflow: hidden;
   min-width: 0;
+  flex-shrink: 0;
 }
 
 .deviceImage {
@@ -465,6 +532,42 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
+.ctaVideo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.2s ease;
+  min-width: 0;
+}
+
+.ctaVideo:hover {
+  background: var(--surface-bg-soft);
+  border-color: var(--text-muted);
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.deviceCardPopular {
+  background: hsl(var(--card, 0 0% 100%) / 0.92);
+}
+
+.deviceCardPopular::before,
+.deviceCardPopular::after {
+  content: none;
+}
+
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -585,72 +688,88 @@
   outline-offset: 2px;
 }
 
-.ctaVideo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid var(--divider);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
-  color: var(--text-muted);
-  background: transparent;
-  transition: all 0.2s ease;
-  min-width: 0;
+/* === LIST VIEW OVERRIDES === */
+
+.listView .deviceGrid {
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
 }
 
-.ctaVideo:hover {
-  background: var(--surface-bg-soft);
-  border-color: var(--text-muted);
-  color: var(--text-main);
-  text-decoration: none;
+.listView .deviceCard {
+  flex-direction: row;
+  height: auto;
+  min-height: 160px;
+  align-items: stretch;
 }
 
-.ctaVideo:active {
-  transform: translateY(0);
+.listView .deviceMedia {
+  width: 180px;
+  height: auto;
+  border-right: 1px solid var(--divider);
 }
 
-.deviceCardPopular {
-  background: hsl(var(--card, 0 0% 100%) / 0.92);
+.listView .popularPill {
+  top: 8px;
+  left: 8px;
+  font-size: 10px;
+  padding: 0 8px;
+  min-height: 24px;
 }
 
-.deviceCardPopular::before,
-.deviceCardPopular::after {
-  content: none;
+.listView .deviceContent {
+  grid-template-rows: auto 1fr auto;
+  padding: var(--space-2) var(--space-3);
+  width: 100%;
+}
+
+.listView .deviceDescMain {
+  -webkit-line-clamp: 2;
+  font-size: 14px;
+}
+
+.listView .deviceDescExtra {
+  display: none; /* Hide extra text in list view for cleanliness */
 }
 
 @media (max-width: 1280px) {
-  .filterGroups {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
+  .controlBar {
+    top: 60px;
   }
-
-  .filterGroup:first-child,
-  .filterGroup:last-child {
-    justify-self: start;
-  }
-
-  .filterGroup + .filterGroup {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid var(--divider);
-    padding-top: var(--space-2);
-  }
-
-  .filterGroup:last-child .filterButtons {
-    justify-content: flex-start;
-  }
-
-  /* Keep section rhythm consistent; rely on parent gaps instead of per-header top margins. */
 }
 
 @media (max-width: 860px) {
+  .controlBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filterGroups {
+    justify-content: space-between;
+  }
+  
+  .viewControls {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+  
+  /* Reset List View to Stack on Mobile */
+  .listView .deviceCard {
+    flex-direction: column;
+  }
+  
+  .listView .deviceMedia {
+    width: 100%;
+    height: 180px;
+    border-right: none;
+    border-bottom: 1px solid var(--divider);
+  }
+  
+  .listView .deviceDescExtra {
+    display: block; /* Show again on mobile stack */
+  }
+
   .catalog {
     --catalog-gutter: 12px;
     --card-media-height: 190px;
@@ -689,7 +808,7 @@
 }
 
 @media (max-width: 768px) {
-  .filterArea {
+  .controlBar {
     padding: 10px;
   }
 
@@ -703,12 +822,6 @@
 
   .filterButton {
     padding: 0 var(--control-pad-x-mobile);
-  }
-
-  .filterGroup + .filterGroup {
-    border-top: 0;
-    padding-top: 0;
-    padding-left: 0;
   }
 
   .deviceGrid {
