@@ -71,6 +71,8 @@ function renderDeviceCard(
   opts?: { featured?: boolean },
 ): ReactNode {
   const featured = Boolean(opts?.featured);
+  const ctaText = device.ctaLabel ?? 'Заказать на AliExpress';
+  const videoText = device.videoLabel ?? 'Смотреть видео';
   return (
     <article
       className={[
@@ -107,17 +109,17 @@ function renderDeviceCard(
           <div className={styles.price}>{device.price}</div>
           <div className={styles.deviceActions}>
             {device.purchaseConfirm ? (
-              <button className={styles.cta} type="button" onClick={() => onPurchaseClick(device)}>
-                {device.ctaLabel ?? 'Заказать на AliExpress'}
+              <button className={styles.cta} type="button" onClick={() => onPurchaseClick(device)} title={ctaText}>
+                {ctaText}
               </button>
             ) : (
-              <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer">
-                {device.ctaLabel ?? 'Заказать на AliExpress'}
+              <a className={styles.cta} href={device.href} target="_blank" rel="noopener noreferrer" title={ctaText}>
+                {ctaText}
               </a>
             )}
             {device.videoHref ? (
-              <a className={styles.ctaVideo} href={device.videoHref} target="_blank" rel="noopener noreferrer">
-                {device.videoLabel ?? 'Смотреть видео'}
+              <a className={styles.ctaVideo} href={device.videoHref} target="_blank" rel="noopener noreferrer" title={videoText}>
+                {videoText}
               </a>
             ) : null}
           </div>
