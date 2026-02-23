@@ -412,12 +412,13 @@
 }
 
 .deviceFooter {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: var(--space-2);
   margin-top: auto;
   min-width: 0;
+  padding-top: 4px;
 }
 
 .deviceActions {
@@ -425,7 +426,7 @@
   justify-content: flex-end;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-1);
+  gap: 8px;
   margin: 0;
   min-width: 0;
 }
@@ -434,33 +435,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--control-h);
-  padding: 6px 14px;
+  height: 32px;
+  padding: 0 16px;
   border-radius: 999px;
   border: 0;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: 0.01em;
-  line-height: 1.3;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
+  white-space: nowrap;
   color: hsl(var(--btn-primary-foreground, 0 0% 100%));
   background: hsl(var(--btn-primary, 99 100% 26%));
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .cta:hover {
   background: hsl(var(--btn-primary-hover, 99 100% 22%));
   text-decoration: none;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .cta:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .modalOverlay {
@@ -587,26 +589,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--control-h);
-  padding: 6px 14px;
+  height: 32px;
+  padding: 0 12px;
   border-radius: 999px;
   border: 1px solid var(--divider);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1;
   text-decoration: none;
   text-align: center;
-  color: var(--text-main);
-  background: var(--surface-bg);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.2s ease;
   min-width: 0;
 }
 
 .ctaVideo:hover {
   background: var(--surface-bg-soft);
-  border-color: color-mix(in srgb, var(--mesh-accent) 45%, var(--surface-border));
+  border-color: var(--text-muted);
+  color: var(--text-main);
   text-decoration: none;
-  transform: translateY(-1px);
 }
 
 .ctaVideo:active {

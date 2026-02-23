@@ -71,8 +71,8 @@ function renderDeviceCard(
   opts?: { featured?: boolean },
 ): ReactNode {
   const featured = Boolean(opts?.featured);
-  const ctaText = device.ctaLabel ?? 'Заказать на AliExpress';
-  const videoText = device.videoLabel ?? 'Смотреть видео';
+  const ctaText = device.ctaLabel ?? 'Купить';
+  const videoText = device.videoLabel ?? 'Видео';
   return (
     <article
       className={[
