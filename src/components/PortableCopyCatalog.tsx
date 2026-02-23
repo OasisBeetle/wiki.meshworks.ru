@@ -1,5 +1,5 @@
 import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpDown, Bluetooth, Cpu, LayoutGrid, List, MapPin, Wifi } from './icons/lucide';
+import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Puzzle, Sun, Wifi, Zap } from './icons/lucide';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
@@ -15,32 +15,42 @@ type FilterOption<T extends string> = {
   value: T;
   label: string;
   shortLabel?: string;
+  Icon?: React.ComponentType<React.SVGProps<SVGSVGElement> & { className?: string }>;
 };
 
 const CATEGORY_OPTIONS: Array<FilterOption<CategoryFilter>> = [
   { value: 'all', label: 'Все' },
-  { value: 'universal', label: '🧭 Универсальные' },
-  { value: 'solar', label: '☀️ Солнечные' },
-  { value: 'boards', label: '🧩 Платы', shortLabel: '🧩 Платы' },
+  { value: 'universal', label: 'Универсальные', Icon: Compass },
+  { value: 'solar', label: 'Солнечные', Icon: Sun },
+  { value: 'boards', label: 'Платы', shortLabel: 'Платы', Icon: Puzzle },
 ];
 
 const TECH_OPTIONS: Array<FilterOption<TechFilter>> = [
   { value: 'all', label: 'Все' },
-  { value: 'NRF', label: '🟢 NRF' },
-  { value: 'ESP', label: '⚡ ESP' },
+  { value: 'NRF', label: 'NRF', Icon: Battery },
+  { value: 'ESP', label: 'ESP', Icon: Zap },
 ];
 
 function renderOptionLabel<T extends string>(option: FilterOption<T>): ReactNode {
+  const Icon = option.Icon;
+
   if (!option.shortLabel) {
-    return option.label;
+    return (
+      <>
+        {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
+        {option.label}
+      </>
+    );
   }
 
   return (
     <>
       <span className={styles.filterLabelDesktop} aria-hidden="true">
+        {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
         {option.label}
       </span>
       <span className={styles.filterLabelMobile} aria-hidden="true">
+        {Icon ? <Icon className={styles.filterIcon} aria-hidden="true" focusable="false" /> : null}
         {option.shortLabel}
       </span>
     </>
@@ -120,7 +130,7 @@ function renderDeviceCard(
         <img className={styles.deviceImage} src={device.image} alt={device.alt} loading="lazy" />
         {device.popular ? <span className={styles.popularPill}>Выбор сообщества</span> : null}
         <div className={styles.techBadgeOverlay} title={`Чип: ${device.tech}`}>
-          <Cpu size={14} />
+          <Cpu width={14} height={14} />
           <span>{device.tech}</span>
         </div>
       </div>
@@ -305,7 +315,7 @@ export default function PortableCopyCatalog(): ReactNode {
                     aria-pressed={techFilter === option.value}
                     onClick={() => setTechFilter(option.value)}
                   >
-                    {option.label}
+                    {renderOptionLabel(option)}
                   </button>
                 ))}
               </div>

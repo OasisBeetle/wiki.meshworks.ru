@@ -359,4 +359,3 @@ export function Zap(props: IconProps): React.JSX.Element {
     </svg>
   );
 }
-

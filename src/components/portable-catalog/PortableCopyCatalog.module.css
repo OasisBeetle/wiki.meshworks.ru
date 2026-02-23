@@ -66,7 +66,7 @@
 
 .featuredGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
 }
 
@@ -124,6 +124,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.filterIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .filterLabelMobile {
@@ -346,7 +352,7 @@
 
 .deviceGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-2);
 }
 
@@ -426,9 +432,9 @@
   right: 10px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   height: 24px;
-  padding: 0 8px;
+  padding: 0 6px;
   border-radius: 6px;
   font-size: 11px;
   font-weight: 700;
@@ -449,7 +455,7 @@
   display: grid;
   align-content: start;
   gap: var(--space-2);
-  padding: var(--card-pad);
+  padding: calc(var(--card-pad) - 10px) var(--card-pad) var(--card-pad);
   min-width: 0;
   flex: 1 1 auto;
   grid-template-rows: auto 1fr auto;
@@ -762,13 +768,13 @@
 .listView .deviceCard {
   flex-direction: row;
   height: auto;
-  min-height: 160px;
+  min-height: 220px;
   align-items: stretch;
 }
 
 .listView .deviceMedia {
-  width: 180px;
-  height: auto;
+  width: 220px;
+  height: 220px;
   border-right: 1px solid var(--divider);
 }
 
@@ -782,7 +788,7 @@
 
 .listView .deviceContent {
   grid-template-rows: auto 1fr auto;
-  padding: var(--space-2) var(--space-3);
+  padding: 10px var(--space-3) var(--space-2);
   width: 100%;
 }
 
@@ -798,6 +804,12 @@
 @media (max-width: 1280px) {
   .controlBar {
     top: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .deviceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -840,7 +852,7 @@
   }
 
   .deviceContent {
-    padding: var(--card-pad-mobile);
+    padding: calc(var(--card-pad-mobile) - 6px) var(--card-pad-mobile) var(--card-pad-mobile);
   }
 
   .deviceTitle {
