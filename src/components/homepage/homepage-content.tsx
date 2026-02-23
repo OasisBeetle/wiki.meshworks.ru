@@ -32,7 +32,7 @@ export function HomePageContent() {
               </div>
 
               <div className={styles.ctaRow}>
-                <Link className={clsx("button button--primary button--lg", styles.ctaPrimary)} to="/start">
+                <Link className={clsx("button button--primary button--lg", styles.ctaPrimary)} to="/introduction">
                   База знаний
                 </Link>
                 <a

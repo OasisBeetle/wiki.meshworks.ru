@@ -301,7 +301,7 @@ const config: Config = {
           activeBaseRegex: '^/$',
         },
         {
-          to: '/start',
+          to: '/introduction',
           position: 'left',
           label: 'База знаний',
           activeBaseRegex: '^(?!/$)(?!/(?:about|wiki)(?:/|$)).*$',

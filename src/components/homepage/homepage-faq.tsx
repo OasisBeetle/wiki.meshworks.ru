@@ -55,7 +55,7 @@ const items: FaqItem[] = [
     answer: (
       <>
         Откройте{" "}
-        <Link to="/start" className={styles.inlineLink}>
+        <Link to="/introduction" className={styles.inlineLink}>
           «С чего начать»
         </Link>
         , затем пройдите{" "}

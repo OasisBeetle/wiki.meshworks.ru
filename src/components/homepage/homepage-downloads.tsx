@@ -84,7 +84,7 @@ export function HomepageDownloads() {
     {
       title: "Документация",
       description: "База знаний и инструкции: от старта до диагностики.",
-      href: "/start",
+      href: "/introduction",
       icon: "fileText",
     },
     {

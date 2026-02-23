@@ -292,8 +292,8 @@ html[data-theme='light'] .theme-doc-sidebar-menu .menu__link:hover {
 }
 
 /* Icon mapping by section route (level-1 only) */
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/start']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/start']::before {
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/introduction']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/introduction']::before {
   content: 'rocket_launch';
 }
 
