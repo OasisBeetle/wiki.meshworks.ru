@@ -173,10 +173,6 @@ export default function PortableCopyCatalog(): ReactNode {
       .filter((entry) => entry.devices.length > 0);
   }, [categoryFilter, techFilter, featuredKeys]);
 
-  const visibleCount = useMemo(() => {
-    return visibleCategories.reduce((acc, entry) => acc + entry.devices.length, 0);
-  }, [visibleCategories]);
-
   useEffect(() => {
     if (!purchaseConfirmState?.open) {
       return;
@@ -228,24 +224,6 @@ export default function PortableCopyCatalog(): ReactNode {
 
   return (
     <section className={`${styles.catalog} ${styles.vibe} meshtastic-home`} aria-label="Каталог устройств Meshtastic">
-      <div className={styles.heroBlock}>
-        <div className={styles.heroIntro}>
-          <p className={styles.heroText}>
-            Подберите ноду под свои задачи: от бюджетных плат без корпуса до полноразмерных устройств с клавиатурой и цветным дисплеем.
-          </p>
-          <p className={styles.heroText}>
-            Используйте фильтры по типу и чипу, чтобы быстро сузить выбор. Сейчас отображается: <strong>{visibleCount}</strong>.
-          </p>
-          <p className={`${styles.heroText} ${styles.heroMeta}`}>
-            Вопросы можно уточнить в нашем{' '}
-            <a href="https://t.me/meshwrks/2751" target="_blank" rel="noopener noreferrer">
-              Telegram-чате
-            </a>
-            .
-          </p>
-        </div>
-      </div>
-
       <div className={styles.layoutGrid}>
         <div className={styles.mainColumn}>
           {featuredDevices.length > 0 ? (

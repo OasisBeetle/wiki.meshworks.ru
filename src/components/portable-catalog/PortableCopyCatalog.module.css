@@ -47,32 +47,6 @@
   background-attachment: initial !important;
 }
 
-.heroBlock {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-
-.heroBlock::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--ifm-font-color-base) 10%, transparent) 22%,
-    color-mix(in srgb, var(--mesh-accent) 18%, transparent) 50%,
-    color-mix(in srgb, var(--ifm-font-color-base) 10%, transparent) 78%,
-    transparent 100%
-  );
-  opacity: 0.9;
-}
-
 .layoutGrid {
   display: block;
   min-width: 0;
@@ -94,39 +68,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-2);
-}
-
-.heroIntro {
-  border-radius: calc(var(--surface-radius) + 2px);
-  padding: var(--surface-pad);
-  background: var(--surface-bg);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
-}
-
-.heroText {
-  margin: 0;
-  font-size: var(--ifm-font-size-base);
-  line-height: var(--ifm-line-height-base);
-  font-weight: 400;
-  color: var(--text-muted);
-}
-
-.heroText + .heroText {
-  margin-top: var(--space-1);
-}
-
-.heroIntro a {
-  color: var(--ifm-link-color);
-}
-
-.heroIntro a:hover {
-  color: var(--ifm-link-hover-color);
-}
-
-.heroMeta {
-  color: var(--text-muted);
 }
 
 .filterArea {
