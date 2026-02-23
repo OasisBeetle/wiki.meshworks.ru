@@ -119,6 +119,10 @@ function renderDeviceCard(
       <div className={styles.deviceMedia}>
         <img className={styles.deviceImage} src={device.image} alt={device.alt} loading="lazy" />
         {device.popular ? <span className={styles.popularPill}>Выбор сообщества</span> : null}
+        <div className={styles.techBadgeOverlay} title={`Чип: ${device.tech}`}>
+          <Cpu size={14} />
+          <span>{device.tech}</span>
+        </div>
       </div>
 
       <div className={styles.deviceContent}>
@@ -126,13 +130,6 @@ function renderDeviceCard(
           <h3 className={styles.deviceTitle}>{device.title}</h3>
           
           <div className={styles.deviceFeatures}>
-            <div className={`${styles.featureItem} ${styles.featureTech}`} title={`Чип: ${device.tech}`}>
-              <Cpu className={styles.featureIcon} />
-              <span className={styles.featureLabel}>{device.tech}</span>
-            </div>
-            
-            <div className={styles.featureDivider} />
-
             <div className={`${styles.featureItem} ${hasBluetooth ? styles.featureActive : styles.featureInactive}`} title={hasBluetooth ? "Bluetooth есть" : "Bluetooth нет"}>
               <Bluetooth className={styles.featureIcon} />
             </div>
