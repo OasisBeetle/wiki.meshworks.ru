@@ -417,30 +417,54 @@
   overflow-wrap: anywhere;
 }
 
-.deviceSpecs {
+.deviceFeatures {
   display: flex;
-  gap: var(--space-1);
-  flex-wrap: wrap;
-  margin: 0;
-}
-
-.badge {
-  display: inline-flex;
   align-items: center;
-  min-height: var(--control-h);
-  padding: 0 var(--control-pad-x);
-  font-size: 12px;
-  border-radius: 999px;
-  background: hsl(var(--card, 0 0% 100%) / 0.55);
-  border: 0;
-  color: var(--text-main);
-  line-height: 1;
-  max-width: 100%;
-  overflow-wrap: anywhere;
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.badgeOff {
-  opacity: 0.62;
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.featureIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.featureLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.featureTech {
+  color: var(--text-main);
+  background: var(--surface-bg-soft);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.featureDivider {
+  width: 1px;
+  height: 14px;
+  background: var(--divider);
+  margin: 0 2px;
+}
+
+.featureActive {
+  color: var(--mesh-accent); /* Active features pop with accent color */
+}
+
+.featureInactive {
+  opacity: 0.25; /* Inactive features are barely visible */
 }
 
 .deviceDesc {

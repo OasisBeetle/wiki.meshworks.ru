@@ -1,5 +1,5 @@
 import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpDown, LayoutGrid, List } from './icons/lucide';
+import { ArrowUpDown, Bluetooth, Cpu, LayoutGrid, List, MapPin, Wifi } from './icons/lucide';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
@@ -85,6 +85,15 @@ function openHrefInNewTab(href: string): void {
   window.open(href, '_blank', 'noopener,noreferrer');
 }
 
+function renderFeatureIcon(Icon: React.ElementType, active: boolean, label: string) {
+  return (
+    <div className={`${styles.featureItem} ${active ? styles.featureActive : styles.featureInactive}`} title={label}>
+      <Icon className={styles.featureIcon} />
+      {active && <span className={styles.featureLabel}>{label}</span>}
+    </div>
+  );
+}
+
 function renderDeviceCard(
   device: DeviceItem,
   onPurchaseClick: (device: DeviceItem) => void,
@@ -93,6 +102,11 @@ function renderDeviceCard(
   const featured = Boolean(opts?.featured);
   const ctaText = device.ctaLabel ?? 'Купить';
   const videoText = device.videoLabel ?? 'Видео';
+
+  const hasBluetooth = device.badges.some((b) => b.label.toLowerCase().includes('bluetooth') && !b.off);
+  const hasWifi = device.badges.some((b) => b.label.toLowerCase().includes('wi-fi') && !b.off);
+  const hasGps = device.badges.some((b) => b.label.toLowerCase().includes('gps') && !b.off);
+
   return (
     <article
       className={[
@@ -110,13 +124,26 @@ function renderDeviceCard(
       <div className={styles.deviceContent}>
         <div className={styles.deviceHeader}>
           <h3 className={styles.deviceTitle}>{device.title}</h3>
-          <div className={styles.deviceSpecs}>
-            <span className={styles.badge}>{`Чип: ${device.tech}`}</span>
-            {device.badges.map((badge) => (
-              <span className={`${styles.badge} ${badge.off ? styles.badgeOff : ''}`} key={`${device.title}-${badge.label}`}>
-                {badge.label}
-              </span>
-            ))}
+          
+          <div className={styles.deviceFeatures}>
+            <div className={`${styles.featureItem} ${styles.featureTech}`} title={`Чип: ${device.tech}`}>
+              <Cpu className={styles.featureIcon} />
+              <span className={styles.featureLabel}>{device.tech}</span>
+            </div>
+            
+            <div className={styles.featureDivider} />
+
+            <div className={`${styles.featureItem} ${hasBluetooth ? styles.featureActive : styles.featureInactive}`} title={hasBluetooth ? "Bluetooth есть" : "Bluetooth нет"}>
+              <Bluetooth className={styles.featureIcon} />
+            </div>
+
+            <div className={`${styles.featureItem} ${hasWifi ? styles.featureActive : styles.featureInactive}`} title={hasWifi ? "Wi-Fi есть" : "Wi-Fi нет"}>
+              <Wifi className={styles.featureIcon} />
+            </div>
+
+            <div className={`${styles.featureItem} ${hasGps ? styles.featureActive : styles.featureInactive}`} title={hasGps ? "GPS есть" : "GPS нет"}>
+              <MapPin className={styles.featureIcon} />
+            </div>
           </div>
         </div>
 

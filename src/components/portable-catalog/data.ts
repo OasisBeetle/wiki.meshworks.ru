@@ -255,7 +255,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
       ],
       price: '≈ 2 000 ₽',
       href: 'https://www.avito.ru/domodedovo/telefony/faketec_v5_rev_b_meshtasticmeshcore_7914693905',
-      ctaLabel: 'Заказать на Avito',
+      ctaLabel: 'Avito',
       tech: 'NRF',
     },
     {
