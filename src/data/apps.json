@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "title": "Apple (iOS/iPadOS/macOS)",
+      "description": "Официальный клиент для устройств Apple.",
+      "linkKey": "ios",
+      "icon": "smartphone"
+    },
+    {
+      "title": "Android",
+      "description": "Официальный клиент для Android.",
+      "linkKey": "android",
+      "icon": "smartphone"
+    },
+    {
+      "title": "Web Client",
+      "description": "Карта/чат/устройства в браузере.",
+      "linkKey": "webClient",
+      "icon": "globe"
+    },
+    {
+      "title": "Загрузки",
+      "description": "Страница загрузок клиентов и релизов.",
+      "linkKey": "downloads",
+      "icon": "globe"
+    },
+    {
+      "title": "Python CLI/SDK",
+      "description": "CLI и SDK для автоматизации и интеграций.",
+      "linkKey": "python",
+      "icon": "terminal"
+    }
+  ]
+}

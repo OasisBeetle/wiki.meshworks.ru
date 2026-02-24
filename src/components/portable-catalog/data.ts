@@ -10,7 +10,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
   universal: [
     {
       title: 'ThinkNode M1',
-      image: '/img/wiki/thinknode-m1.png',
+      image: '/img/wiki/thinknode-m1.webp',
       alt: 'ThinkNode M1',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -23,7 +23,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'SenseCAP T1000-E',
-      image: '/img/wiki/sensecap-t1000e.png',
+      image: '/img/wiki/sensecap-t1000e.webp',
       alt: 'SenseCAP T1000-E',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -36,7 +36,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec MeshPocket',
-      image: '/img/wiki/heltec-meshpocket.png',
+      image: '/img/wiki/heltec-meshpocket.webp',
       alt: 'Heltec MeshPocket',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -49,7 +49,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'LILYGO TTGO T-Echo',
-      image: '/img/wiki/lilygo-ttgo-t-echo.png',
+      image: '/img/wiki/lilygo-ttgo-t-echo.webp',
       alt: 'LILYGO TTGO T-Echo',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -62,7 +62,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Wio Tracker L1 Pro',
-      image: '/img/wiki/wio-tracker-l1-pro.png',
+      image: '/img/wiki/wio-tracker-l1-pro.webp',
       alt: 'Wio Tracker L1 Pro',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -75,7 +75,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'LILYGO T-Deck Plus',
-      image: '/img/wiki/lilygo-t-deck-plus.png',
+      image: '/img/wiki/lilygo-t-deck-plus.webp',
       alt: 'LILYGO T-Deck Plus',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -88,7 +88,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'T-LoRa Pager',
-      image: '/img/wiki/t-lora-pager.png',
+      image: '/img/wiki/t-lora-pager.webp',
       alt: 'T-LoRa Pager',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -101,7 +101,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Meshtiny Mini Pocket',
-      image: '/img/wiki/meshtiny-mini-pocket.png',
+      image: '/img/wiki/meshtiny-mini-pocket.webp',
       alt: 'Meshtiny Meshtastic Mini Pocket',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -114,7 +114,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec V4 18650 Touchscreen',
-      image: '/img/wiki/heltecv4-touchscreen.png',
+      image: '/img/wiki/heltecv4-touchscreen.webp',
       alt: 'Heltec V4 18650 Touchscreen',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -127,7 +127,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec V4 Case Ready',
-      image: '/img/wiki/v4-case-ready.png',
+      image: '/img/wiki/v4-case-ready.webp',
       alt: 'Heltec V4 Case Ready',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -140,7 +140,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'T-Beam 1W',
-      image: '/img/wiki/1w-node.png',
+      image: '/img/wiki/1w-node.webp',
       alt: 'T-Beam 1W',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -160,7 +160,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'T-Echo Plus',
-      image: '/img/wiki/techoplus.png',
+      image: '/img/wiki/techoplus.webp',
       alt: 'T-Echo Plus',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -175,7 +175,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
   solar: [
     {
       title: 'D5 Mini Solar Kit (Heltec V3)',
-      image: '/img/wiki/d5-mini-solar-kit.png',
+      image: '/img/wiki/d5-mini-solar-kit.webp',
       alt: 'D5 Mini Solar Kit',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -188,7 +188,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Gitfus Solar Node',
-      image: '/img/wiki/gitfus-solar-node.png',
+      image: '/img/wiki/gitfus-solar-node.webp',
       alt: 'Gitfus Solar Node',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -201,7 +201,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'SenseCAP Solar Node',
-      image: '/img/wiki/sensecap-solar-node.png',
+      image: '/img/wiki/sensecap-solar-node.webp',
       alt: 'SenseCAP Solar Node',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -216,7 +216,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
   boards: [
     {
       title: 'Heltec WiFi LoRa 32 (V3)',
-      image: '/img/wiki/heltec-wifi-lora32-v3.png',
+      image: '/img/wiki/heltec-wifi-lora32-v3.webp',
       alt: 'Heltec WiFi LoRa 32 V3',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -232,7 +232,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec V4 / Heltec Wireless Stick Lite V4',
-      image: '/img/wiki/heltec-wireless-stick-lite-v4.png',
+      image: '/img/wiki/heltec-wireless-stick-lite-v4.webp',
       alt: 'Heltec Wireless Stick Lite V4',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -246,7 +246,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'FakeTec V5.5',
-      image: '/img/wiki/faketec.png',
+      image: '/img/wiki/faketec.webp',
       alt: 'FakeTec V5.5',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -255,12 +255,12 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
       ],
       price: '≈ 2 000 ₽',
       href: 'https://www.avito.ru/domodedovo/telefony/faketec_v5_rev_b_meshtasticmeshcore_7914693905',
-      ctaLabel: 'Заказать на Avito',
+      ctaLabel: 'Avito',
       tech: 'NRF',
     },
     {
       title: 'Heltec V4 + Case',
-      image: '/img/wiki/heltec-v4-case.png',
+      image: '/img/wiki/heltec-v4-case.webp',
       alt: 'Heltec V4 with Case',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -273,7 +273,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec T114',
-      image: '/img/wiki/heltec-t114.png',
+      image: '/img/wiki/heltec-t114.webp',
       alt: 'Heltec T114',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -286,7 +286,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec T114 Naked',
-      image: '/img/wiki/heltec-t114-naked.png',
+      image: '/img/wiki/heltec-t114-naked.webp',
       alt: 'Heltec T114 Naked',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -299,7 +299,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Wio Tracker L1 E-ink',
-      image: '/img/wiki/wio-tracker-l1-eink.png',
+      image: '/img/wiki/wio-tracker-l1-eink.webp',
       alt: 'Wio Tracker L1 E-ink',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -312,7 +312,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'LILYGO TTGO T-Beam',
-      image: '/img/wiki/lilygo-ttgo-t-beam.png',
+      image: '/img/wiki/lilygo-ttgo-t-beam.webp',
       alt: 'LILYGO TTGO T-Beam',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -325,7 +325,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec Wireless Stick Lite / Mesh Nod',
-      image: '/img/wiki/heltec-wireless-stick-lite.png',
+      image: '/img/wiki/heltec-wireless-stick-lite.webp',
       alt: 'Heltec Wireless Stick Lite',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -338,7 +338,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec LoRa Wireless Paper',
-      image: '/img/wiki/heltec-wireless-paper.png',
+      image: '/img/wiki/heltec-wireless-paper.webp',
       alt: 'Heltec LoRa Wireless Paper',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [
@@ -351,7 +351,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'Heltec Stick /GPS',
-      image: '/img/wiki/heltec-stick-gps.png',
+      image: '/img/wiki/heltec-stick-gps.webp',
       alt: 'Heltec Stick GPS',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
@@ -364,7 +364,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
     },
     {
       title: 'LoRa 32 LILYGO / LILYGO T3 S3',
-      image: '/img/wiki/lilygo-lora32-t3.png',
+      image: '/img/wiki/lilygo-lora32-t3.webp',
       alt: 'LoRa 32 LILYGO T3 S3',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
       descriptionLines: [

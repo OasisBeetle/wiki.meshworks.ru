@@ -4,17 +4,12 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#121212",
-  "theme_color": "#7eb81b",
+  "theme_color": "#c6fd50",
   "icons": [
     {
-      "src": "/img/logo-light.png",
+      "src": "/img/favicon-light.png",
       "type": "image/png",
-      "sizes": "512x512"
-    },
-    {
-      "src": "/img/logo-dark.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "128x128"
     }
   ]
 }

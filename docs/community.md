@@ -7,8 +7,6 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 ---
 Экосистема Meshtastic активно развивается — появляются региональные сети, локальные ретрансляторы, DIY-проекты и тестовые зоны покрытия. Вокруг технологии сформировалось несколько крупных сообществ, где участники **обмениваются опытом**, **делятся настройками**, обсуждают оборудование и совместно развивают сеть.
 
-
-
 :::tip
 **Канал нашего сообщества MeshWorks:** [t.me/meshwrks](https://t.me/meshwrks)
 
@@ -18,10 +16,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 
 :::
 
-
 Ниже представлен **список региональных сообществ**, в которых вы можете найти единомышленников поблизости, обсудить установку оборудования, подключиться к локальной сети и внести вклад в развитие покрытия.
-
-
 
 | 🏙️ Город / Регион | 🔗 Ссылка |
 |----|----|
@@ -44,7 +39,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Йошкар-Ола | [@meshtastic_yoshka](https://t.me/meshtastic_yoshka) |
 | Ижевск | [@meshtastic_izh18](https://t.me/meshtastic_izh18) |
 | Иркутск | [@meshtastic_irk](https://t.me/meshtastic_irk) |
-| Казань | [@meshtastic_kzn](https://t.me/meshtastic_kzn) / [@ham_radio_kazan](https://t.me/ham_radio_kazan) |
+| Казань | [@meshtastic_kzn](https://t.me/meshtastic_kzn) |
 | Казахстан / Астана / Алматы | [meshtastic.kz](https://meshtastic.kz/) - [@meshtkz](https://t.me/meshtkz) / [@meshtastic_kz](https://t.me/meshtastic_kz) |
 | Калининград | [@meshtastic_39](https://t.me/meshtastic_39) |
 | Калуга | [@meshtastic_kaluga](https://t.me/meshtastic_kaluga) |

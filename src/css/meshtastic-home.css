@@ -1,0 +1,102 @@
+/* Homepage-scoped tokens and helpers for Meshtastic-styled landing. */
+.meshtastic-home {
+  /* Minimal Tech backdrop (scoped to homepage) */
+  background:
+    radial-gradient(900px 400px at 65% 32%, rgba(198, 253, 80, 0.1), transparent 60%),
+    radial-gradient(700px 420px at 20% 70%, rgba(0, 180, 255, 0.08), transparent 60%),
+    linear-gradient(180deg, #070a0f 0%, #0b0f14 40%, #070a0f 100%);
+  background-attachment: fixed;
+
+  /* MeshWorks brand palette (light) */
+  --background: 216 33% 97%;
+  --foreground: 222 22% 12%;
+  --radius: 0.625rem;
+
+  --surface: 216 33% 99%;
+  --surface-foreground: 222 22% 12%;
+  --surface-alt: 216 25% 96%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 22% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 22% 12%;
+
+  /* Light theme: cleaner lime-green (avoid "swampy" olive) */
+  --btn-primary: 79 98% 65%;
+  --btn-primary-hover: 79 98% 58%;
+  --btn-primary-foreground: 222 22% 12%;
+
+  --accent-primary: 79 98% 65%;
+  --accent-foreground: 222 22% 12%;
+  --primary-foreground: 222 22% 12%;
+  --secondary-foreground: 222 22% 12%;
+
+  --muted: 221 36% 92%;
+  --muted-foreground: 220 12% 30%;
+  --subtle: 220 12% 30%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 221 54% 90%;
+  --input: 214 47% 97%;
+  --ring: 79 98% 65%;
+
+  --overlay: 217 50% 97% / 0.92;
+}
+
+[data-theme="dark"] .meshtastic-home {
+  /* MeshWorks brand palette (dark) */
+  background:
+    radial-gradient(900px 400px at 65% 32%, rgba(198, 253, 80, 0.1), transparent 60%),
+    radial-gradient(700px 420px at 20% 70%, rgba(0, 180, 255, 0.08), transparent 60%),
+    linear-gradient(180deg, #070a0f 0%, #0b0f14 40%, #070a0f 100%);
+  background-attachment: fixed;
+
+  --background: 214 19% 7%;
+  --foreground: 218 100% 98%;
+
+  --surface: 223 17% 8%;
+  --surface-foreground: 0 0% 85%;
+  --surface-alt: 215 22% 11%;
+
+  --card: 215 22% 11%;
+  --card-foreground: 0 0% 98%;
+  --popover: 215 22% 11%;
+  --popover-foreground: 0 0% 98%;
+
+  --btn-primary: 79 98% 65%;
+  --btn-primary-hover: 79 98% 58%;
+  --btn-primary-foreground: 214 19% 7%;
+
+  --accent-primary: 79 98% 65%;
+  --accent-foreground: 222 20% 10%;
+  --primary-foreground: 223 17% 8%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 213 15% 14%;
+  --muted-foreground: 220 10% 65%;
+  --subtle: 0 0% 75%;
+
+  --border: 214 18% 20%;
+  --input: 215 22% 11%;
+  --ring: 79 98% 65%;
+
+  --overlay: 223 17% 8% / 0.82;
+}
+
+[data-theme="light"] .meshtastic-home {
+  background:
+    radial-gradient(900px 420px at 72% 28%, rgba(198, 253, 80, 0.1), transparent 62%),
+    radial-gradient(720px 440px at 18% 76%, rgba(0, 180, 255, 0.06), transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f5f7fb 55%, #ffffff 100%);
+  background-attachment: fixed;
+}
+
+@media (max-width: 996px) {
+  .meshtastic-home,
+  [data-theme="dark"] .meshtastic-home,
+  [data-theme="light"] .meshtastic-home {
+    background-attachment: scroll;
+  }
+}

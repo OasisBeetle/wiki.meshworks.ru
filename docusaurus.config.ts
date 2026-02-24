@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import path from 'node:path';
 
 // Node.js ≥20 exposes `globalThis.localStorage` as an experimental getter that
 // throws unless the `--localstorage-file` flag is provided. During the static
@@ -23,27 +24,19 @@ if (typeof globalThis !== 'undefined' && 'localStorage' in globalThis) {
   }
 }
 
+const enablePwa = process.env.NODE_ENV === 'production';
+
 const config: Config = {
-  title: 'MeshWorks Wiki',
+  title: 'MeshWorks',
   tagline: 'База знаний MeshWorks',
-  favicon: 'img/favicon-light.png',
+  favicon: 'img/favicon-dark.png',
   headTags: [
     {
       tagName: 'link',
       attributes: {
         rel: 'icon',
         type: 'image/png',
-        href: '/img/favicon-light.png',
-        media: '(prefers-color-scheme: light)',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'icon',
-        type: 'image/png',
         href: '/img/favicon-dark.png',
-        media: '(prefers-color-scheme: dark)',
       },
     },
     {
@@ -73,6 +66,11 @@ const config: Config = {
         name: 'MeshWorks Wiki',
         url: 'https://wiki.meshworks.ru',
         inLanguage: 'ru',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://wiki.meshworks.ru/search?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
       }),
     },
     {
@@ -161,6 +159,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
+          breadcrumbs: true,
           editUrl: 'https://github.com/MeshWorksRussia/wiki.meshworks.ru/edit/main/',
           admonitions: {
             keywords: ['favorite'],
@@ -188,6 +187,18 @@ const config: Config = {
     ],
   ],
   plugins: [
+    () => ({
+      name: 'webpack-alias-at-src',
+      configureWebpack() {
+        return {
+          resolve: {
+            alias: {
+              '@': path.resolve(__dirname, 'src'),
+            },
+          },
+        };
+      },
+    }),
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
@@ -225,25 +236,29 @@ const config: Config = {
         editUrl: 'https://github.com/MeshWorksRussia/wiki.meshworks.ru/edit/main/',
       },
     ],
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: process.env.NODE_ENV === 'development',
-        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
-        pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json',
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: '#7eb81b',
-          },
-        ],
-      },
-    ],
+    ...(enablePwa
+      ? ([
+          [
+            '@docusaurus/plugin-pwa',
+            {
+              debug: false,
+              offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
+              pwaHead: [
+                {
+                  tagName: 'link',
+                  rel: 'manifest',
+                  href: '/manifest.json',
+                },
+                {
+                  tagName: 'meta',
+                  name: 'theme-color',
+                  content: '#c6fd50',
+                },
+              ],
+            },
+          ],
+        ] satisfies Config['plugins'])
+      : []),
   ],
   themeConfig: {
     // Cache-bust social previews (Telegram/FB/VK cache OG images by URL).
@@ -259,6 +274,14 @@ const config: Config = {
         content:
           'meshtastic, meshworks, lora mesh, loRa сеть, автономная связь, wiki meshtastic, инструкции lora',
       },
+      {
+        property: 'og:site_name',
+        content: 'MeshWorks Wiki',
+      },
+      {
+        property: 'og:locale',
+        content: 'ru_RU',
+      },
     ],
     colorMode: {
       respectPrefersColorScheme: true,
@@ -268,7 +291,7 @@ const config: Config = {
     },
     // Algolia is disabled; using local search plugin
     navbar: {
-      title: 'MeshWorks Wiki',
+      title: 'MeshWorks',
       logo: {
         alt: 'MeshWorks',
         src: 'img/logo-light.png',
@@ -278,8 +301,14 @@ const config: Config = {
         {
           to: '/',
           position: 'left',
+          label: 'Главная',
+          activeBaseRegex: '^/$',
+        },
+        {
+          to: '/introduction',
+          position: 'left',
           label: 'База знаний',
-          activeBaseRegex: '^(?!/(?:about|wiki)).*$',
+          activeBaseRegex: '^(?!/$)(?!/(?:about|wiki)(?:/|$)).*$',
         },
         {
           to: '/wiki/how-to-edit',
@@ -289,9 +318,13 @@ const config: Config = {
         },
         {
           to: '/about',
-          position: 'left',
           label: 'О нас',
+          position: 'left',
           activeBaseRegex: '^/about/?$',
+        },
+        {
+          type: 'search',
+          position: 'right',
         },
       ],
     },
@@ -322,4 +355,3 @@ const config: Config = {
 };
 
 export default config;
-

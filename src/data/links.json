@@ -1,0 +1,11 @@
+{
+  "getStarted": "/introduction",
+  "docs": "/introduction",
+  "ios": "https://msh.to/ios",
+  "android": "https://msh.to/android",
+  "webClient": "https://client.meshtastic.org/",
+  "downloads": "https://meshtastic.org/downloads/",
+  "python": "https://meshtastic.org/docs/software/python/cli/",
+  "vercel": "https://vercel.com/?utm_source=meshtastic&utm_campaign=oss",
+  "legal": "https://meshtastic.org/docs/legal/"
+}

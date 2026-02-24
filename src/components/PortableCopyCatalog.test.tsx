@@ -10,11 +10,13 @@ describe('PortableCopyCatalog', () => {
     expect(screen.getByRole('region', { name: 'Универсальные' })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Отдельные платы' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Универсальные' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Солнечные' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Отдельные платы' })).toBeInTheDocument();
 
     expect(screen.getByRole('heading', { name: 'ThinkNode M1' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: 'Универсальные' })).not.toBeInTheDocument();
   });
 
   it('filters by category', () => {

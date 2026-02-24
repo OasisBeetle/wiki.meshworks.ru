@@ -1,0 +1,165 @@
+/**
+ * MeshWorks theme tokens (Hasura-like "docs premium" feel).
+ * Keep structure/behavior Docusaurus-native; adjust only via CSS variables + light overrides.
+ */
+
+:root {
+  /* Brand */
+  --mesh-accent: #c6fd50;
+  --mesh-accent-strong: color-mix(in srgb, var(--mesh-accent) 88%, #000 12%);
+  --mesh-accent-soft: color-mix(in srgb, var(--mesh-accent) 22%, transparent);
+
+  /* Typography */
+  --ifm-font-family-base: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans',
+    sans-serif;
+  --ifm-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.65;
+  --ifm-heading-line-height: 1.18;
+  --ifm-code-font-size: 95%;
+
+  /* Layout */
+  --mesh-navbar-height: 4.25rem;
+  --ifm-navbar-height: var(--mesh-navbar-height);
+
+  /* Docusaurus core palette (light defaults; overridden below per theme) */
+  --ifm-color-primary: var(--mesh-accent);
+  --ifm-color-primary-dark: color-mix(in srgb, var(--mesh-accent) 78%, #000 22%);
+  --ifm-color-primary-darker: color-mix(in srgb, var(--mesh-accent) 68%, #000 32%);
+  --ifm-color-primary-darkest: color-mix(in srgb, var(--mesh-accent) 52%, #000 48%);
+  --ifm-color-primary-light: color-mix(in srgb, var(--mesh-accent) 86%, #fff 14%);
+  --ifm-color-primary-lighter: color-mix(in srgb, var(--mesh-accent) 74%, #fff 26%);
+  --ifm-color-primary-lightest: color-mix(in srgb, var(--mesh-accent) 58%, #fff 42%);
+
+  --ifm-color-emphasis-0: #ffffff;
+  --ifm-color-emphasis-100: #f6f8fb;
+  --ifm-color-emphasis-200: #edf1f6;
+  --ifm-color-emphasis-300: #dde5ef;
+  --ifm-color-emphasis-400: #c1cbd8;
+  --ifm-color-emphasis-500: #7f8da1;
+  --ifm-color-emphasis-600: #516072;
+  --ifm-color-emphasis-700: #2a3442;
+  --ifm-color-emphasis-800: #1a222d;
+  --ifm-color-emphasis-900: #121823;
+
+  --ifm-background-color: #f5f7fb;
+  --ifm-background-surface-color: #ffffff;
+  --ifm-navbar-background-color: rgba(245, 247, 251, 0.8);
+  --ifm-footer-background-color: var(--ifm-background-surface-color);
+
+  --ifm-font-color-base: #121823;
+  --ifm-font-color-secondary: color-mix(in srgb, var(--ifm-font-color-base) 74%, #fff 26%);
+  --ifm-heading-color: var(--ifm-font-color-base);
+
+  --ifm-link-color: color-mix(in srgb, var(--mesh-accent) 58%, #0b121a 42%);
+  --ifm-link-hover-color: var(--ifm-link-color);
+  --ifm-menu-color-active: var(--mesh-accent);
+  --ifm-navbar-link-hover-color: var(--ifm-font-color-base);
+
+  --ifm-card-background-color: var(--ifm-background-surface-color);
+  --ifm-card-border-radius: 18px;
+  --ifm-global-radius: 10px;
+
+  --ifm-navbar-search-input-background-color: rgba(18, 24, 35, 0.06);
+  --ifm-navbar-search-input-color: var(--ifm-font-color-base);
+  --ifm-navbar-search-input-placeholder-color: color-mix(in srgb, var(--ifm-font-color-base) 52%, transparent);
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+
+  /* Alerts */
+  --mesh-alert-radius: 8px;
+  --mesh-alert-text-color: #1a1c1f;
+  --mesh-alert-neutral-bg: #ffffff;
+  --mesh-alert-neutral-border: rgba(19, 23, 32, 0.12);
+  --mesh-alert-neutral-icon: rgba(18, 24, 35, 0.25);
+  --mesh-alert-tip-bg: #fffef9;
+  --mesh-alert-tip-border: #f0d976;
+  --mesh-alert-tip-icon: #c59a1a;
+  --mesh-alert-info-bg: #f5f7ff;
+  --mesh-alert-info-border: #c5d1ff;
+  --mesh-alert-info-icon: #5d7bff;
+  --mesh-alert-success-bg: #f4fbf5;
+  --mesh-alert-success-border: #cdeed5;
+  --mesh-alert-success-icon: #43b169;
+  --mesh-alert-warning-bg: #fff7f6;
+  --mesh-alert-warning-border: #ffd0c8;
+  --mesh-alert-warning-icon: #de5b48;
+  --mesh-alert-note-bg: #f7f9fd;
+  --mesh-alert-note-border: #d7e0f3;
+  --mesh-alert-note-icon: #7a8acd;
+  --mesh-alert-favorite-bg: rgba(255, 247, 227, 0.5);
+  --mesh-alert-favorite-border: rgba(246, 213, 150, 0.35);
+  --mesh-alert-favorite-icon: #d08e1f;
+
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-text-color: var(--ifm-font-color-base);
+  --docsearch-hit-color: var(--ifm-font-color-base);
+}
+
+[data-theme='light'] {
+  --mesh-accent: #c6fd50;
+  --ifm-background-color: #f5f7fb;
+  --ifm-background-surface-color: #ffffff;
+  --ifm-navbar-background-color: rgba(245, 247, 251, 0.84);
+  --ifm-footer-background-color: var(--ifm-background-surface-color);
+  --ifm-font-color-base: #121823;
+  --ifm-font-color-secondary: rgba(18, 24, 35, 0.78);
+  --ifm-link-color: color-mix(in srgb, var(--mesh-accent) 54%, #0b121a 46%);
+  --ifm-link-hover-color: color-mix(in srgb, var(--mesh-accent) 62%, #0b121a 38%);
+}
+
+[data-theme='dark'] {
+  --ifm-background-color: #0f1216;
+  --ifm-background-surface-color: #111318;
+  --ifm-navbar-background-color: rgba(17, 19, 24, 0.72);
+  --ifm-footer-background-color: #0f1216;
+  --ifm-card-background-color: #151a21;
+
+  --ifm-color-emphasis-0: #0f1216;
+  --ifm-color-emphasis-100: #111318;
+  --ifm-color-emphasis-200: #151a21;
+  --ifm-color-emphasis-300: #1b222c;
+  --ifm-color-emphasis-400: #2a3442;
+  --ifm-color-emphasis-500: #475466;
+  --ifm-color-emphasis-600: #66758a;
+  --ifm-color-emphasis-700: #9aa6b2;
+  --ifm-color-emphasis-800: #c9d1d9;
+  --ifm-color-emphasis-900: #eef2f7;
+
+  --ifm-font-color-base: rgba(255, 255, 255, 0.92);
+  --ifm-font-color-secondary: rgba(255, 255, 255, 0.72);
+  --ifm-heading-color: rgba(255, 255, 255, 0.96);
+
+  --ifm-link-color: color-mix(in srgb, var(--mesh-accent) 72%, #ffffff 28%);
+  --ifm-link-hover-color: var(--mesh-accent);
+
+  --ifm-navbar-search-input-background-color: rgba(255, 255, 255, 0.06);
+  --ifm-navbar-search-input-color: rgba(255, 255, 255, 0.9);
+  --ifm-navbar-search-input-placeholder-color: rgba(255, 255, 255, 0.52);
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+
+  --mesh-alert-text-color: #f7faff;
+  --mesh-alert-neutral-bg: #12161d;
+  --mesh-alert-neutral-border: rgba(255, 255, 255, 0.08);
+  --mesh-alert-neutral-icon: rgba(255, 255, 255, 0.22);
+  --mesh-alert-tip-bg: #242012;
+  --mesh-alert-tip-border: #5a4c1f;
+  --mesh-alert-tip-icon: #f4d360;
+  --mesh-alert-info-bg: #1a2536;
+  --mesh-alert-info-border: #2c3860;
+  --mesh-alert-info-icon: #7ea2ff;
+  --mesh-alert-success-bg: #13241a;
+  --mesh-alert-success-border: #1f3d2a;
+  --mesh-alert-success-icon: #74e2a2;
+  --mesh-alert-warning-bg: #2e1718;
+  --mesh-alert-warning-border: #4a2528;
+  --mesh-alert-warning-icon: #ff978b;
+  --mesh-alert-note-bg: #171e2d;
+  --mesh-alert-note-border: #2a3249;
+  --mesh-alert-note-icon: #94a5ff;
+  --mesh-alert-favorite-bg: rgba(198, 253, 80, 0.06);
+  --mesh-alert-favorite-border: rgba(198, 253, 80, 0.18);
+  --mesh-alert-favorite-icon: var(--mesh-accent);
+}
