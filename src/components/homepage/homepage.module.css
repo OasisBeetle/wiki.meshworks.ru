@@ -21,6 +21,24 @@
   .main {
     padding-inline: clamp(1rem, 4vw, 1.25rem);
   }
+
+  .heroLead {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: hsl(var(--card) / 0.96);
+  }
+
+  .ctaSecondary {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: hsl(var(--card) / 0.86) !important;
+  }
+
+  .card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: hsl(var(--card) / 0.94);
+  }
 }
 
 .slides {

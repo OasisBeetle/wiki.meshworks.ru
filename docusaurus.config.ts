@@ -76,6 +76,11 @@ const config: Config = {
         name: 'MeshWorks Wiki',
         url: 'https://wiki.meshworks.ru',
         inLanguage: 'ru',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://wiki.meshworks.ru/search?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
       }),
     },
     {
@@ -277,6 +282,14 @@ const config: Config = {
         name: 'keywords',
         content:
           'meshtastic, meshworks, lora mesh, loRa сеть, автономная связь, wiki meshtastic, инструкции lora',
+      },
+      {
+        property: 'og:site_name',
+        content: 'MeshWorks Wiki',
+      },
+      {
+        property: 'og:locale',
+        content: 'ru_RU',
       },
     ],
     colorMode: {

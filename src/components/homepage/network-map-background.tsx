@@ -180,18 +180,44 @@ function generateNetwork(seed: number, nodeCount: number): { nodes: NetNode[]; e
 export function NetworkMapBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const resolvedTheme = useDocusaurusTheme();
+  const [enabled, setEnabled] = useState(false);
 
   const themeRef = useRef<ThemeMode>("dark");
   const tokenElRef = useRef<HTMLElement | null>(null);
   const paletteRef = useRef<Palette | null>(null);
 
-  const { nodes, edges } = useMemo(() => generateNetwork(1337, 34), []);
+  const { nodes, edges } = useMemo(() => {
+    if (!enabled) return { nodes: [], edges: [] };
+    return generateNetwork(1337, 34);
+  }, [enabled]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+    const connection = (navigator as unknown as { connection?: { saveData?: boolean } }).connection;
+    const saveData = connection?.saveData ?? false;
+    const deviceMemory = (navigator as unknown as { deviceMemory?: number }).deviceMemory;
+    const hardwareConcurrency = (navigator as unknown as { hardwareConcurrency?: number }).hardwareConcurrency;
+    const isMobileWidth = window.innerWidth < 768;
+
+    const isWeakDevice =
+      reducedMotion ||
+      saveData ||
+      (typeof deviceMemory === "number" && deviceMemory <= 4) ||
+      (typeof hardwareConcurrency === "number" && hardwareConcurrency <= 4) ||
+      isMobileWidth;
+
+    setEnabled(!isWeakDevice);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
     themeRef.current = resolvedTheme === "light" ? "light" : "dark";
   }, [resolvedTheme]);
 
   useEffect(() => {
+    if (!enabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -201,6 +227,7 @@ export function NetworkMapBackground() {
   }, []);
 
   useEffect(() => {
+    if (!enabled) return;
     const el = tokenElRef.current;
     if (!el) return;
 
@@ -223,6 +250,7 @@ export function NetworkMapBackground() {
   }, [resolvedTheme]);
 
   useEffect(() => {
+    if (!enabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -335,7 +363,9 @@ export function NetworkMapBackground() {
     return () => {
       window.removeEventListener("resize", onResize);
     };
-  }, [edges, nodes, resolvedTheme]);
+  }, [edges, enabled, nodes, resolvedTheme]);
+
+  if (!enabled) return null;
 
   return <canvas ref={canvasRef} />;
 }

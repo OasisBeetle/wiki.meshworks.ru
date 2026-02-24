@@ -92,3 +92,11 @@
     linear-gradient(180deg, #ffffff 0%, #f5f7fb 55%, #ffffff 100%);
   background-attachment: fixed;
 }
+
+@media (max-width: 996px) {
+  .meshtastic-home,
+  [data-theme="dark"] .meshtastic-home,
+  [data-theme="light"] .meshtastic-home {
+    background-attachment: scroll;
+  }
+}

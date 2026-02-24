@@ -888,6 +888,36 @@
     padding: 10px;
   }
 
+  .controlBar,
+  .helpStrip,
+  .deviceCard,
+  .techBadgeOverlay,
+  .modalOverlay {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .controlBar,
+  .helpStrip {
+    background: var(--surface-bg);
+  }
+
+  .deviceCard {
+    background: hsl(var(--card, 0 0% 100%) / 0.96);
+  }
+
+  .techBadgeOverlay {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  [data-theme='dark'] .techBadgeOverlay {
+    background: rgba(0, 0, 0, 0.78);
+  }
+
+  .modalOverlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
   .helpStrip {
     grid-template-columns: 1fr;
   }
