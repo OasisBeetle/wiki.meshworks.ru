@@ -261,7 +261,8 @@ const config: Config = {
       : []),
   ],
   themeConfig: {
-    image: 'img/social/wiki-share-1200x630.png',
+    // Cache-bust social previews (Telegram/FB/VK cache OG images by URL).
+    image: 'img/social/wiki-share-v1.png',
     metadata: [
       {
         name: 'description',
