@@ -21,12 +21,12 @@
   --popover: 0 0% 100%;
   --popover-foreground: 222 22% 12%;
 
-  /* Light theme: use a darker green for contrast */
-  --btn-primary: 99 100% 26%;
-  --btn-primary-hover: 99 100% 22%;
+  /* Light theme: cleaner lime-green (avoid "swampy" olive) */
+  --btn-primary: 110 100% 27%;
+  --btn-primary-hover: 110 100% 23%;
   --btn-primary-foreground: 0 0% 100%;
 
-  --accent-primary: 99 100% 26%;
+  --accent-primary: 110 100% 27%;
   --accent-foreground: 222 22% 12%;
   --primary-foreground: 0 0% 100%;
   --secondary-foreground: 222 22% 12%;
@@ -40,7 +40,7 @@
 
   --border: 221 54% 90%;
   --input: 214 47% 97%;
-  --ring: 99 100% 26%;
+  --ring: 110 100% 27%;
 
   --overlay: 217 50% 97% / 0.92;
 }
@@ -87,7 +87,7 @@
 
 [data-theme="light"] .meshtastic-home {
   background:
-    radial-gradient(900px 420px at 72% 28%, rgba(47, 133, 0, 0.14), transparent 62%),
+    radial-gradient(900px 420px at 72% 28%, rgba(22, 138, 0, 0.1), transparent 62%),
     radial-gradient(720px 440px at 18% 76%, rgba(0, 180, 255, 0.06), transparent 62%),
     linear-gradient(180deg, #ffffff 0%, #f5f7fb 55%, #ffffff 100%);
   background-attachment: fixed;

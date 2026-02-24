@@ -99,7 +99,7 @@
 
 [data-theme='light'] {
   /* On light backgrounds neon lime loses contrast; use a darker brand-adjacent green. */
-  --mesh-accent: #2f8500;
+  --mesh-accent: #168a00;
   --ifm-background-color: #f5f7fb;
   --ifm-background-surface-color: #ffffff;
   --ifm-navbar-background-color: rgba(245, 247, 251, 0.84);
