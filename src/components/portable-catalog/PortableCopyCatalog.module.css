@@ -88,7 +88,7 @@
   min-width: 0;
   width: 100%;
   position: sticky;
-  top: 70px; /* Adjust based on navbar height */
+  top: calc(var(--ifm-navbar-height, 3.75rem) + 12px + env(safe-area-inset-top));
   z-index: 100;
 }
 
@@ -828,13 +828,21 @@
 
 @media (max-width: 1280px) {
   .controlBar {
-    top: 60px;
+    top: calc(var(--ifm-navbar-height, 3.75rem) + 12px + env(safe-area-inset-top));
   }
 }
 
 @media (max-width: 1024px) {
   .deviceGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 996px) {
+  .controlBar {
+    background: hsl(var(--card, 0 0% 100%) / 1);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
@@ -925,6 +933,10 @@
   .controlBar,
   .helpStrip {
     background: var(--surface-bg);
+  }
+
+  .controlBar {
+    background: hsl(var(--card, 0 0% 100%) / 1);
   }
 
   .deviceCard {

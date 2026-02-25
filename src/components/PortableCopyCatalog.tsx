@@ -93,15 +93,6 @@ function openHrefInNewTab(href: string): void {
   window.open(href, '_blank', 'noopener,noreferrer');
 }
 
-function renderFeatureIcon(Icon: React.ElementType, active: boolean, label: string) {
-  return (
-    <div className={`${styles.featureItem} ${active ? styles.featureActive : styles.featureInactive}`} title={label}>
-      <Icon className={styles.featureIcon} />
-      {active && <span className={styles.featureLabel}>{label}</span>}
-    </div>
-  );
-}
-
 function renderDeviceCard(
   device: DeviceItem,
   onPurchaseClick: (device: DeviceItem) => void,

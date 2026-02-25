@@ -724,6 +724,15 @@ kbd.searchHint_iIMx {
     -webkit-backdrop-filter: none !important;
   }
 
+  /* Mobile: navbar needs to be less transparent for readability */
+  [data-theme='light'] .mwNavbar {
+    background: #ffffff;
+  }
+
+  [data-theme='dark'] .mwNavbar {
+    background: #0b0f14;
+  }
+
   /* Mobile: prevent local-search dropdown from being clipped/cut off */
   .navbar__search {
     overflow: visible;

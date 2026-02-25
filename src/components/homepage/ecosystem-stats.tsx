@@ -1,4 +1,4 @@
-import { ArrowRight, Download, FileText, GlobeIcon, Radio, Signal, SmartphoneIcon, Terminal, Wifi } from "@/components/icons/lucide";
+import { ArrowRight, Download, Radio, SmartphoneIcon, Terminal } from "@/components/icons/lucide";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import type React from "react";

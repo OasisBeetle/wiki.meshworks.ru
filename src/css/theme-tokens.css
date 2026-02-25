@@ -7,7 +7,6 @@
   /* Brand */
   --mesh-accent: #c6fd50;
   --mesh-accent-strong: color-mix(in srgb, var(--mesh-accent) 88%, #000 12%);
-  --mesh-accent-soft: color-mix(in srgb, var(--mesh-accent) 22%, transparent);
 
   /* Typography */
   --ifm-font-family-base: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans',
