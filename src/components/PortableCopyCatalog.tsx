@@ -380,10 +380,6 @@ export default function PortableCopyCatalog(): ReactNode {
               </div>
             </div>
 
-            <details className={styles.mobileHelpDisclosure}>
-              <summary className={styles.mobileHelpSummary}>Что означают фильтры?</summary>
-              <div className={styles.mobileHelpContent}>{renderFilterHelpContent()}</div>
-            </details>
           </div>
 
           <section className={styles.helpStrip} aria-label="Что означают фильтры">

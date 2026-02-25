@@ -92,6 +92,10 @@
   z-index: 100;
 }
 
+:global(html[data-theme='light']) .controlBar {
+  background: var(--mw-panel);
+}
+
 .filterGroups {
   display: flex;
   flex-wrap: wrap;

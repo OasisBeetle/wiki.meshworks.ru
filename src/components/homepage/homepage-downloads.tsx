@@ -1,5 +1,5 @@
 import Link from "@docusaurus/Link";
-import { ArrowRight, FileText, MapPin, MessageSquare, SmartphoneIcon, Terminal } from "@/components/icons/lucide";
+import { ArrowRight, Download, FileText, MapPin, MessageSquare, SmartphoneIcon } from "@/components/icons/lucide";
 import type React from "react";
 import styles from "./homepage.module.css";
 
@@ -8,7 +8,7 @@ type IconComponent = (props: { className?: string }) => React.JSX.Element;
 const iconMap: Record<string, IconComponent> = {
   phone: SmartphoneIcon,
   mapPin: MapPin,
-  terminal: Terminal,
+  download: Download,
   fileText: FileText,
   message: MessageSquare,
 };
@@ -77,7 +77,7 @@ export function HomepageDownloads() {
       title: "Прошивальщик",
       description: "Прошивка Meshtastic-устройств через браузер: быстро и удобно.",
       href: "https://flasher.meshworks.ru/",
-      icon: "terminal",
+      icon: "download",
     },
     {
       title: "Веб‑клиент",
