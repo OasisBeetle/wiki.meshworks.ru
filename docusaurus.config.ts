@@ -29,16 +29,16 @@ const enablePwa = process.env.NODE_ENV === 'production';
 const config: Config = {
   title: 'MeshWorks',
   tagline: 'База знаний MeshWorks',
-  favicon: 'img/favicon-dark.png',
+  favicon: 'img/favicon-light.png',
   headTags: [
     {
       tagName: 'link',
-      attributes: {
-        rel: 'icon',
-        type: 'image/png',
-        href: '/img/favicon-dark.png',
+        attributes: {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/img/favicon-light.png',
+        },
       },
-    },
     {
       tagName: 'script',
       attributes: {
@@ -106,18 +106,6 @@ const config: Config = {
         crossOrigin: 'anonymous',
       },
     },
-    {
-      tagName: 'noscript',
-      attributes: {},
-      innerHTML:
-        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"/>',
-    },
-    {
-      tagName: 'noscript',
-      attributes: {},
-      innerHTML:
-        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"/>',
-    },
   ],
   future: {
     v4: true,
@@ -126,19 +114,9 @@ const config: Config = {
   baseUrl: '/',
   trailingSlash: false,
   stylesheets: [
-    {
-      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap',
-      rel: 'preload',
-      as: 'style',
-      onload: "this.onload=null;this.rel='stylesheet'",
-    },
-    {
-      href:
-        'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap',
-      rel: 'preload',
-      as: 'style',
-      onload: "this.onload=null;this.rel='stylesheet'",
-    },
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap',
+    'https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=Unbounded:wght@400;500;600&display=swap',
+    'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap',
   ],
   organizationName: 'meshworks',
   projectName: 'wiki',
@@ -261,8 +239,7 @@ const config: Config = {
       : []),
   ],
   themeConfig: {
-    // Cache-bust social previews (Telegram/FB/VK cache OG images by URL).
-    image: 'img/social/wiki-share-v1.png',
+    image: 'img/social/wiki-share-1200x630-v2.png',
     metadata: [
       {
         name: 'description',
@@ -334,7 +311,6 @@ const config: Config = {
         {
           html: [
             "<div class='footer__links-row'>",
-            "<a href='https://meshworks.ru/' target='_blank' rel='noreferrer noopener'>meshworks.ru</a>",
             "<a href='https://www.youtube.com/@meshwrks' target='_blank' rel='noreferrer noopener'>YouTube</a>",
             "<a href='https://boosty.to/meshworks' target='_blank' rel='noreferrer noopener'>Boosty</a>",
             "<a href='https://t.me/meshwrks' target='_blank' rel='noreferrer noopener'>Telegram</a>",

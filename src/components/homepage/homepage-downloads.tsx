@@ -1,12 +1,13 @@
 import Link from "@docusaurus/Link";
-import { ArrowRight, FileText, Globe, MessageSquare, Terminal } from "@/components/icons/lucide";
+import { ArrowRight, FileText, MapPin, MessageSquare, SmartphoneIcon, Terminal } from "@/components/icons/lucide";
 import type React from "react";
 import styles from "./homepage.module.css";
 
 type IconComponent = (props: { className?: string }) => React.JSX.Element;
 
 const iconMap: Record<string, IconComponent> = {
-  globe: Globe,
+  phone: SmartphoneIcon,
+  mapPin: MapPin,
   terminal: Terminal,
   fileText: FileText,
   message: MessageSquare,
@@ -17,6 +18,7 @@ interface DownloadItemData {
   description: string;
   href: string;
   icon: string;
+  disabled?: boolean;
 }
 
 function DownloadCard({
@@ -24,40 +26,48 @@ function DownloadCard({
   description,
   href,
   icon,
+  disabled,
 }: DownloadItemData) {
   const Icon = iconMap[icon];
   const isExternal = href.startsWith("http");
 
-  return (
-    <div className={styles.card}>
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
-        <div>
-          <h3 className={styles.cardTitle}>{title}</h3>
-          <p className={styles.cardText}>{description}</p>
-        </div>
-        <div className={styles.downloadIcon}>
-          <Icon />
-        </div>
+  const content = (
+    <>
+      <div className={styles.toolIconBg} aria-hidden="true">
+        <Icon className={styles.toolIconSvg} />
       </div>
 
-      {isExternal ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.cardLink}
-        >
-          Открыть (внешняя ссылка) <ArrowRight style={{ width: 16, height: 16 }} />
-        </a>
-      ) : (
-        <Link
-          to={href}
-          className={styles.cardLink}
-        >
-          Открыть <ArrowRight style={{ width: 16, height: 16 }} />
-        </Link>
-      )}
-    </div>
+      <div className={styles.toolCardContent}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardText}>{description}</p>
+
+        <div className={styles.cardFooter}>
+          {disabled ? (
+            <span className={styles.cardLinkSecondary}>В разработке</span>
+          ) : (
+            <span className={styles.cardLink}>
+              Перейти <ArrowRight style={{ width: 16, height: 16 }} />
+            </span>
+          )}
+        </div>
+      </div>
+    </>
+  );
+
+  return (
+    disabled ? (
+      <div className={`${styles.card} ${styles.cardDisabled}`} aria-disabled="true">
+        {content}
+      </div>
+    ) : isExternal ? (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={styles.card}>
+        {content}
+      </a>
+    ) : (
+      <Link to={href} className={styles.card}>
+        {content}
+      </Link>
+    )
   );
 }
 
@@ -73,13 +83,13 @@ export function HomepageDownloads() {
       title: "Веб‑клиент",
       description: "Клиент для управления нодами Meshtastic прямо в браузере.",
       href: "https://client.meshworks.ru/",
-      icon: "globe",
+      icon: "phone",
     },
     {
       title: "Карта сети",
       description: "Публичная карта узлов и покрытий MeshWorks.",
       href: "https://malla.meshworks.ru/",
-      icon: "globe",
+      icon: "mapPin",
     },
     {
       title: "Документация",
@@ -92,6 +102,7 @@ export function HomepageDownloads() {
       description: "Обсуждения и база знаний в формате сообщества.",
       href: "https://t.me/meshwrks",
       icon: "message",
+      disabled: true,
     },
   ];
 

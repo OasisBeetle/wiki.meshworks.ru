@@ -45,22 +45,14 @@ export function HomepageFeatures() {
       </div>
 
       <div className={styles.grid3}>
-        {scenarios.map((scenario) => (
-          <div
-            key={scenario.title}
-            className={styles.card}
-          >
+        {scenarios.map((scenario) =>
+          scenario.disabled ? (
+            <div key={scenario.title} className={styles.card}>
               <div className={styles.statHeader}>
                 <h3 className={styles.cardTitle}>
-                  {scenario.disabled ? (
-                    <span className={styles.cardTitleLink} aria-disabled="true">
-                      {scenario.title}
-                    </span>
-                  ) : (
-                    <Link to={scenario.href} className={styles.cardTitleLink}>
-                      {scenario.title}
-                    </Link>
-                  )}
+                  <span className={styles.cardTitleLink} aria-disabled="true">
+                    {scenario.title}
+                  </span>
                 </h3>
                 <div className={styles.statIcon} aria-hidden="true">
                   {scenario.icon}
@@ -68,21 +60,29 @@ export function HomepageFeatures() {
               </div>
               <p className={styles.cardText}>{scenario.description}</p>
               <div className={styles.cardFooterRow}>
-                {scenario.disabled ? (
-                  <span className={styles.cardLinkSecondary}>В разработке</span>
-                ) : (
-                  <Link to={scenario.href} className={styles.cardLink}>
-                    Открыть <ArrowRight style={{ width: 16, height: 16 }} />
-                  </Link>
-                )}
-                {scenario.secondaryHref && scenario.secondaryLabel ? (
-                  <Link to={scenario.secondaryHref} className={styles.cardLinkSecondary}>
-                    {scenario.secondaryLabel}
-                  </Link>
-                ) : null}
+                <span className={styles.cardLinkSecondary}>В разработке</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ) : (
+            <Link key={scenario.title} to={scenario.href} className={styles.card}>
+              <div className={styles.statHeader}>
+                <h3 className={styles.cardTitle}>{scenario.title}</h3>
+                <div className={styles.statIcon} aria-hidden="true">
+                  {scenario.icon}
+                </div>
+              </div>
+              <p className={styles.cardText}>{scenario.description}</p>
+              <div className={styles.cardFooterRow}>
+                <span className={styles.cardLink}>
+                  Перейти <ArrowRight style={{ width: 16, height: 16 }} />
+                </span>
+                {scenario.secondaryHref && scenario.secondaryLabel ? (
+                  <span className={styles.cardLinkSecondary}>{scenario.secondaryLabel}</span>
+                ) : null}
+              </div>
+            </Link>
+          ),
+        )}
       </div>
     </section>
   );

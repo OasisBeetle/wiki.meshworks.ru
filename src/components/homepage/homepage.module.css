@@ -82,19 +82,30 @@
 }
 
 .heroTitle {
-  margin: 0;
-  font-family: var(--ifm-font-family-base);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  margin: 0 0 16px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(1.95rem, 4.2vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
   color: hsl(var(--foreground));
-  text-wrap: balance;
 }
 
 .heroTitleAccent {
   color: hsl(var(--btn-primary));
   display: inline-block;
+}
+
+html[data-theme='light'] .heroTitleAccent {
+  color: hsl(var(--foreground));
+}
+
+.heroTitleAccentDot {
+  color: inherit;
+}
+
+html[data-theme='light'] .heroTitleAccentDot {
+  color: hsl(var(--btn-primary));
 }
 
 .heroLead {
@@ -275,6 +286,8 @@
 }
 
 .card {
+  display: block;
+  position: relative;
   border-radius: 1.125rem;
   border: 0;
   background: hsl(var(--card) / 0.9);
@@ -290,6 +303,15 @@
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.cardDisabled {
+  cursor: default;
+}
+
+.cardDisabled:hover {
+  transform: none;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
 }
 
 .cardTitle {
@@ -344,6 +366,19 @@
   text-underline-offset: 0.18em;
 }
 
+/* Light theme: card links are neutral by default, and turn green on hover (homepage only). */
+html[data-theme='light'] .root .cardLink {
+  color: color-mix(in srgb, hsl(var(--foreground)) 78%, transparent);
+}
+
+html[data-theme='light'] .root .card:hover .cardLink {
+  color: hsl(var(--btn-primary));
+}
+
+html[data-theme='light'] .root .cardLink:hover {
+  color: hsl(var(--btn-primary));
+}
+
 .cardLinkSecondary {
   color: hsl(var(--muted-foreground));
   font-weight: 700;
@@ -371,6 +406,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  isolation: isolate;
 }
 
 .statCard .cardFooter {
@@ -411,9 +447,57 @@
 }
 
 /* Ensure content stays above overlays */
-.statCard > * {
+.statCard > :not(.ctaSweepBorder) {
   position: relative;
+  z-index: 2;
+}
+
+/* Animated gradient border (only injected for "Выбор устройств") */
+.ctaSweepBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
   z-index: 1;
+  opacity: 0.95;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--btn-primary) / 0) 18%,
+      hsl(var(--btn-primary) / 0.75) 35%,
+      hsl(var(--btn-primary) / 0) 52%,
+      transparent 70%
+    );
+  background-size: 220% 100%;
+  background-position: -120% 0;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card:hover .ctaSweepBorder {
+  opacity: 1;
+}
+
+@keyframes mwSweepBorder {
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 120% 0;
+  }
+}
+
+.ctaSweepBorder {
+  animation: mwSweepBorder 2.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaSweepBorder {
+    animation: none;
+  }
 }
 
 /* Per-card subtle gradients + textures (no icons) */
@@ -534,6 +618,43 @@
 .downloadIcon svg {
   inline-size: 1.35rem;
   block-size: 1.35rem;
+}
+
+.toolCardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.toolIconBg {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: clamp(110px, 28%, 170px);
+  height: clamp(110px, 28%, 170px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.16;
+  transform: rotate(14deg);
+  transform-origin: 70% 20%;
+  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.12));
+}
+
+.card:hover .toolIconBg {
+  opacity: 0.22;
+}
+
+.toolIconSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.toolIconSvg path,
+.toolIconSvg rect,
+.toolIconSvg circle,
+.toolIconSvg line,
+.toolIconSvg polyline,
+.toolIconSvg polygon {
+  stroke-width: 1.6px;
 }
 
 @media (min-width: 768px) {

@@ -3,6 +3,7 @@
  */
 
 @import './theme-tokens.css';
+@import './meshtastic-home.css';
 
 /* === Base Typography === */
 body {
@@ -721,6 +722,54 @@ kbd.searchHint_iIMx {
     /* Prevent fixed mobile sidebar from being constrained by filtered navbar */
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+
+  /* Mobile: navbar needs to be less transparent for readability */
+  [data-theme='light'] .mwNavbar {
+    background: #ffffff;
+  }
+
+  [data-theme='dark'] .mwNavbar {
+    background: #0b0f14;
+  }
+
+  /* Mobile: prevent local-search dropdown from being clipped/cut off */
+  .navbar__search {
+    overflow: visible;
+  }
+
+  /* Mobile: keep search bar from being visually clipped (tight navbar width) */
+  [class*='searchBarContainer'] {
+    margin-left: 0 !important;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  /* The search-local plugin shrinks input to 2rem on very small screens.
+     With our pill styling/padding it looks like a clipped input, so keep it responsive instead. */
+  .mwNavbar .navbar__search-input {
+    width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* The local-search plugin uses a dropdown attached to the navbar search input.
+     On mobile it can get clipped by navbar/sidebar containers; fix by pinning it to viewport. */
+  [class*='searchBarContainer'] [class*='dropdownMenu'],
+  [class*='searchBarContainer'] .aa-Panel,
+  .navbar__search .aa-Panel {
+    position: fixed !important;
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    top: calc(var(--ifm-navbar-height, 3.75rem) + 12px + env(safe-area-inset-top));
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100vh - (var(--ifm-navbar-height, 3.75rem) + 24px));
+    max-height: calc(100dvh - (var(--ifm-navbar-height, 3.75rem) + 24px));
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 10000;
   }
 
   [class*='navbarSearchContainer'] .DocSearch-Button-Keys {

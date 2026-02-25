@@ -2,6 +2,8 @@
 node_modules/
 build/
 .docusaurus/
+.tmp/
+screenshots/
 .DS_Store
 .env
 .env.*

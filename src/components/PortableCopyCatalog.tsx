@@ -1,10 +1,8 @@
 import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Puzzle, Sun, Wifi, Zap } from './icons/lucide';
+import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Sun, Wifi, Zap } from './icons/lucide';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
-
-import '../css/meshtastic-home.css';
 
 type CategoryFilter = DeviceCategory | 'all';
 type TechFilter = DeviceTech | 'all';
@@ -22,7 +20,7 @@ const CATEGORY_OPTIONS: Array<FilterOption<CategoryFilter>> = [
   { value: 'all', label: 'Все' },
   { value: 'universal', label: 'Универсальные', Icon: Compass },
   { value: 'solar', label: 'Солнечные', Icon: Sun },
-  { value: 'boards', label: 'Платы', shortLabel: 'Платы', Icon: Puzzle },
+  { value: 'boards', label: 'Отдельные платы', shortLabel: 'Платы', Icon: Cpu },
 ];
 
 const TECH_OPTIONS: Array<FilterOption<TechFilter>> = [
@@ -95,15 +93,6 @@ function openHrefInNewTab(href: string): void {
   window.open(href, '_blank', 'noopener,noreferrer');
 }
 
-function renderFeatureIcon(Icon: React.ElementType, active: boolean, label: string) {
-  return (
-    <div className={`${styles.featureItem} ${active ? styles.featureActive : styles.featureInactive}`} title={label}>
-      <Icon className={styles.featureIcon} />
-      {active && <span className={styles.featureLabel}>{label}</span>}
-    </div>
-  );
-}
-
 function renderDeviceCard(
   device: DeviceItem,
   onPurchaseClick: (device: DeviceItem) => void,
@@ -127,7 +116,13 @@ function renderDeviceCard(
       key={getDeviceKey(device)}
     >
       <div className={styles.deviceMedia}>
-        <img className={styles.deviceImage} src={device.image} alt={device.alt} loading="lazy" />
+        <img
+          className={styles.deviceImage}
+          src={device.image}
+          alt={device.alt}
+          loading="lazy"
+          decoding="async"
+        />
         {device.popular ? <span className={styles.popularPill}>Выбор сообщества</span> : null}
         <div className={styles.techBadgeOverlay} title={`Чип: ${device.tech}`}>
           <Cpu width={14} height={14} />
@@ -403,7 +398,7 @@ export default function PortableCopyCatalog(): ReactNode {
                   <span><strong>Солнечные</strong> - автономные комплекты для стационара.</span>
                 </li>
                 <li className={styles.helpItem}>
-                  <Puzzle className={styles.helpIcon} />
+                  <Cpu className={styles.helpIcon} />
                   <span><strong>Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.</span>
                 </li>
               </ul>

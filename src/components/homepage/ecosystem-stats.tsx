@@ -1,4 +1,4 @@
-import { ArrowRight, Download, FileText, GlobeIcon, Radio, Signal, SmartphoneIcon, Terminal, Wifi } from "@/components/icons/lucide";
+import { ArrowRight, Download, Radio, SmartphoneIcon, Terminal } from "@/components/icons/lucide";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import type React from "react";
@@ -26,6 +26,7 @@ function StatItem({ icon, title, description, href, variant }: StatItemProps) {
         variant === "firmware" && styles.statCardFirmware,
       )}
     >
+      {variant === "devices" ? <span className={styles.ctaSweepBorder} aria-hidden="true" /> : null}
       <div className={styles.statHeader}>
         <div className={styles.cardTitle}>{title}</div>
         <div className={styles.statIcon} aria-hidden="true">
@@ -35,7 +36,7 @@ function StatItem({ icon, title, description, href, variant }: StatItemProps) {
       <div className={styles.cardText}>{description}</div>
       <div className={styles.cardFooter}>
         <span className={styles.cardLink}>
-          Открыть <ArrowRight style={{ width: 16, height: 16 }} />
+          Перейти <ArrowRight style={{ width: 16, height: 16 }} />
         </span>
       </div>
     </Link>

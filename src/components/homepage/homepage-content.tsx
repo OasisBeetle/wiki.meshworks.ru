@@ -2,7 +2,7 @@ import { EcosystemStats } from "@/components/homepage/ecosystem-stats";
 import { HomepageDownloads } from "@/components/homepage/homepage-downloads";
 import { HomepageFeatures } from "@/components/homepage/homepage-features";
 import { NetworkMapBackground } from "@/components/homepage/network-map-background";
-import { FileText, MapPin, Send } from "@/components/icons/lucide";
+import { FileText } from "@/components/icons/lucide";
 import Link from "@docusaurus/Link";
 import React from "react";
 import clsx from "clsx";
@@ -22,7 +22,9 @@ export function HomePageContent() {
               <h1 className={styles.heroTitle}>
                 Связь без интернета.
                 <br />
-                <span className={styles.heroTitleAccent}>Везде.</span>
+                <span className={styles.heroTitleAccent}>
+                  Везде<span className={styles.heroTitleAccentDot}>.</span>
+                </span>
               </h1>
 
               <div className={styles.heroLead}>
@@ -43,26 +45,28 @@ export function HomePageContent() {
                   База знаний
                 </Link>
                 <a
-                  className={clsx("button button--secondary button--lg", styles.ctaSecondary, styles.ctaButton, styles.ctaWithIcon)}
+                  className={clsx(
+                    "button button--secondary button--lg",
+                    styles.ctaSecondary,
+                    styles.ctaButton,
+                  )}
                   href="https://t.me/meshwrks"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className={styles.ctaIcon} aria-hidden="true">
-                    <Send />
-                  </span>
                   Telegram
                 </a>
                 <a
-                  className={clsx("button button--secondary button--lg", styles.ctaSecondary, styles.ctaButton, styles.ctaWithIcon)}
-                  href="https://malla.meshworks.ru/"
+                  className={clsx(
+                    "button button--secondary button--lg",
+                    styles.ctaSecondary,
+                    styles.ctaButton,
+                  )}
+                  href="https://www.youtube.com/@meshwrks"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className={styles.ctaIcon} aria-hidden="true">
-                    <MapPin />
-                  </span>
-                  Карта сети
+                  YouTube
                 </a>
               </div>
             </div>

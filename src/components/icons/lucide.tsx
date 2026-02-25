@@ -223,6 +223,15 @@ export function Wifi(props: IconProps): React.JSX.Element {
   );
 }
 
+export function Youtube(props: IconProps): React.JSX.Element {
+  return (
+    <svg {...baseProps(props)}>
+      <rect x="3" y="7" width="18" height="10" rx="2.75" ry="2.75" fill="currentColor" />
+      <path d="M11 10l4 2-4 2z" fill="#ffffff" />
+    </svg>
+  );
+}
+
 export function Check(props: IconProps): React.JSX.Element {
   return (
     <svg {...baseProps(props)}>
