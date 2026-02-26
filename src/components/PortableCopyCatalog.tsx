@@ -182,34 +182,6 @@ function renderDeviceCard(
   );
 }
 
-function renderFilterHelpContent(): ReactNode {
-  return (
-    <>
-      <ul className={styles.sideHelpList}>
-        <li>
-          <strong>🧭 Универсальные</strong> - готовые переносные ноды.
-        </li>
-        <li>
-          <strong>☀️ Солнечные</strong> - автономные комплекты для стационара.
-        </li>
-        <li>
-          <strong>🧩 Отдельные платы</strong> - DIY-платы и проекты для самостоятельной сборки.
-        </li>
-      </ul>
-      <div className={styles.sideHelpSep} />
-      <p className={styles.sideHelpSubTitle}>Чип-платформы</p>
-      <ul className={styles.sideHelpList}>
-        <li>
-          <strong>🟢 NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.
-        </li>
-        <li>
-          <strong>⚡ ESP</strong> - выше производительность и функции, но быстрее расходует батарею.
-        </li>
-      </ul>
-    </>
-  );
-}
-
 export default function PortableCopyCatalog(): ReactNode {
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
   const [techFilter, setTechFilter] = useState<TechFilter>('all');
