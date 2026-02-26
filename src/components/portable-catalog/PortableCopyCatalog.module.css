@@ -433,6 +433,48 @@
   box-shadow: 0 12px 36px color-mix(in srgb, #000 18%, transparent);
 }
 
+@keyframes wobbleShipping {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-6deg) translateY(-2px);
+  }
+}
+
+.shippingSticker {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--mesh-accent) 82%, #ffffff);
+  animation: wobbleShipping 2.05s ease-in-out infinite;
+  transform-origin: 85% 10%;
+  z-index: 2;
+}
+
+.shippingStickerOffset {
+  top: 44px;
+}
+
+.shippingStickerText {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(11, 18, 26, 0.92);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shippingSticker {
+    animation: none;
+    transform: rotate(-4deg);
+  }
+}
+
 .techBadgeOverlay {
   position: absolute;
   top: 10px;

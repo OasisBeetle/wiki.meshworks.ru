@@ -12,6 +12,7 @@ export type DeviceItem = {
   image: string;
   alt: string;
   badges: DeviceBadge[];
+  shippingLabel?: string;
   descriptionLines: [string, string];
   price: string;
   href: string;

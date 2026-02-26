@@ -124,6 +124,11 @@ function renderDeviceCard(
           decoding="async"
         />
         {device.popular ? <span className={styles.popularPill}>Выбор сообщества</span> : null}
+        {device.shippingLabel ? (
+          <span className={[styles.shippingSticker, device.popular ? styles.shippingStickerOffset : ''].join(' ')}>
+            <span className={styles.shippingStickerText}>{device.shippingLabel}</span>
+          </span>
+        ) : null}
         <div className={styles.techBadgeOverlay} title={`Чип: ${device.tech}`}>
           <Cpu width={14} height={14} />
           <span>{device.tech}</span>

@@ -249,6 +249,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
       image: '/img/wiki/faketec.webp',
       alt: 'FakeTec V5.5',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
+      shippingLabel: 'БЫСТРАЯ ДОСТАВКА',
       descriptionLines: [
         'Компактная плата на NRF (FakeTec v5.5) с возможностью подключения GPS и датчиков.',
         'Подходит для бюджетных и компактных DIY-сборок.',
