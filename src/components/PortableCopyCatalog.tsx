@@ -17,7 +17,7 @@ type FilterOption<T extends string> = {
 
 const CATEGORY_OPTIONS: Array<FilterOption<CategoryFilter>> = [
   { value: 'all', label: 'Все' },
-  { value: 'universal', label: 'Универсальные', Icon: Compass },
+  { value: 'universal', label: 'Готовые', Icon: Compass },
   { value: 'solar', label: 'Солнечные', Icon: Sun },
   { value: 'boards', label: 'Платы', Icon: Cpu },
 ];
@@ -361,7 +361,7 @@ export default function PortableCopyCatalog(): ReactNode {
               <ul className={styles.helpList}>
                 <li className={styles.helpItem}>
                   <Compass className={styles.helpIcon} />
-                  <span><strong>Универсальные</strong> - готовые переносные ноды.</span>
+                  <span><strong>Готовые</strong> - готовые переносные ноды.</span>
                 </li>
                 <li className={styles.helpItem}>
                   <Sun className={styles.helpIcon} />

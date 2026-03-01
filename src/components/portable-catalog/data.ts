@@ -1,7 +1,7 @@
 import type { DeviceCategory, DeviceItem } from './types';
 
 export const DEVICE_CATEGORY_LABELS: Record<DeviceCategory, string> = {
-  universal: 'Универсальные',
+  universal: 'Готовые',
   solar: 'Солнечные',
   boards: 'Платы',
 };

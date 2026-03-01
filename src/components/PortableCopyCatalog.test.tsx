@@ -15,10 +15,10 @@ describe('PortableCopyCatalog', () => {
   it('renders default sections and cards from multiple categories', () => {
     render(<PortableCopyCatalog />);
 
-    expect(screen.getByRole('region', { name: 'Универсальные' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Готовые' })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Платы' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Универсальные' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Готовые' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Солнечные' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Платы' })).toBeInTheDocument();
     expect(screen.queryByText('Отдельные платы')).not.toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('PortableCopyCatalog', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Солнечные' }));
 
-    expect(screen.queryByRole('region', { name: 'Универсальные' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Готовые' })).not.toBeInTheDocument();
     expect(screen.queryByRole('region', { name: 'Платы' })).not.toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Солнечные' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
@@ -110,7 +110,7 @@ describe('PortableCopyCatalog', () => {
     fireEvent.change(sortSelect, { target: { value: 'price-asc' } });
 
     // We should now have a single combined section
-    expect(screen.queryByRole('region', { name: 'Универсальные' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Готовые' })).not.toBeInTheDocument();
     expect(screen.queryByRole('region', { name: 'Солнечные' })).not.toBeInTheDocument();
     expect(screen.queryByRole('region', { name: 'Платы' })).not.toBeInTheDocument();
 
@@ -196,7 +196,7 @@ describe('PortableCopyCatalog', () => {
     // Mock DEVICE_DATA with empty categories to trigger the empty state
     vi.doMock('./portable-catalog/data', () => ({
       DEVICE_CATEGORY_LABELS: {
-        universal: 'Универсальные',
+        universal: 'Готовые',
         solar: 'Солнечные',
         boards: 'Платы',
       },
