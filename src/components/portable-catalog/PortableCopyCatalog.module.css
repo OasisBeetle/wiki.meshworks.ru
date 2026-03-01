@@ -945,6 +945,16 @@
     gap: 6px;
   }
 
+  .deviceFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .price {
+    align-self: flex-start;
+  }
+
   .cta,
   .ctaVideo {
     width: 100%;
