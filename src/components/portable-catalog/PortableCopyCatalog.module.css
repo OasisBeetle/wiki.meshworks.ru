@@ -904,23 +904,20 @@
     display: none;
   }
 
-  .filterControlChips {
+  .filterButtons.filterControlChips {
+    width: 100%;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
-    scroll-snap-type: x proximity;
     min-width: 0;
   }
 
-  .filterControlChips::-webkit-scrollbar {
+  .filterButtons.filterControlChips::-webkit-scrollbar {
     display: none;
-  }
-
-  .filterButton {
-    scroll-snap-align: start;
   }
   
   .viewControls {
