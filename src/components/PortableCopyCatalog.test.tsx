@@ -102,6 +102,25 @@ describe('PortableCopyCatalog', () => {
     expect(titles[0]).toBe('Heltec Wireless Stick Lite / Mesh Nod');
   });
 
+  it('sorts by price ascending across all categories when category filter is "Все"', () => {
+    render(<PortableCopyCatalog />);
+
+    // Change sort to "Сначала дешевле" without narrowing categories
+    const sortSelect = screen.getByRole('combobox', { name: 'Сортировка' });
+    fireEvent.change(sortSelect, { target: { value: 'price-asc' } });
+
+    // We should now have a single combined section
+    expect(screen.queryByRole('region', { name: 'Универсальные' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Солнечные' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Платы' })).not.toBeInTheDocument();
+
+    const allSection = screen.getByRole('region', { name: 'Все устройства' });
+    const headings = within(allSection).getAllByRole('heading', { level: 3 });
+    const titles = headings.map((h) => h.textContent);
+
+    expect(titles[0]).toBe('Heltec Wireless Stick Lite / Mesh Nod');
+  });
+
   it('sorts by price descending', () => {
     render(<PortableCopyCatalog />);
 

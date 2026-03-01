@@ -174,6 +174,8 @@ export default function PortableCopyCatalog(): ReactNode {
   const [purchaseConfirmState, setPurchaseConfirmState] = useState<PurchaseConfirmState | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
+  const isGlobalPriceSort = categoryFilter === 'all' && sortOption !== 'default';
+
   const featuredDevices = useMemo(() => {
     const all: Array<{ category: DeviceCategory; device: DeviceItem }> = [];
     (Object.keys(DEVICE_DATA) as DeviceCategory[]).forEach((category) => {
@@ -190,6 +192,16 @@ export default function PortableCopyCatalog(): ReactNode {
   const featuredKeys = useMemo(() => {
     return new Set(featuredDevices.map(getDeviceKey));
   }, [featuredDevices]);
+
+  const globallySortedDevices = useMemo(() => {
+    if (!isGlobalPriceSort) {
+      return [];
+    }
+
+    const categories: DeviceCategory[] = ['universal', 'solar', 'boards'];
+    const allDevices = categories.flatMap((category) => filterByTech(DEVICE_DATA[category], techFilter));
+    return sortDevices(allDevices, sortOption);
+  }, [isGlobalPriceSort, sortOption, techFilter]);
 
   const visibleCategories = useMemo(() => {
     const categories: DeviceCategory[] = categoryFilter === 'all' ? ['universal', 'solar', 'boards'] : [categoryFilter];
@@ -261,7 +273,7 @@ export default function PortableCopyCatalog(): ReactNode {
     <section className={`${styles.catalog} ${styles.vibe} meshtastic-home`} aria-label="Каталог устройств Meshtastic">
       <div className={styles.layoutGrid}>
         <div className={styles.mainColumn}>
-          {featuredDevices.length > 0 ? (
+          {!isGlobalPriceSort && featuredDevices.length > 0 ? (
             <section className={styles.featuredSection} aria-label="Выбор сообщества">
               <header className={styles.categoryHeader}>
                 <h2 className={styles.categoryTitle}>Выбор сообщества</h2>
@@ -378,7 +390,21 @@ export default function PortableCopyCatalog(): ReactNode {
           </section>
 
           <div className={`${styles.devicePanels} ${viewMode === 'list' ? styles.listView : ''}`}>
-            {visibleCategories.length === 0 ? (
+            {isGlobalPriceSort ? (
+              globallySortedDevices.length === 0 ? (
+                <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
+              ) : (
+                <section className={styles.categorySection} aria-label="Все устройства">
+                  <header className={styles.categoryHeader}>
+                    <h2 className={styles.categoryTitle}>Все устройства</h2>
+                    <p className={styles.categoryMeta}>{globallySortedDevices.length} шт.</p>
+                  </header>
+                  <div className={styles.deviceGrid}>
+                    {globallySortedDevices.map((device) => renderDeviceCard(device, onPurchaseClick))}
+                  </div>
+                </section>
+              )
+            ) : visibleCategories.length === 0 ? (
               <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
             ) : (
               visibleCategories.map(({ category, label, devices }) => (
