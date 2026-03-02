@@ -920,6 +920,9 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 2px 8px;
+    scroll-padding-inline: 8px;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -928,6 +931,20 @@
 
   .filterButtons.filterControlChips::-webkit-scrollbar {
     display: none;
+  }
+
+  .filterButtons.filterControlChips > .filterButton {
+    scroll-snap-align: start;
+  }
+
+  .filterButtons.filterControlChips > .filterButton:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: hsl(var(--card, 0 0% 100%) / 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 10px 0 14px rgba(0, 0, 0, 0.06);
   }
   
   .viewControls {
@@ -1055,8 +1072,8 @@
     grid-template-columns: 1fr;
   }
 
-  .filterControlChips {
-    flex-wrap: wrap;
+  .filterButtons.filterControlChips {
+    flex-wrap: nowrap;
   }
 
   .filterButton {
