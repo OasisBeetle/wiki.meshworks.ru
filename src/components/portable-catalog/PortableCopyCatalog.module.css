@@ -1093,4 +1093,20 @@
   .catalog {
     --catalog-gutter: 10px;
   }
+
+  .filterButtons {
+    gap: 6px;
+  }
+
+  .filterButton {
+    min-height: 32px;
+    font-size: 12px;
+    padding: 0 8px;
+    gap: 5px;
+  }
+
+  .filterIcon {
+    width: 14px;
+    height: 14px;
+  }
 }
