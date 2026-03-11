@@ -47,11 +47,12 @@ const config: Config = {
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'SiteNavigationElement',
-        name: ['База знаний', 'Контрибьютинг', 'О нас'],
+        name: ['База знаний', 'Контрибьютинг', 'О нас', 'Стать спонсором'],
         url: [
           'https://wiki.meshworks.ru/',
           'https://wiki.meshworks.ru/wiki/how-to-edit',
           'https://wiki.meshworks.ru/about',
+          'https://wiki.meshworks.ru/sponsor',
         ],
       }),
     },
@@ -298,6 +299,12 @@ const config: Config = {
           label: 'О нас',
           position: 'left',
           activeBaseRegex: '^/about/?$',
+        },
+        {
+          to: '/sponsor',
+          label: 'Стать спонсором',
+          position: 'right',
+          activeBaseRegex: '^/sponsor/?$',
         },
         {
           type: 'search',

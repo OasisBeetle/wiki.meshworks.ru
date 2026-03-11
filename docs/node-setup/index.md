@@ -32,6 +32,8 @@ breadcrumbs: ["База знаний Meshtastic", "Настройка ноды"]
 - [С чего начать с Meshtastic](/)
 - [Прошивка устройств Meshtastic](/node-setup/firmware)
 - [Конфигурация и параметры Meshtastic](/node-setup/configuration)
+- [Разбор меню Meshtastic](/node-setup/menu)
 - [Роли устройств Meshtastic](/node-setup/roles)
+- [Новичку: чек‑лист](/meshtastic/newbie)
 
 ---

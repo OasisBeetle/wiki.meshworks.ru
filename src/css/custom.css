@@ -151,6 +151,87 @@ html[data-theme='light'] .button--primary {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+.introLead {
+  margin: 0 0 1.25rem;
+  font-size: 1.06rem;
+}
+
+.introLead p {
+  margin-bottom: 0.7rem;
+}
+
+.introGrid {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.introGrid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.introGrid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.introCard {
+  padding: 1rem 1.05rem;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 12%, transparent);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.introCard h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.introCard p:last-child,
+.introCard ul:last-child,
+.introCard ol:last-child {
+  margin-bottom: 0;
+}
+
+.introCard--accent {
+  border-color: color-mix(in srgb, var(--mesh-accent) 34%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--mesh-accent) 10%, var(--ifm-background-surface-color)) 0%, var(--ifm-background-surface-color) 100%);
+}
+
+.introRouteList {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.introRouteList .introCard h3 a {
+  text-decoration: none;
+}
+
+.introGlossary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.introGlossaryItem {
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 10%, transparent);
+}
+
+.introGlossaryItem span {
+  color: color-mix(in srgb, var(--ifm-font-color-base) 78%, transparent);
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
 [data-theme='dark'] .introImage {
   border: 1px solid rgba(255, 255, 255, 0.028);
   box-shadow: 0 6px 13px rgba(0, 0, 0, 0.29), 0 0 0 1px rgba(255, 255, 255, 0.02);
@@ -159,6 +240,23 @@ html[data-theme='light'] .button--primary {
 [data-theme='dark'] .docImage {
   border: 1px solid rgba(255, 255, 255, 0.024);
   box-shadow: 0 5px 11px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.018);
+}
+
+[data-theme='dark'] .introCard,
+[data-theme='dark'] .introGlossaryItem {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 996px) {
+  .introGrid--two,
+  .introGrid--three,
+  .introGlossary {
+    grid-template-columns: 1fr;
+  }
+
+  .introLead {
+    font-size: 1rem;
+  }
 }
 
 /* === Header (Meshtastic-inspired) === */
@@ -411,11 +509,197 @@ html[data-theme='light'] .theme-doc-sidebar-item-category-level-2 > .menu__list-
   content: 'hub';
 }
 
+/* Meshtastic sub-section icons (more specific routes override the section icon). */
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/newbie']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/newbie']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/newbie']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/newbie']::before {
+  content: 'checklist';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/software']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/software']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/software']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/software']::before {
+  content: 'apps';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/faq']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/faq']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/faq']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/faq']::before {
+  content: 'quiz';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/modules']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/modules']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/modules']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/modules']::before {
+  content: 'extension';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/security']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/security']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/security']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/security']::before {
+  content: 'security';
+}
+
 .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore']::before,
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore']::before,
 .theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore']::before,
 .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore']::before {
   content: 'grid_3x3';
+}
+
+/* MeshCore sub-section icons (generated-index slugs in sidebar). */
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/start']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/start']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/start']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/start']::before {
+  content: 'rocket_launch';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/network']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/network']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/network']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/network']::before {
+  content: 'lan';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/infrastructure']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/infrastructure']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/infrastructure']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/infrastructure']::before {
+  content: 'cell_tower';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/hardware']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/hardware']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/hardware']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/hardware']::before {
+  content: 'developer_board';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/ops']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ops']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/ops']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ops']::before {
+  content: 'settings_suggest';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/resources']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/resources']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/resources']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/resources']::before {
+  content: 'library_books';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/ecosystem']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ecosystem']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/ecosystem']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ecosystem']::before {
+  content: 'account_tree';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/community']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/community']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/community']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/community']::before {
+  content: 'groups';
+}
+
+/* MeshCore "Meshtastic-like" section routes. */
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/newbie']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/newbie']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/newbie']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/newbie']::before {
+  content: 'checklist';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/setup']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/setup']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/setup']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/setup']::before {
+  content: 'tune';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/software']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/software']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/software']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/software']::before {
+  content: 'apps';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/faq']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/faq']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/faq']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/faq']::before {
+  content: 'quiz';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/security']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/security']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/security']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/security']::before {
+  content: 'security';
+}
+
+/* MeshCore leaf pages: make them distinct inside the section. */
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/quick-start']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/quick-start']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/quick-start']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/quick-start']::before {
+  content: 'rocket_launch';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/concepts']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/concepts']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/concepts']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/concepts']::before {
+  content: 'lan';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/servers']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/servers']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/servers']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/servers']::before {
+  content: 'cell_tower';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/observer']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/observer']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/observer']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/observer']::before {
+  content: 'visibility';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/bridge']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/bridge']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/bridge']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/bridge']::before {
+  content: 'swap_horiz';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/t-deck']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/t-deck']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/t-deck']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/t-deck']::before {
+  content: 'keyboard';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/updates']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/updates']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/updates']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/updates']::before {
+  content: 'system_update_alt';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/troubleshooting']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/troubleshooting']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/troubleshooting']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/troubleshooting']::before {
+  content: 'bug_report';
 }
 
 .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/reticulum']::before,
@@ -430,6 +714,13 @@ html[data-theme='light'] .theme-doc-sidebar-item-category-level-2 > .menu__list-
 .theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/community']::before,
 .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/community']::before {
   content: 'forum';
+}
+
+.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/glossary']::before,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/glossary']::before,
+.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/glossary']::before,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/glossary']::before {
+  content: 'auto_stories';
 }
 
 .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/regulations']::before,

@@ -87,7 +87,7 @@ export function HomepageDownloads() {
     },
     {
       title: "Карта сети",
-      description: "Публичная карта узлов и покрытий MeshWorks.",
+      description: "Публичная карта нод и покрытий MeshWorks.",
       href: "https://malla.meshworks.ru/",
       icon: "mapPin",
     },

@@ -50,6 +50,52 @@
   color: color-mix(in srgb, var(--ifm-font-color-base) 68%, transparent);
 }
 
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ifm-font-color-base) 74%, transparent);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend i {
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+  border-radius: 999px;
+  font-style: normal;
+}
+
+.legendPath {
+  background: var(--mesh-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--mesh-accent) 40%, transparent);
+}
+
+.legendNode {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 999px !important;
+  background: var(--mesh-accent);
+}
+
+.legendOffline {
+  background: color-mix(in srgb, var(--ifm-font-color-base) 22%, transparent);
+}
+
+@media (max-width: 720px) {
+  .label {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -61,4 +107,3 @@
   white-space: nowrap;
   border: 0;
 }
-
