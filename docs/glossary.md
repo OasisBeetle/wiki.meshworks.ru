@@ -1,9 +1,9 @@
 ---
-title: Глоссарий
+title: Словарь терминов
 description: "Короткие определения терминов Meshtastic/LoRa и ссылки на профильные статьи в MeshWorks Wiki."
-sidebar_label: Глоссарий
+sidebar_label: Словарь терминов
 slug: /glossary
-breadcrumbs: ["База знаний MeshWorks", "Глоссарий"]
+breadcrumbs: ["База знаний MeshWorks", "Словарь терминов"]
 ---
 
 Ниже собраны короткие определения и ссылки на материалы вики. Если вы новичок, начните с [Введения](/introduction) и [чек‑листа](/meshtastic/newbie).

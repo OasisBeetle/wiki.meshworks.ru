@@ -17,35 +17,34 @@ breadcrumbs: ["База знаний MeshCore", "Сообщество"]
 
 | Город/регион | Чат |
 | --- | --- |
-| Москва | https://t.me/meshcore_rulang/1252 |
-| Москва (старый канал/сеть) | https://t.me/meshcoremoscow |
-| Санкт‑Петербург | https://t.me/meshcore_petersburg |
+| Барнаул | https://t.me/meshcore_brn |
+| Беларусь | https://t.me/meshcore_belarus |
+| Бийск | https://t.me/meshcore_Biysk |
 | Брянск | https://t.me/meshcore_bryansk |
+| Волгоград и Волжский | https://t.me/meshcore_vlg |
+| Воронеж | https://t.me/meshcore36 |
+| Зеленоград | https://t.me/ZelenogradMeshCore |
+| Ивановская область | https://t.me/meshcore_iwa |
+| Ижевск | https://t.me/meshcore_izh |
+| Иркутск и Ангарск | https://t.me/meshcore_irk |
+| Йошкар‑Ола и Марий Эл | https://t.me/Meshcore_MariEl |
 | Кавказские Минеральные Воды | https://t.me/MeshCore_KMV |
+| Казань и Татарстан | https://t.me/Meshcore_KZN |
+| Калуга | https://t.me/meshcore_kaluga |
 | Краснодар | https://t.me/MeshCore_KRD |
 | Крым | https://t.me/meshcore_krym |
+| Москва | https://t.me/meshcore_rulang |
+| Москва (старый канал/сеть) | https://t.me/meshcoremoscow |
+| Нижний Новгород и область | https://t.me/Meshcore_NN |
+| Новосибирск | https://t.me/meshcore_nsk |
+| Ростов‑на‑Дону и область | https://t.me/Meshcore_Rostov_na_Donu |
 | Рязань | https://t.me/meshcore_rzn |
+| Санкт‑Петербург | https://t.me/meshcore_petersburg |
 | Смоленск | https://t.me/meshcore_smolensk |
 | Сочи | https://t.me/meshcore_sochi |
-| Новосибирск | https://t.me/meshcore_nsk |
-| Ижевск | https://t.me/meshcore_izh |
-| Казань и Татарстан | https://t.me/Meshcore_KZN |
 | Ставрополь | https://t.me/meshcore_stv |
-| Тверь | https://t.me/meshcore_tver |
-| Йошкар‑Ола и Марий Эл | https://t.me/Meshcore_MariEl |
 | Тамбов | https://t.me/meshcoretmb |
-| Нижний Новгород и область | https://t.me/Meshcore_NN |
-| Беларусь | https://t.me/meshcore_belarus |
-| Зеленоград | https://t.me/ZelenogradMeshCore |
 | Таганрог | https://t.me/meshcore_tgn |
-| Волгоград и Волжский | https://t.me/meshcore_vlg |
-| Барнаул | https://t.me/meshcore_brn |
-| Бийск | https://t.me/meshcore_Biysk |
-| Воронеж | https://t.me/meshcore36 |
-| Иркутск и Ангарск | https://t.me/meshcore_irk |
-| Ростов‑на‑Дону и область | https://t.me/Meshcore_Rostov_na_Donu |
-| Ивановская область | https://t.me/meshcore_iwa |
-| Калуга | https://t.me/meshcore_kaluga |
+| Тверь | https://t.me/meshcore_tver |
 | Челябинск | https://t.me/MeshCore_CHL |
 | Тюмень | https://t.me/MeshCore_tmn_g |
-
