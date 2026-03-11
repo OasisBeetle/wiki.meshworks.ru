@@ -1053,11 +1053,23 @@ html[data-theme='light'] .table-of-contents__link--active::before {
   justify-content: center;
   gap: 1.5rem;
   margin-bottom: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.footer__links .footer__link-item {
+  display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 .footer__links-row a {
+  display: inline-flex;
+  max-width: 100%;
   color: var(--mw-muted);
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .footer__links-row a:hover {
@@ -1073,11 +1085,33 @@ html[data-theme='light'] .footer__links-row a:hover {
 .footer__trademark {
   font-size: 0.85rem;
   margin-top: 0.35rem;
+  width: 100%;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
 }
 
 .footer__trademark,
 .footer__copyright {
   color: var(--mw-muted);
+}
+
+@media (max-width: 768px) {
+  .footer__links-row {
+    gap: 0.75rem 1rem;
+  }
+
+  .footer__links-row a {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer__trademark,
+  .footer__copyright {
+    max-width: min(100%, 32rem);
+    margin-inline: auto;
+    padding-inline: 0.25rem;
+    text-align: center;
+  }
 }
 
 /* === Admonitions === */
@@ -1303,6 +1337,20 @@ kbd.searchHint_iIMx {
 }
 
 @media (max-width: 996px) {
+  /*
+   * Mobile Safari/Chrome can expose a small horizontal "drag area" when
+   * off-canvas/fixed UI (navbar sidebar, search panel, animated surfaces)
+   * sits just outside the viewport. Clip the root on X so the page itself
+   * never becomes horizontally pannable.
+   */
+  html,
+  body,
+  #__docusaurus {
+    overflow-x: hidden;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+
   [data-theme='light'] .navbar,
   [data-theme='dark'] .navbar,
   /* Prevent fixed mobile sidebar from being constrained by filtered wrapper */
@@ -1470,12 +1518,16 @@ html[data-theme='light'] .mwNavbar .navbar-sidebar .menu__link--active{
   align-items: center;
   gap: 12px;
   min-width: 210px;
+  max-width: 100%;
 }
 
 .mwBrandLink{
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   text-decoration: none !important;
   color: var(--mw-text) !important;
 }
@@ -1494,19 +1546,29 @@ html[data-theme='light'] .mwNavbar .navbar-sidebar .menu__link--active{
 .mwBrandText{
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
   line-height: 1.1;
 }
 
 .mwBrandName{
+  display: block;
   font-weight: 650;
   letter-spacing: .01em;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mwBrandSub{
+  display: block;
   margin-top: 2px;
   font-size: 12px;
   color: var(--mw-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .navbar__link{
@@ -1629,6 +1691,13 @@ html[data-theme='dark'] .mwNavbar .navbar__link--active{
     gap: 0.35rem;
   }
 
+  .mwNavbar .navbar__items--right{
+    min-width: 0;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+
   .mwNavbar .navbar__toggle.clean-btn{
     display: inline-flex;
   }
@@ -1646,6 +1715,12 @@ html[data-theme='dark'] .mwNavbar .navbar__link--active{
   [class*='navbarSearchContainer']{
     flex: 1;
     min-width: 0;
+  }
+}
+
+@media (max-width: 768px){
+  .mwNavbar .navbar__items--right .navbar__item.navbar__link[href='/sponsor']{
+    display: none;
   }
 }
 
