@@ -14,6 +14,10 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 - [t.me/meshtastic_russia](https://t.me/meshtastic_russia) — основной канал по Meshtastic в России
 - [t.me/meshtastic_moscow](https://t.me/meshtastic_moscow) — московское сообщество
 
+**Как помочь MeshWorks:**
+- Правками вики: [/wiki/how-to-edit](/wiki/how-to-edit)
+- Поддержать проект: [/sponsor](/sponsor)
+
 :::
 
 Ниже представлен **список региональных сообществ**, в которых вы можете найти единомышленников поблизости, обсудить установку оборудования, подключиться к локальной сети и внести вклад в развитие покрытия.

@@ -29,16 +29,34 @@ const enablePwa = process.env.NODE_ENV === 'production';
 const config: Config = {
   title: 'MeshWorks',
   tagline: 'База знаний MeshWorks',
-  favicon: 'img/favicon-light.png',
+  favicon: 'img/mw-logo-light.png',
   headTags: [
     {
       tagName: 'link',
-        attributes: {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/img/favicon-light.png',
-        },
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/img/mw-logo-light.png',
+        media: '(prefers-color-scheme: light)',
       },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/img/mw-logo-dark.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/img/mw-logo-light.png',
+      },
+    },
     {
       tagName: 'script',
       attributes: {
@@ -47,11 +65,12 @@ const config: Config = {
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'SiteNavigationElement',
-        name: ['База знаний', 'Контрибьютинг', 'О нас'],
+        name: ['База знаний', 'Контрибьютинг', 'О нас', 'Стать спонсором'],
         url: [
           'https://wiki.meshworks.ru/',
           'https://wiki.meshworks.ru/wiki/how-to-edit',
           'https://wiki.meshworks.ru/about',
+          'https://wiki.meshworks.ru/sponsor',
         ],
       }),
     },
@@ -298,6 +317,12 @@ const config: Config = {
           label: 'О нас',
           position: 'left',
           activeBaseRegex: '^/about/?$',
+        },
+        {
+          to: '/sponsor',
+          label: 'Стать спонсором',
+          position: 'right',
+          activeBaseRegex: '^/sponsor/?$',
         },
         {
           type: 'search',

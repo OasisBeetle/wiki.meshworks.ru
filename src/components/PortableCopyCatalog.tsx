@@ -379,7 +379,7 @@ export default function PortableCopyCatalog(): ReactNode {
               <ul className={styles.helpList}>
                 <li className={styles.helpItem}>
                   <Battery className={styles.helpIcon} />
-                  <span><strong>NRF</strong> - ниже мощность, выше автономность, лучше для батарейных узлов.</span>
+                  <span><strong>NRF</strong> - ниже мощность, выше автономность, лучше для батарейных нод.</span>
                 </li>
                 <li className={styles.helpItem}>
                   <Zap className={styles.helpIcon} />

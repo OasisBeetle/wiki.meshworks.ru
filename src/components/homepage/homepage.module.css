@@ -625,6 +625,10 @@ html[data-theme='light'] .root .cardLink:hover {
   z-index: 1;
 }
 
+.toolCard {
+  overflow: hidden;
+}
+
 .toolIconBg {
   position: absolute;
   top: -10px;
@@ -637,6 +641,14 @@ html[data-theme='light'] .root .cardLink:hover {
   transform: rotate(14deg);
   transform-origin: 70% 20%;
   filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.12));
+}
+
+@media (max-width: 1024px) {
+  .toolIconBg {
+    right: 0;
+    width: clamp(96px, 24%, 148px);
+    height: clamp(96px, 24%, 148px);
+  }
 }
 
 .card:hover .toolIconBg {

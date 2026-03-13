@@ -56,15 +56,15 @@ function DownloadCard({
 
   return (
     disabled ? (
-      <div className={`${styles.card} ${styles.cardDisabled}`} aria-disabled="true">
+      <div className={`${styles.card} ${styles.cardDisabled} ${styles.toolCard}`} aria-disabled="true">
         {content}
       </div>
     ) : isExternal ? (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={styles.card}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={`${styles.card} ${styles.toolCard}`}>
         {content}
       </a>
     ) : (
-      <Link to={href} className={styles.card}>
+      <Link to={href} className={`${styles.card} ${styles.toolCard}`}>
         {content}
       </Link>
     )
@@ -87,7 +87,7 @@ export function HomepageDownloads() {
     },
     {
       title: "Карта сети",
-      description: "Публичная карта узлов и покрытий MeshWorks.",
+      description: "Публичная карта нод и покрытий MeshWorks.",
       href: "https://malla.meshworks.ru/",
       icon: "mapPin",
     },
