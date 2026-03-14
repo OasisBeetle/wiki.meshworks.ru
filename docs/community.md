@@ -51,6 +51,7 @@ breadcrumbs: ["База знаний Meshtastic", "Русскоязычные с
 | Кемерово | [@meshtastic_kmr](https://t.me/meshtastic_kmr) |
 | Киров | [@meshtastic_krv43](https://t.me/meshtastic_krv43) |
 | КМВ — Кавказские Минеральные Воды | [@meshtastic_kmv](https://t.me/meshtastic_kmv) |
+| Комсомольск-на-Амуре | [@meshtastic_kna](https://t.me/meshtastic_kna) |
 | Конаково | [@meshtastic_konakovo](https://t.me/meshtastic_konakovo) |
 | Краснодар | [@Meshtastic_RUS_KRD](https://t.me/Meshtastic_RUS_KRD) |
 | Красноярск | [@meshtastic_krsk](https://t.me/meshtastic_krsk) |
