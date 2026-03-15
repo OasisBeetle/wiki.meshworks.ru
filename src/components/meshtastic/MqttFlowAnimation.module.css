@@ -1,0 +1,109 @@
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 92%, transparent);
+}
+
+.inner {
+  padding: 12px;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  border-top: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 10%, transparent);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--ifm-font-color-base) 16%, transparent);
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 92%, transparent);
+  color: var(--ifm-font-color-base);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: color-mix(in srgb, var(--mesh-accent) 35%, var(--ifm-font-color-base) 14%);
+}
+
+.btnPrimary {
+  border-color: color-mix(in srgb, var(--mesh-accent) 38%, var(--ifm-font-color-base) 14%);
+}
+
+.label {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: color-mix(in srgb, var(--ifm-font-color-base) 68%, transparent);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ifm-font-color-base) 74%, transparent);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend i {
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+  border-radius: 999px;
+  font-style: normal;
+}
+
+.legendRoute {
+  background: var(--mesh-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--mesh-accent) 40%, transparent);
+}
+
+.legendPacket {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 999px !important;
+  background: var(--mesh-accent);
+}
+
+.legendBlock {
+  background: color-mix(in srgb, var(--mesh-accent) 44%, transparent);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .label {
+    margin-left: 0;
+    width: 100%;
+  }
+}
