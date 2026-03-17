@@ -63,7 +63,7 @@ description: "Поддержите MeshWorks: вики, инструменты, 
 
 Самый простой способ - поддержка на Boosty.
 
-## Если не хотите поддерживать деньгами
+## Если не можете / не хотите поддерживать деньгами
 
 <div className="sponsorGrid sponsorGrid--compact">
   <div className="sponsorInfoCard">
