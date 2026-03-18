@@ -1,5 +1,5 @@
 import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Sun, Wifi, Zap } from './icons/lucide';
+import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Share2, Sun, Wifi, Zap } from './icons/lucide';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
@@ -77,14 +77,42 @@ function openHrefInNewTab(href: string): void {
   window.open(href, '_blank', 'noopener,noreferrer');
 }
 
+function copyTextWithFallback(text: string): Promise<void> {
+  if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  textarea.style.pointerEvents = 'none';
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try {
+    document.execCommand('copy');
+  } finally {
+    document.body.removeChild(textarea);
+  }
+
+  return Promise.resolve();
+}
+
 function renderDeviceCard(
   device: DeviceItem,
   onPurchaseClick: (device: DeviceItem) => void,
+  onShareClick: (device: DeviceItem) => void,
+  copiedDeviceKey: string | null,
   opts?: { featured?: boolean },
 ): ReactNode {
   const featured = Boolean(opts?.featured);
   const ctaText = device.ctaLabel ?? 'Купить';
   const videoText = device.videoLabel ?? 'Видео';
+  const deviceKey = getDeviceKey(device);
+  const shareCopied = copiedDeviceKey === deviceKey;
+  const shareLabel = shareCopied ? 'Ссылка на устройство скопирована' : 'Поделиться';
 
   const hasBluetooth = device.badges.some((b) => b.label.toLowerCase().includes('bluetooth') && !b.off);
   const hasWifi = device.badges.some((b) => b.label.toLowerCase().includes('wi-fi') && !b.off);
@@ -121,8 +149,20 @@ function renderDeviceCard(
 
       <div className={styles.deviceContent}>
         <div className={styles.deviceHeader}>
-          <h3 className={styles.deviceTitle}>{device.title}</h3>
-          
+          <div className={styles.deviceHeadingRow}>
+            <h3 className={styles.deviceTitle}>{device.title}</h3>
+            <button
+              className={styles.shareButton}
+              type="button"
+              aria-label={shareLabel}
+              data-share-state={shareCopied ? 'copied' : 'idle'}
+              data-share-label={shareLabel}
+              onClick={() => onShareClick(device)}
+            >
+              <Share2 className={styles.shareIcon} aria-hidden="true" focusable="false" />
+            </button>
+          </div>
+
           <div className={styles.deviceFeatures}>
             <div className={`${styles.featureItem} ${hasBluetooth ? styles.featureActive : styles.featureInactive}`} title={hasBluetooth ? "Bluetooth есть" : "Bluetooth нет"}>
               <Bluetooth className={styles.featureIcon} />
@@ -172,7 +212,9 @@ export default function PortableCopyCatalog(): ReactNode {
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [sortOption, setSortOption] = useState<SortOption>('default');
   const [purchaseConfirmState, setPurchaseConfirmState] = useState<PurchaseConfirmState | null>(null);
+  const [copiedDeviceKey, setCopiedDeviceKey] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const shareResetTimerRef = useRef<number | null>(null);
 
   const isGlobalPriceSort = categoryFilter === 'all' && sortOption !== 'default';
 
@@ -259,6 +301,26 @@ export default function PortableCopyCatalog(): ReactNode {
     setPurchaseConfirmState({ device, open: true });
   };
 
+  const onShareClick = async (device: DeviceItem) => {
+    const nextCopiedKey = getDeviceKey(device);
+
+    try {
+      await copyTextWithFallback(device.href);
+      setCopiedDeviceKey(nextCopiedKey);
+
+      if (shareResetTimerRef.current) {
+        window.clearTimeout(shareResetTimerRef.current);
+      }
+
+      shareResetTimerRef.current = window.setTimeout(() => {
+        setCopiedDeviceKey((currentKey) => (currentKey === nextCopiedKey ? null : currentKey));
+        shareResetTimerRef.current = null;
+      }, 2200);
+    } catch {
+      setCopiedDeviceKey(null);
+    }
+  };
+
   const closePurchaseConfirm = () => setPurchaseConfirmState(null);
 
   const confirmPurchase = () => {
@@ -268,6 +330,14 @@ export default function PortableCopyCatalog(): ReactNode {
     }
     closePurchaseConfirm();
   };
+
+  useEffect(() => {
+    return () => {
+      if (shareResetTimerRef.current) {
+        window.clearTimeout(shareResetTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className={`${styles.catalog} ${styles.vibe} meshtastic-home`} aria-label="Каталог устройств Meshtastic">
@@ -280,7 +350,7 @@ export default function PortableCopyCatalog(): ReactNode {
                 <p className={styles.categoryMeta}>{featuredDevices.length} шт.</p>
               </header>
               <div className={styles.featuredGrid}>
-                {featuredDevices.map((device) => renderDeviceCard(device, onPurchaseClick, { featured: true }))}
+                {featuredDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, { featured: true }))}
               </div>
             </section>
           ) : null}
@@ -400,7 +470,7 @@ export default function PortableCopyCatalog(): ReactNode {
                     <p className={styles.categoryMeta}>{globallySortedDevices.length} шт.</p>
                   </header>
                   <div className={styles.deviceGrid}>
-                    {globallySortedDevices.map((device) => renderDeviceCard(device, onPurchaseClick))}
+                    {globallySortedDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}
                   </div>
                 </section>
               )
@@ -413,7 +483,7 @@ export default function PortableCopyCatalog(): ReactNode {
                     <h2 className={styles.categoryTitle}>{label}</h2>
                     <p className={styles.categoryMeta}>{devices.length} шт.</p>
                   </header>
-                  <div className={styles.deviceGrid}>{devices.map((device) => renderDeviceCard(device, onPurchaseClick))}</div>
+                  <div className={styles.deviceGrid}>{devices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}</div>
                 </section>
               ))
             )}

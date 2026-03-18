@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import PortableCopyCatalog from './PortableCopyCatalog';
 
@@ -12,6 +12,52 @@ function clickBuyForDevice(deviceTitle: string) {
 }
 
 describe('PortableCopyCatalog', () => {
+  it('copies device href from the share button with clipboard API and shows copied state', async () => {
+    const clipboardWriteText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText: clipboardWriteText },
+    });
+
+    render(<PortableCopyCatalog />);
+
+    const heading = screen.getByRole('heading', { name: 'ThinkNode M1' });
+    const card = heading.closest('article')!;
+    const shareButton = within(card).getByRole('button', { name: 'Поделиться' });
+
+    fireEvent.click(shareButton);
+
+    await waitFor(() => {
+      expect(clipboardWriteText).toHaveBeenCalledOnce();
+    });
+    expect(clipboardWriteText).toHaveBeenCalledWith(
+      'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008707258616.html',
+    );
+    expect(within(card).getByRole('button', { name: 'Ссылка на устройство скопирована' })).toBeInTheDocument();
+  });
+
+  it('falls back to document.execCommand when clipboard API is unavailable', async () => {
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: undefined,
+    });
+    const execCommandSpy = vi.fn(() => true);
+    Object.defineProperty(document, 'execCommand', {
+      configurable: true,
+      value: execCommandSpy,
+    });
+
+    render(<PortableCopyCatalog />);
+
+    const heading = screen.getByRole('heading', { name: 'ThinkNode M1' });
+    const card = heading.closest('article')!;
+    fireEvent.click(within(card).getByRole('button', { name: 'Поделиться' }));
+
+    await waitFor(() => {
+      expect(execCommandSpy).toHaveBeenCalledWith('copy');
+    });
+  });
+
   it('renders default sections and cards from multiple categories', () => {
     render(<PortableCopyCatalog />);
 

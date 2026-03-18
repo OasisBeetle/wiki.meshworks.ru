@@ -1,0 +1,310 @@
+.catalog {
+  --surface-bg: color-mix(in srgb, var(--ifm-background-surface-color) 92%, transparent);
+  --surface-bg-soft: color-mix(in srgb, var(--ifm-background-surface-color) 80%, transparent);
+  --surface-border: color-mix(in srgb, var(--ifm-color-emphasis-300) 72%, transparent);
+  --text-main: var(--ifm-font-color-base);
+  --text-muted: var(--ifm-color-emphasis-700);
+  --mesh-accent: #c9ff42;
+  display: grid;
+  gap: 18px;
+}
+
+.intro {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid var(--surface-border);
+  border-radius: 22px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-bg) 88%, transparent), var(--surface-bg-soft));
+}
+
+.introTitle {
+  margin: 0;
+  font-size: clamp(1.45rem, 2vw, 1.95rem);
+  line-height: 1.15;
+}
+
+.introText {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.controlBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  background: var(--surface-bg);
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.filterButton:hover,
+.filterButtonActive {
+  color: var(--text-main);
+  border-color: color-mix(in srgb, var(--mesh-accent) 48%, var(--surface-border));
+  background: color-mix(in srgb, var(--mesh-accent) 10%, transparent);
+}
+
+.sortWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.sortSelect {
+  min-width: 180px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  background: var(--surface-bg-soft);
+  color: var(--text-main);
+  font: inherit;
+}
+
+.section {
+  display: grid;
+  gap: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.sectionMeta {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--surface-border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--surface-bg);
+}
+
+.media {
+  aspect-ratio: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-bg-soft) 95%, transparent), color-mix(in srgb, var(--surface-bg) 84%, transparent));
+}
+
+.image {
+  max-width: min(82%, 220px);
+  max-height: 160px;
+  object-fit: contain;
+}
+
+.content {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.headingRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding-right: 48px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.shareButton {
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  margin-top: 0;
+  border: 1px solid color-mix(in srgb, var(--mesh-accent) 30%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mesh-accent) 10%, transparent);
+  color: #96d119;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.shareButton::after {
+  content: attr(data-share-label);
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: max-content;
+  max-width: min(240px, 50vw);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(8, 16, 24, 0.94);
+  color: #f5fbff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.shareButton:hover::after,
+.shareButton:focus-visible::after,
+.shareButton[data-share-state='copied']::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shareIcon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.15;
+}
+
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ifm-color-emphasis-200) 72%, transparent);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.desc {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 13.5px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 102px;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e2b02;
+  background: var(--mesh-accent);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.cta:hover {
+  text-decoration: none;
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.emptyState {
+  margin: 0;
+  padding: 20px;
+  border: 1px dashed var(--surface-border);
+  border-radius: 18px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .controlBar {
+    align-items: stretch;
+  }
+
+  .sortWrap {
+    width: 100%;
+  }
+
+  .sortSelect {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta {
+    width: 100%;
+  }
+}

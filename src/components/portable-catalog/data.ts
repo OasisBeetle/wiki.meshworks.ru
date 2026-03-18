@@ -18,7 +18,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Подходит для портативных узлов, выездных ретрансляторов и походной навигации.',
       ],
       price: '≈ 5 800 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008707258616.html',
+      href: 'https://ali.click/iqp631v?erid=2SDnjdGLkt9',
       tech: 'NRF',
     },
     {
@@ -31,7 +31,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Хороший вариант для мобильных ретрансляторов, трекинга и длительного полевого использования.',
       ],
       price: '≈ 4 500 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008285553299.html',
+      href: 'https://ali.click/gop6314?erid=2SDnjbqKT6q',
       tech: 'NRF',
     },
     {
@@ -44,7 +44,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Удобно как повседневная портативная нода «из коробки».',
       ],
       price: '≈ 7 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009843602899.html?sku_id=12000050338284877',
+      href: 'https://ali.click/orp631d?erid=2SDnjdyrQmo',
       tech: 'NRF',
     },
     {
@@ -57,7 +57,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Часто выбирают для походов, трекинга и длительных выездов без частой подзарядки.',
       ],
       price: '≈ 5 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005003026107533.html?sku_id=12000037263598515',
+      href: 'https://ali.click/btp631w?erid=2SDnjexBwUu',
       tech: 'NRF',
     },
     {
@@ -70,7 +70,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Подходит для выездных станций, навигации и трекинга.',
       ],
       price: '≈ 6 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009183237292.html',
+      href: 'https://ali.click/cup631b?erid=2SDnjcLyYDf',
       tech: 'NRF',
     },
     {
@@ -83,7 +83,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Функционально и удобно в поле, но потребляет больше энергии, чем nRF-решения.',
       ],
       price: '≈ 8 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009074862574.html',
+      href: 'https://ali.click/dvp631v?erid=2SDnjcubGRF',
       tech: 'ESP',
     },
     {
@@ -96,7 +96,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Удобен для повседневного ношения, локальных тестов и личной связи.',
       ],
       price: '≈ 8 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010626680107.html?sku_id=12000053015231956',
+      href: 'https://ali.click/2wp631a?erid=2SDnjdGM6N5',
       tech: 'ESP',
     },
     {
@@ -109,7 +109,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Небольшой размер и хорошая автономность делают её удобной как «личный клиент» Meshtastic.',
       ],
       price: '≈ 5 500 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010115422665.html',
+      href: 'https://ali.click/typ631s?erid=2SDnjeftQs3',
       tech: 'NRF',
     },
     {
@@ -122,7 +122,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Батарея покупается отдельно, хорошо подходит для сценариев, где нужен дисплей и расширенное управление.',
       ],
       price: '≈ 7 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010610881189.html',
+      href: 'https://ali.click/yzp6315?erid=2SDnjbqL84h',
       tech: 'ESP',
     },
     {
@@ -135,7 +135,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Требует самостоятельной сборки, батарея покупается отдельно.',
       ],
       price: '≈ 3 200 ₽',
-      href: 'https://trk.ppdu.ru/click?uid=297663&oid=1393&erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010710909444.html?sku_id=12000053289529151',
+      href: 'https://ali.click/82q631h?erid=2SDnjcubbuB',
       tech: 'ESP',
     },
     {
@@ -148,7 +148,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Рекомендуется для специальных сценариев вне плотной городской сети, где действительно нужна повышенная мощность.',
       ],
       price: '≈ 5 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005011566811117.html?sku_id=12000055940254344',
+      href: 'https://ali.click/83q631v?erid=2SDnjdLoPh3',
       purchaseConfirm: {
         title: 'Внимание: повышенная мощность',
         description:
@@ -168,7 +168,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Оснащается увеличенной батареей и подходит для портативных сценариев.',
       ],
       price: '≈ 6 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010658273299.html?sku_id=12000053102647412',
+      href: 'https://ali.click/4vq631l?erid=2SDnjbosUi5',
       tech: 'NRF',
     },
   ],
@@ -183,7 +183,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Хорошо подходит для ретрансляторов, сенсорных узлов и длительной уличной установки.',
       ],
       price: '≈ 6 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008487010403.html?sku_id=12000045362595840',
+      href: 'https://ali.click/9cq631m?erid=2SDnjdswU6D',
       tech: 'ESP',
     },
     {
@@ -196,7 +196,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'В зимних условиях штатной панели может быть недостаточно, лучше ориентироваться на сезонные сценарии.',
       ],
       price: '≈ 2 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009348506226.html',
+      href: 'https://ali.click/ugq631l?erid=2SDnjcnCLTK',
       tech: 'NRF',
     },
     {
@@ -209,7 +209,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Прочный форм-фактор и низкое энергопотребление подходят для удалённых стационарных узлов.',
       ],
       price: '≈ 7 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008917538805.html',
+      href: 'https://ali.click/qhq631e?erid=2SDnjd8xAQ9',
       tech: 'NRF',
     },
   ],
@@ -224,7 +224,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Часто используется в сенсорных, экспериментальных и стационарных DIY-нодах.',
       ],
       price: '≈ 1 500 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005005167194386.html?sku_id=12000053102600837',
+      href: 'https://ali.click/ziq631d?erid=2SDnjdd7vkh',
       tech: 'ESP',
       popular: true,
       videoHref: 'https://www.youtube.com/watch?v=puI6pSaGfsc',
@@ -240,7 +240,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Подходит для автономных узлов, ретрансляторов и компактных DIY-сборок.',
       ],
       price: '≈ 2 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010240170641.html?sku_id=12000051648938770',
+      href: 'https://ali.click/1kq631v?erid=2SDnje2qjGD',
       tech: 'ESP',
       popular: true,
     },
@@ -269,7 +269,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Удобный вариант, если нужна готовая «коробка» с минимальной доработкой.',
       ],
       price: '≈ 3 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005010541842471.html',
+      href: 'https://ali.click/3lq631s?erid=2SDnjeU3X45',
       tech: 'ESP',
     },
     {
@@ -282,7 +282,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Часто выбирают как энергоэффективную основу для походных устройств.',
       ],
       price: '≈ 3 300 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005007606217987.html?sku_id=12000041525323008',
+      href: 'https://ali.click/rnq631y?erid=2SDnjc7ezcH',
       tech: 'NRF',
     },
     {
@@ -295,7 +295,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Подходит для проектов, где важны цена и автономность nRF-платформы.',
       ],
       price: '≈ 2 200 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005007606217987.html?sku_id=12000041525323004',
+      href: 'https://ali.click/9mq6316?erid=2SDnjerHLHF',
       tech: 'NRF',
     },
     {
@@ -308,7 +308,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Сочетает хорошую автономность, компактность и удобство чтения на солнце.',
       ],
       price: '≈ 3 900 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005009761846970.html?sku_id=12000050080989087',
+      href: 'https://ali.click/kpq631h?erid=2SDnjckigeu',
       tech: 'NRF',
     },
     {
@@ -321,7 +321,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Удобна для полевых узлов, автомобильных станций и тестов с полной автономностью.',
       ],
       price: '≈ 3 500 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/4001327258427.html',
+      href: 'https://ali.click/kqq631j?erid=2SDnjd8xVt5',
       tech: 'ESP',
     },
     {
@@ -334,7 +334,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Простая интеграция и компактный размер делают её удобной для стационарных сборок.',
       ],
       price: '≈ 1 300 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005005164228272.html?sku_id=12000052709350125',
+      href: 'https://ali.click/trq6312?erid=2SDnjdbeGxH',
       tech: 'ESP',
     },
     {
@@ -347,7 +347,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Подходит, когда нужен дисплей с отличной читаемостью и умеренным энергопотреблением.',
       ],
       price: '≈ 1 500 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005007747207784.html',
+      href: 'https://ali.click/5sq631u?erid=2SDnjdoWBD3',
       tech: 'ESP',
     },
     {
@@ -360,7 +360,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Хороший компромисс между компактностью, функциональностью и стоимостью.',
       ],
       price: '≈ 1 800 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005008313343925.html?sku_id=12000044582560216',
+      href: 'https://ali.click/3tq631w?erid=2SDnjeDDyiZ',
       tech: 'ESP',
     },
     {
@@ -373,7 +373,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
         'Подходит для переносных и стационарных узлов, сенсорных станций и выездных стендов.',
       ],
       price: '≈ 2 000 ₽',
-      href: 'https://trk.ppdu.ru/click/1n1oBoWn?erid=2SDnjcM2X3K&sub1=wki&tl=https://aliexpress.ru/item/1005004627139838.html?sku_id=12000046417790024',
+      href: 'https://ali.click/xvq631g?erid=2SDnjc99KNZ',
       tech: 'ESP',
     },
   ],

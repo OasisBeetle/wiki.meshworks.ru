@@ -418,9 +418,11 @@
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
-  color: hsl(var(--btn-primary-foreground, 0 0% 100%));
-  background: hsl(var(--btn-primary, 99 100% 26%));
-  box-shadow: 0 12px 36px color-mix(in srgb, #000 18%, transparent);
+  color: color-mix(in srgb, var(--mesh-accent) 78%, #ffffff);
+  background: color-mix(in srgb, var(--mesh-accent) 12%, rgba(7, 14, 20, 0.82));
+  border: 1px solid color-mix(in srgb, var(--mesh-accent) 26%, transparent);
+  box-shadow: 0 8px 24px color-mix(in srgb, #000 14%, transparent);
+  backdrop-filter: blur(10px);
 }
 
 @keyframes wobbleShipping {
@@ -506,12 +508,169 @@
   min-width: 0;
 }
 
+.deviceHeadingRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
 .deviceTitle {
   margin: 0;
   font-size: 19px;
   font-weight: 700;
   line-height: 1.2;
   overflow-wrap: anywhere;
+}
+
+.shareButton {
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-top: 4px;
+  border: 1px solid color-mix(in srgb, var(--mesh-accent) 30%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mesh-accent) 10%, transparent);
+  color: var(--mesh-accent);
+  cursor: pointer;
+  transform-origin: center;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.shareButton::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(circle, color-mix(in srgb, var(--mesh-accent) 30%, transparent) 0%, transparent 72%);
+  opacity: 0;
+  transform: scale(0.72);
+  pointer-events: none;
+}
+
+.shareButton::after {
+  content: attr(data-share-label);
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: max-content;
+  max-width: min(240px, 48vw);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(8, 16, 24, 0.94);
+  color: #f5fbff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  z-index: 3;
+}
+
+.shareButton:hover,
+.shareButton:focus-visible {
+  border-color: color-mix(in srgb, var(--mesh-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--mesh-accent) 18%, transparent);
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--mesh-accent) 14%, transparent);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.shareButton:hover::after,
+.shareButton:focus-visible::after,
+.shareButton[data-share-state='copied']::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shareButton:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.shareButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--mesh-accent) 72%, transparent);
+  outline-offset: 2px;
+}
+
+.shareButton[data-share-state='copied'] {
+  border-color: color-mix(in srgb, var(--mesh-accent) 70%, transparent);
+  background: color-mix(in srgb, var(--mesh-accent) 22%, transparent);
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--mesh-accent) 18%, transparent);
+  animation: shareButtonPop 0.42s cubic-bezier(0.2, 0.9, 0.2, 1.15);
+}
+
+.shareButton[data-share-state='copied']::before {
+  animation: shareButtonHalo 0.58s ease-out;
+}
+
+.shareButton[data-share-state='copied'] .shareIcon {
+  animation: shareIconWiggle 0.42s cubic-bezier(0.2, 0.9, 0.2, 1.15);
+}
+
+.shareIcon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.15;
+}
+
+@keyframes shareButtonPop {
+  0% {
+    transform: scale(0.94);
+  }
+
+  55% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shareButtonHalo {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+
+  35% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes shareIconWiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  35% {
+    transform: rotate(-14deg) scale(1.06);
+  }
+
+  68% {
+    transform: rotate(10deg) scale(1.02);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
 }
 
 .deviceFeatures {
@@ -993,6 +1152,15 @@
 
   .deviceTitle {
     font-size: 19px;
+  }
+
+  .deviceHeadingRow {
+    gap: 10px;
+  }
+
+  .shareButton {
+    width: 32px;
+    height: 32px;
   }
 
   .deviceDesc {
