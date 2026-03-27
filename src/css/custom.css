@@ -2,6 +2,7 @@
  * Global theme overrides for Docusaurus classic.
  */
 
+@import './local-fonts.css';
 @import './theme-tokens.css';
 @import './meshtastic-home.css';
 

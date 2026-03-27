@@ -26,52 +26,6 @@ if (typeof globalThis !== 'undefined' && 'localStorage' in globalThis) {
 
 const enablePwa = process.env.NODE_ENV === 'production';
 const enableRsdoctor = process.env.RSDOCTOR === 'true' || process.env.RSDOCTOR === '1';
-const materialSymbolsIconNames = [
-  'account_tree',
-  'apps',
-  'auto_stories',
-  'bug_report',
-  'build',
-  'cell_tower',
-  'checklist',
-  'description',
-  'developer_board',
-  'devices',
-  'explore',
-  'extension',
-  'folder',
-  'forum',
-  'gavel',
-  'grade',
-  'grid_3x3',
-  'groups',
-  'hub',
-  'info',
-  'inventory_2',
-  'keyboard',
-  'lan',
-  'library_books',
-  'lightbulb',
-  'menu_book',
-  'quiz',
-  'rocket_launch',
-  'route',
-  'schema',
-  'security',
-  'settings_input_antenna',
-  'settings_suggest',
-  'swap_horiz',
-  'system_update_alt',
-  'task_alt',
-  'tune',
-  'visibility',
-  'warning',
-  'warning_amber',
-].join(',');
-const materialSymbolsUrl =
-  `https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0` +
-  `&icon_names=${materialSymbolsIconNames}&display=block`;
-
 const config: Config = {
   title: 'MeshWorks',
   tagline: 'База знаний MeshWorks',
@@ -156,21 +110,6 @@ const config: Config = {
         ],
       }),
     },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossOrigin: 'anonymous',
-      },
-    },
   ],
   future: {
     v4: true,
@@ -178,11 +117,7 @@ const config: Config = {
   url: 'https://wiki.meshworks.ru',
   baseUrl: '/',
   trailingSlash: false,
-  stylesheets: [
-    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap',
-    'https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&display=swap',
-    materialSymbolsUrl,
-  ],
+  stylesheets: [],
   organizationName: 'meshworks',
   projectName: 'wiki',
   onBrokenLinks: 'throw',

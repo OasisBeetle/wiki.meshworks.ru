@@ -76,7 +76,7 @@ Before editing, inspect:
 - `@easyops-cn/docusaurus-search-local` is currently trimmed intentionally:
   - `indexPages: false`
   - `language: ['ru']`
-- `Material Symbols Rounded` is intentionally subsetted via `icon_names` in `docusaurus.config.ts`.
+- Google Fonts are intentionally self-hosted from `static/fonts/`; do not reintroduce `fonts.googleapis.com` or `fonts.gstatic.com` into the critical path without a strong reason.
 - `@docusaurus/plugin-rsdoctor` is opt-in only through `RSDOCTOR=true` and should not be enabled by default in normal builds.
 
 ## Perf notes

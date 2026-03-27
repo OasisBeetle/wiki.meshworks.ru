@@ -4,6 +4,8 @@ import path from 'node:path';
 const BUILD_DIR = path.resolve(process.cwd(), 'build');
 const BANNED_HTML_SNIPPETS = [
   'family=Onest',
+  'fonts.googleapis.com',
+  'fonts.gstatic.com',
 ];
 const IDEAL_IMAGE_PAGES = [
   path.join(BUILD_DIR, 'introduction', 'index.html'),
