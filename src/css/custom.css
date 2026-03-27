@@ -1306,6 +1306,14 @@ kbd.searchHint_iIMx {
   min-width: 0;
 }
 
+.mwNavbar .mwSearchDesktop .navbar__search-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  text-decoration: none !important;
+}
+
 .mwNavbar .navbar__search-input {
   height: 38px;
   width: 100%;
@@ -1316,6 +1324,12 @@ kbd.searchHint_iIMx {
   color: var(--mw-text);
   padding: 0 12px;
   box-shadow: none;
+}
+
+.mwSearchPageLabel {
+  color: var(--mw-muted);
+  font-size: 14px;
+  line-height: 1;
 }
 
 .mwNavbar .navbar__search-input::placeholder {
@@ -1341,12 +1355,6 @@ kbd.searchHint_iIMx {
   gap: 8px;
   text-decoration: none !important;
   cursor: pointer;
-}
-
-.mwMobileSearchLabel {
-  color: var(--mw-muted);
-  font-size: 14px;
-  line-height: 1;
 }
 
 .mwMobileSearchIcon {
@@ -1487,42 +1495,6 @@ kbd.searchHint_iIMx {
     transform: none;
     width: auto;
   }
-}
-
-/* === Social Navbar Icons === */
-.navbar-icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.1rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  margin: 0;
-  font-weight: 500;
-}
-
-[data-theme='light'] .navbar-icon {
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.navbar-icon::before {
-  font-family: 'Material Symbols Rounded';
-  font-size: 1.2rem;
-  line-height: 1;
-  color: currentColor;
-}
-
-.navbar-icon svg,
-.navbar-icon [class*='iconExternalLink'] {
-  display: none !important;
-}
-
-.navbar-icon--telegram::before {
-  content: 'send';
-}
-
-.navbar-icon--youtube::before {
-  content: 'smart_display';
 }
 
 /* =========================

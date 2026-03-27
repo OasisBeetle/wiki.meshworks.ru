@@ -11,3 +11,6 @@ screenshots/
 coverage/
 .vitest/
 *.tsbuildinfo
+output/
+test-results/
+playwright-report/

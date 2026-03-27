@@ -328,4 +328,16 @@ describe('PortableCopyCatalog', () => {
       expect(within(boardsSection).getAllByRole('heading', { level: 3 })).toHaveLength(6);
     });
   });
+
+  it('keeps only the first mobile catalog image eager on the initial render', () => {
+    mockMatchMedia(true);
+
+    render(<PortableCopyCatalog />);
+
+    const eagerImages = screen
+      .getAllByRole('img')
+      .filter((image) => image.getAttribute('loading') === 'eager');
+
+    expect(eagerImages).toHaveLength(1);
+  });
 });

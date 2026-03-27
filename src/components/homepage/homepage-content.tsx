@@ -1,19 +1,82 @@
 import { EcosystemStats } from "@/components/homepage/ecosystem-stats";
-import { HomepageDownloads } from "@/components/homepage/homepage-downloads";
-import { HomepageFeatures } from "@/components/homepage/homepage-features";
-import { NetworkMapBackground } from "@/components/homepage/network-map-background";
+import { useMobileBreakpoint } from "@/hooks/use-mobile-breakpoint";
 import { FileText } from "@/components/icons/lucide";
 import Link from "@docusaurus/Link";
-import React from "react";
+import React, { Suspense, startTransition, useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./homepage.module.css";
 
+const DeferredHomepageFeatures = React.lazy(async () => {
+  const module = await import("./homepage-features");
+  return { default: module.HomepageFeatures };
+});
+
+const DeferredHomepageDownloads = React.lazy(async () => {
+  const module = await import("./homepage-downloads");
+  return { default: module.HomepageDownloads };
+});
+
+const DeferredNetworkMapBackground = React.lazy(async () => {
+  const module = await import("./network-map-background");
+  return { default: module.NetworkMapBackground };
+});
+
 export function HomePageContent() {
+  const isMobile = useMobileBreakpoint();
+  const [hasHydrated, setHasHydrated] = useState(false);
+  const [showDeferredSections, setShowDeferredSections] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    let active = true;
+    let timeoutId: number | null = null;
+    let idleId: number | null = null;
+
+    const schedule = () => {
+      startTransition(() => {
+        if (!active) {
+          return;
+        }
+
+        setShowDeferredSections(true);
+        setShowBackground(!window.matchMedia("(max-width: 996px)").matches);
+      });
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      idleId = window.requestIdleCallback(schedule, { timeout: 350 }) as unknown as number;
+    } else {
+      timeoutId = window.setTimeout(schedule, 1);
+    }
+
+    return () => {
+      active = false;
+      if (idleId !== null && typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
+  const shouldRenderBackground = hasHydrated && showBackground && !isMobile;
+
   return (
     <div className={clsx("meshtastic-home", styles.root)}>
-      <div aria-hidden="true" className={styles.canvas}>
-        <NetworkMapBackground />
-      </div>
+      {shouldRenderBackground ? (
+        <div aria-hidden="true" className={styles.canvas}>
+          <Suspense fallback={null}>
+            <DeferredNetworkMapBackground />
+          </Suspense>
+        </div>
+      ) : null}
 
       <main className={clsx("container", styles.main)}>
         <div className={styles.slides}>
@@ -77,11 +140,23 @@ export function HomePageContent() {
           </section>
 
           <section className={clsx(styles.slide, styles.section)} aria-label="Scenarios">
-            <HomepageFeatures />
+            <div className={styles.deferredSection} data-deferred-ready={showDeferredSections ? "true" : "false"}>
+              {showDeferredSections ? (
+                <Suspense fallback={null}>
+                  <DeferredHomepageFeatures />
+                </Suspense>
+              ) : null}
+            </div>
           </section>
 
           <section className={clsx(styles.slide, styles.section)} aria-label="Clients">
-            <HomepageDownloads />
+            <div className={styles.deferredSection} data-deferred-ready={showDeferredSections ? "true" : "false"}>
+              {showDeferredSections ? (
+                <Suspense fallback={null}>
+                  <DeferredHomepageDownloads />
+                </Suspense>
+              ) : null}
+            </div>
           </section>
         </div>
       </main>

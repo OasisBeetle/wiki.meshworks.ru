@@ -6,7 +6,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build && node scripts/postbuild-add-indexes.mjs && node scripts/verify-build-indexes.mjs",
+    "build": "docusaurus build && node scripts/postbuild-add-indexes.mjs && node scripts/verify-build-indexes.mjs && node scripts/verify-build-perf.mjs",
+    "build:analyze": "RSDOCTOR=true npm run build",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -25,6 +26,7 @@
     "@docusaurus/plugin-google-gtag": "3.9.2",
     "@docusaurus/plugin-ideal-image": "3.9.2",
     "@docusaurus/plugin-pwa": "3.9.2",
+    "@docusaurus/plugin-rsdoctor": "^3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
     "@easyops-cn/docusaurus-search-local": "^0.52.1",
     "@mdx-js/react": "^3.0.0",

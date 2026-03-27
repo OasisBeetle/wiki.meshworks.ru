@@ -25,6 +25,52 @@ if (typeof globalThis !== 'undefined' && 'localStorage' in globalThis) {
 }
 
 const enablePwa = process.env.NODE_ENV === 'production';
+const enableRsdoctor = process.env.RSDOCTOR === 'true' || process.env.RSDOCTOR === '1';
+const materialSymbolsIconNames = [
+  'account_tree',
+  'apps',
+  'auto_stories',
+  'bug_report',
+  'build',
+  'cell_tower',
+  'checklist',
+  'description',
+  'developer_board',
+  'devices',
+  'explore',
+  'extension',
+  'folder',
+  'forum',
+  'gavel',
+  'grade',
+  'grid_3x3',
+  'groups',
+  'hub',
+  'info',
+  'inventory_2',
+  'keyboard',
+  'lan',
+  'library_books',
+  'lightbulb',
+  'menu_book',
+  'quiz',
+  'rocket_launch',
+  'route',
+  'schema',
+  'security',
+  'settings_input_antenna',
+  'settings_suggest',
+  'swap_horiz',
+  'system_update_alt',
+  'task_alt',
+  'tune',
+  'visibility',
+  'warning',
+  'warning_amber',
+].join(',');
+const materialSymbolsUrl =
+  `https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0` +
+  `&icon_names=${materialSymbolsIconNames}&display=block`;
 
 const config: Config = {
   title: 'MeshWorks',
@@ -134,8 +180,8 @@ const config: Config = {
   trailingSlash: false,
   stylesheets: [
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap',
-    'https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=Unbounded:wght@400;500;600&display=swap',
-    'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap',
+    'https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&display=swap',
+    materialSymbolsUrl,
   ],
   organizationName: 'meshworks',
   projectName: 'wiki',
@@ -201,9 +247,9 @@ const config: Config = {
       {
         hashed: true,
         indexDocs: true,
-        indexPages: true,
+        indexPages: false,
         docsRouteBasePath: '/',
-        language: ['ru', 'en'],
+        language: ['ru'],
       },
     ],
     [
@@ -233,6 +279,7 @@ const config: Config = {
         editUrl: 'https://github.com/MeshWorksRussia/wiki.meshworks.ru/edit/main/',
       },
     ],
+    ...(enableRsdoctor ? ['@docusaurus/plugin-rsdoctor'] : []),
     ...(enablePwa
       ? ([
           [

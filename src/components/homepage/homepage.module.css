@@ -52,6 +52,11 @@
   padding-block: clamp(1.25rem, 2vw, 2rem);
 }
 
+.deferredSection {
+  content-visibility: auto;
+  contain-intrinsic-size: 960px;
+}
+
 .slide::before {
   content: "";
   position: absolute;

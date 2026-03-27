@@ -265,6 +265,10 @@
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
 }
 
+.helpStripDesktop {
+  display: grid;
+}
+
 .helpBlock {
   min-width: 0;
 }
@@ -303,6 +307,53 @@
 .helpList strong {
   color: var(--text-main);
   font-weight: 650;
+}
+
+.helpCompact {
+  display: none;
+  margin: 0;
+  padding: var(--surface-pad);
+  border: 0;
+  border-radius: calc(var(--surface-radius) + 2px);
+  background: var(--surface-bg-soft);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+}
+
+.helpCompactSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  list-style: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--text-main);
+}
+
+.helpCompactSummary::-webkit-details-marker {
+  display: none;
+}
+
+.helpCompactSummary::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.helpCompact[open] .helpCompactSummary::after {
+  transform: rotate(-135deg) translateY(-1px);
+}
+
+.helpCompactContent {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
 }
 
 /* === Device Panels === */
@@ -1335,7 +1386,8 @@
   }
 
   .controlBar,
-  .helpStrip {
+  .helpStrip,
+  .helpCompact {
     background: var(--surface-bg);
   }
 
@@ -1361,6 +1413,14 @@
 
   .helpStrip {
     grid-template-columns: 1fr;
+  }
+
+  .helpStripDesktop {
+    display: none;
+  }
+
+  .helpCompact {
+    display: block;
   }
 
   .filterButtons.filterControlChips {

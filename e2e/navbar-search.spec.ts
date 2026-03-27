@@ -20,13 +20,7 @@ async function visibleVariantNames(page: Page): Promise<string[]> {
 
 async function visibleControlCount(page: Page): Promise<number> {
   return page
-    .locator(
-      [
-        '[data-search-variant="desktop"] .DocSearch-Button',
-        '[data-search-variant="desktop"] .navbar__search-input',
-        '[data-search-variant="mobile"] .mwMobileSearchTrigger',
-      ].join(', '),
-    )
+    .locator('[data-search-trigger="page"]')
     .evaluateAll((nodes) =>
       nodes.filter((node) => {
         const element = node as HTMLElement;
@@ -61,17 +55,19 @@ test('desktop navbar search', async ({ page }) => {
   await openAndReload(page, '/introduction', { width: 1280, height: 900 });
 
   await expectSingleVisibleSearchVariant(page, 'desktop');
+  await assertSearchPageNavigation(page.locator('[data-search-variant="desktop"] [data-search-trigger="page"]'), page);
 });
 
 test('mobile navbar search', async ({ page }) => {
   await openAndReload(page, '/introduction', { width: 390, height: 844 });
 
   await expectSingleVisibleSearchVariant(page, 'mobile');
-  await assertSearchPageNavigation(page.getByRole('link', { name: 'Открыть поиск' }), page);
+  await assertSearchPageNavigation(page.locator('[data-search-variant="mobile"] [data-search-trigger="page"]'), page);
 });
 
 test('shared layout smoke', async ({ page }) => {
   await openAndReload(page, '/about', { width: 1280, height: 900 });
 
   await expectSingleVisibleSearchVariant(page, 'desktop');
+  await assertSearchPageNavigation(page.locator('[data-search-variant="desktop"] [data-search-trigger="page"]'), page);
 });

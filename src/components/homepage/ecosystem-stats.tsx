@@ -1,8 +1,8 @@
 import { ArrowRight, Download, Radio, SmartphoneIcon, Terminal } from "@/components/icons/lucide";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import type React from "react";
-import { useEffect, useMemo, useState } from "react";
+import React from "react";
+import { useMemo } from "react";
 import styles from "./homepage.module.css";
 
 interface StatItemProps {
@@ -17,6 +17,7 @@ function StatItem({ icon, title, description, href, variant }: StatItemProps) {
   return (
     <Link
       to={href}
+      data-stat-item={variant}
       className={clsx(
         styles.card,
         styles.statCard,
@@ -64,13 +65,6 @@ export function EcosystemStats() {
     [],
   );
 
-  const [bottomOrder, setBottomOrder] = useState(bottomCards);
-
-  useEffect(() => {
-    if (Math.random() < 0.5) return;
-    setBottomOrder([bottomCards[1], bottomCards[0]]);
-  }, [bottomCards]);
-
   return (
     <div className={styles.grid2}>
       <StatItem
@@ -88,7 +82,7 @@ export function EcosystemStats() {
         variant="setup"
       />
 
-      {bottomOrder.map((card) => (
+      {bottomCards.map((card) => (
         <StatItem key={card.title} {...card} />
       ))}
     </div>

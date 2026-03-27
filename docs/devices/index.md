@@ -7,13 +7,16 @@ sidebar_position: 2
 breadcrumbs: ["База знаний Meshtastic", "Типы устройств"]
 ---
 
+import IdealImage from '@theme/IdealImage';
+import DevicesOverview from '@site/static/img/wiki/devices-overview.png';
+
 ::::warning
 **Готовые устройства перенесены в общий [Каталог устройств](/catalog-devices).**
 
 Используйте фильтры в каталоге, чтобы выбрать нужный тип ноды и чип.
 ::::
 
-<img src="/img/wiki/devices-overview.png" alt="Devices overview" class="docImage" />
+<IdealImage img={DevicesOverview} alt="Devices overview" className="docImage" />
 
 ## **Готовые и DIY-ноды Meshtastic — в чём разница**
 

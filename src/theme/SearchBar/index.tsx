@@ -1,9 +1,6 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import OriginalSearchBar from '@theme-original/SearchBar';
-
-type SearchBarProps = React.ComponentProps<typeof OriginalSearchBar>;
 
 function SearchIcon(): React.JSX.Element {
   return (
@@ -21,24 +18,42 @@ function SearchIcon(): React.JSX.Element {
   );
 }
 
-export default function SearchBar(props: SearchBarProps): React.JSX.Element {
+type SearchVariant = 'desktop' | 'mobile';
+
+function SearchPageTrigger({
+  searchPageUrl,
+  variant,
+}: {
+  searchPageUrl: string;
+  variant: SearchVariant;
+}): React.JSX.Element {
+  const variantClassName =
+    variant === 'desktop' ? 'mwSearchPageTrigger' : 'mwSearchPageTrigger mwMobileSearchTrigger';
+
+  return (
+    <Link
+      to={searchPageUrl}
+      className={`navbar__search-input ${variantClassName}`}
+      aria-label="Открыть поиск"
+      title="Открыть поиск"
+      data-search-trigger="page"
+    >
+      <SearchIcon />
+      <span className="mwSearchPageLabel">Поиск</span>
+    </Link>
+  );
+}
+
+export default function SearchBar(): React.JSX.Element {
   const searchPageUrl = useBaseUrl('/search');
 
   return (
     <>
-      <div className="mwSearchDesktop" dir="ltr" data-search-variant="desktop">
-        <OriginalSearchBar {...props} />
+      <div className="navbar__search mwSearchDesktop" dir="ltr" data-search-variant="desktop">
+        <SearchPageTrigger searchPageUrl={searchPageUrl} variant="desktop" />
       </div>
       <div className="navbar__search mwMobileSearch" dir="ltr" data-search-variant="mobile">
-        <Link
-          to={searchPageUrl}
-          className="navbar__search-input mwMobileSearchTrigger"
-          aria-label="Открыть поиск"
-          title="Открыть поиск"
-        >
-          <SearchIcon />
-          <span className="mwMobileSearchLabel">Поиск</span>
-        </Link>
+        <SearchPageTrigger searchPageUrl={searchPageUrl} variant="mobile" />
       </div>
     </>
   );

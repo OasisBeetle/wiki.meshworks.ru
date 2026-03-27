@@ -247,6 +247,7 @@ export default function PortableCopyCatalog(): ReactNode {
 
   const isGlobalPriceSort = categoryFilter === 'all' && sortOption !== 'default';
   const shouldLimitInitialRender = !hasHydrated || isMobile;
+  const prioritizedImageCount = shouldLimitInitialRender ? 1 : EAGER_IMAGE_COUNT;
 
   const featuredDevices = useMemo(() => {
     const all: Array<{ category: DeviceCategory; device: DeviceItem }> = [];
@@ -448,6 +449,42 @@ export default function PortableCopyCatalog(): ReactNode {
     );
   };
 
+  const renderHelpBlocks = () => (
+    <>
+      <div className={styles.helpBlock}>
+        <p className={styles.helpTitle}>Тип ноды</p>
+        <ul className={styles.helpList}>
+          <li className={styles.helpItem}>
+            <Compass className={styles.helpIcon} />
+            <span><strong>Готовые</strong> - готовые переносные ноды.</span>
+          </li>
+          <li className={styles.helpItem}>
+            <Sun className={styles.helpIcon} />
+            <span><strong>Солнечные</strong> - автономные комплекты для стационара.</span>
+          </li>
+          <li className={styles.helpItem}>
+            <Cpu className={styles.helpIcon} />
+            <span><strong>Платы</strong> - платы и проекты для самостоятельной сборки нод.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div className={styles.helpBlock}>
+        <p className={styles.helpTitle}>Чип-платформы</p>
+        <ul className={styles.helpList}>
+          <li className={styles.helpItem}>
+            <Battery className={styles.helpIcon} />
+            <span><strong>NRF</strong> - ниже мощность, выше автономность, лучше для батарейных нод.</span>
+          </li>
+          <li className={styles.helpItem}>
+            <Zap className={styles.helpIcon} />
+            <span><strong>ESP</strong> - выше производительность и функции, но быстрее расходует батарею.</span>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+
   return (
     <section className={`${styles.catalog} ${styles.vibe} meshtastic-home`} aria-label="Каталог устройств Meshtastic">
       <div className={styles.layoutGrid}>
@@ -466,7 +503,7 @@ export default function PortableCopyCatalog(): ReactNode {
                     {visibleDevices.map((device, index) =>
                       renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, {
                         featured: true,
-                        eagerImage: index < EAGER_IMAGE_COUNT,
+                        eagerImage: index < prioritizedImageCount,
                         highPriorityImage: index === 0,
                       }),
                     )}
@@ -568,39 +605,14 @@ export default function PortableCopyCatalog(): ReactNode {
 
           </div>
 
-          <section className={styles.helpStrip} aria-label="Что означают фильтры">
-            <div className={styles.helpBlock}>
-              <p className={styles.helpTitle}>Тип ноды</p>
-              <ul className={styles.helpList}>
-                <li className={styles.helpItem}>
-                  <Compass className={styles.helpIcon} />
-                  <span><strong>Готовые</strong> - готовые переносные ноды.</span>
-                </li>
-                <li className={styles.helpItem}>
-                  <Sun className={styles.helpIcon} />
-                  <span><strong>Солнечные</strong> - автономные комплекты для стационара.</span>
-                </li>
-                <li className={styles.helpItem}>
-                  <Cpu className={styles.helpIcon} />
-                  <span><strong>Платы</strong> - платы и проекты для самостоятельной сборки нод.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.helpBlock}>
-              <p className={styles.helpTitle}>Чип-платформы</p>
-              <ul className={styles.helpList}>
-                <li className={styles.helpItem}>
-                  <Battery className={styles.helpIcon} />
-                  <span><strong>NRF</strong> - ниже мощность, выше автономность, лучше для батарейных нод.</span>
-                </li>
-                <li className={styles.helpItem}>
-                  <Zap className={styles.helpIcon} />
-                  <span><strong>ESP</strong> - выше производительность и функции, но быстрее расходует батарею.</span>
-                </li>
-              </ul>
-            </div>
+          <section className={`${styles.helpStrip} ${styles.helpStripDesktop}`} aria-label="Что означают фильтры">
+            {renderHelpBlocks()}
           </section>
+
+          <details className={styles.helpCompact}>
+            <summary className={styles.helpCompactSummary}>Что означают фильтры</summary>
+            <div className={styles.helpCompactContent}>{renderHelpBlocks()}</div>
+          </details>
 
           <div className={`${styles.devicePanels} ${viewMode === 'list' ? styles.listView : ''}`}>
             {isGlobalPriceSort ? (
@@ -619,7 +631,7 @@ export default function PortableCopyCatalog(): ReactNode {
                       <div className={styles.deviceGrid}>
                         {visibleDevices.map((device, index) =>
                           renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, {
-                            eagerImage: index < EAGER_IMAGE_COUNT,
+                            eagerImage: index < prioritizedImageCount,
                             highPriorityImage: index === 0,
                           }),
                         )}
@@ -645,7 +657,7 @@ export default function PortableCopyCatalog(): ReactNode {
                     <div className={styles.deviceGrid}>
                       {visibleDevices.map((device, index) =>
                         renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, {
-                          eagerImage: shouldPrioritizeImages && index < EAGER_IMAGE_COUNT,
+                          eagerImage: shouldPrioritizeImages && index < prioritizedImageCount,
                           highPriorityImage: shouldPrioritizeImages && index === 0,
                         }),
                       )}

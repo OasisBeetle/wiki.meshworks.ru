@@ -7,7 +7,10 @@ breadcrumbs: ["База знаний MeshWorks", "Введение"]
 description: "Что такое mesh‑сети и как в эту картину вписываются Meshtastic, Meshcore и Reticulum."
 ---
 
-<img src="/img/wiki/intro-overview.png" alt="Схема принципов mesh‑сети" class="introImage" loading="eager" />
+import IdealImage from '@theme/IdealImage';
+import IntroOverview from '@site/static/img/wiki/intro-overview.png';
+
+<IdealImage img={IntroOverview} alt="Схема принципов mesh‑сети" className="introImage" />
 
 <div className="introLead">
   <p><strong>Mesh‑сеть</strong> - это связь между устройствами, где сообщение может идти не только напрямую, но и <strong>через соседние ноды</strong>.</p>

@@ -11,18 +11,29 @@ describe('theme/SearchBar', () => {
     expect(container.querySelector('[data-search-variant="mobile"]')).toBeInTheDocument();
   });
 
-  it('keeps the original search component inside the desktop wrapper', () => {
+  it('uses a dedicated search page trigger on desktop', () => {
     const { container } = render(<SearchBar />);
 
     const desktopWrapper = container.querySelector('[data-search-variant="desktop"]');
     expect(desktopWrapper).toBeInTheDocument();
-    expect(within(desktopWrapper as HTMLElement).getByTestId('original-search-bar')).toBeInTheDocument();
+    const desktopTrigger = within(desktopWrapper as HTMLElement).getByRole('link', { name: 'Открыть поиск' });
+    expect(desktopTrigger).toHaveAttribute('href', '/search');
+    expect(desktopTrigger).toHaveAttribute('data-search-trigger', 'page');
   });
 
   it('points the mobile trigger to the dedicated search page', () => {
+    const { container } = render(<SearchBar />);
+
+    const mobileWrapper = container.querySelector('[data-search-variant="mobile"]');
+    expect(mobileWrapper).toBeInTheDocument();
+    const mobileTrigger = within(mobileWrapper as HTMLElement).getByRole('link', { name: 'Открыть поиск' });
+    expect(mobileTrigger).toHaveAttribute('href', '/search');
+    expect(mobileTrigger).toHaveAttribute('data-search-trigger', 'page');
+  });
+
+  it('renders a dedicated search-page trigger for each responsive variant', () => {
     render(<SearchBar />);
 
-    const mobileTrigger = screen.getByRole('link', { name: 'Открыть поиск' });
-    expect(mobileTrigger).toHaveAttribute('href', '/search');
+    expect(screen.getAllByRole('link', { name: 'Открыть поиск' })).toHaveLength(2);
   });
 });
