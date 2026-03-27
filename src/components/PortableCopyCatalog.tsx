@@ -76,6 +76,25 @@ function getDeviceKey(device: DeviceItem): string {
   return `${device.title}-${device.href}`;
 }
 
+function getRussianDeviceWord(count: number): string {
+  const absCount = Math.abs(count) % 100;
+  const lastDigit = absCount % 10;
+
+  if (absCount >= 11 && absCount <= 19) {
+    return 'устройств';
+  }
+
+  if (lastDigit === 1) {
+    return 'устройство';
+  }
+
+  if (lastDigit >= 2 && lastDigit <= 4) {
+    return 'устройства';
+  }
+
+  return 'устройств';
+}
+
 function openHrefInNewTab(href: string): void {
   window.open(href, '_blank', 'noopener,noreferrer');
 }
@@ -373,6 +392,16 @@ export default function PortableCopyCatalog(): ReactNode {
   };
 
   const renderSectionActions = (
+    totalCount: number,
+  ) => {
+    return (
+      <div className={styles.sectionMetaGroup}>
+        <p className={styles.categoryMeta}>{totalCount} шт.</p>
+      </div>
+    );
+  };
+
+  const renderSectionFooter = (
     sectionKey: string,
     label: string,
     totalCount: number,
@@ -380,20 +409,29 @@ export default function PortableCopyCatalog(): ReactNode {
     hiddenCount: number,
     expandable: boolean,
   ) => {
+    if (!expandable) {
+      return null;
+    }
+
+    const hint = expanded
+      ? `${totalCount} ${getRussianDeviceWord(totalCount)} в разделе`
+      : `Еще ${hiddenCount} ${getRussianDeviceWord(hiddenCount)} в разделе`;
+
     return (
-      <div className={styles.sectionMetaGroup}>
-        <p className={styles.categoryMeta}>{totalCount} шт.</p>
-        {expandable ? (
-          <button
-            className={styles.sectionToggle}
-            type="button"
-            aria-expanded={expanded}
-            aria-label={expanded ? `Свернуть раздел ${label}` : `Показать все устройства в разделе ${label}`}
-            onClick={() => toggleSection(sectionKey)}
-          >
-            {expanded ? 'Свернуть' : `Показать все${hiddenCount > 0 ? ` +${hiddenCount}` : ''}`}
-          </button>
-        ) : null}
+      <div className={styles.sectionFooter} data-expanded={expanded ? 'true' : 'false'}>
+        <p className={styles.sectionFooterHint}>{hint}</p>
+        <button
+          className={styles.sectionToggle}
+          type="button"
+          aria-expanded={expanded}
+          aria-label={expanded ? `Свернуть раздел ${label}` : `Показать все устройства в разделе ${label}`}
+          onClick={() => toggleSection(sectionKey)}
+        >
+          <span className={styles.sectionToggleLabel}>
+            {expanded ? 'Свернуть раздел' : `Показать все${hiddenCount > 0 ? ` +${hiddenCount}` : ''}`}
+          </span>
+          <span className={styles.sectionToggleChevron} aria-hidden="true" />
+        </button>
       </div>
     );
   };
@@ -410,11 +448,12 @@ export default function PortableCopyCatalog(): ReactNode {
                 <section className={styles.featuredSection} aria-label="Выбор сообщества">
                   <header className={styles.categoryHeader}>
                     <h2 className={styles.categoryTitle}>Выбор сообщества</h2>
-                    {renderSectionActions('featured', 'Выбор сообщества', featuredDevices.length, expanded, hiddenCount, expandable)}
+                    {renderSectionActions(featuredDevices.length)}
                   </header>
                   <div className={styles.featuredGrid}>
                     {visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, { featured: true }))}
                   </div>
+                  {renderSectionFooter('featured', 'Выбор сообщества', featuredDevices.length, expanded, hiddenCount, expandable)}
                 </section>
               );
             })()
@@ -536,11 +575,12 @@ export default function PortableCopyCatalog(): ReactNode {
                     <section className={styles.categorySection} aria-label="Все устройства">
                       <header className={styles.categoryHeader}>
                         <h2 className={styles.categoryTitle}>Все устройства</h2>
-                        {renderSectionActions('all-devices', 'Все устройства', globallySortedDevices.length, expanded, hiddenCount, expandable)}
+                        {renderSectionActions(globallySortedDevices.length)}
                       </header>
                       <div className={styles.deviceGrid}>
                         {visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}
                       </div>
+                      {renderSectionFooter('all-devices', 'Все устройства', globallySortedDevices.length, expanded, hiddenCount, expandable)}
                     </section>
                   );
                 })()
@@ -555,9 +595,10 @@ export default function PortableCopyCatalog(): ReactNode {
                   <section key={category} className={styles.categorySection} aria-label={label}>
                     <header className={styles.categoryHeader}>
                       <h2 className={styles.categoryTitle}>{label}</h2>
-                      {renderSectionActions(category, label, devices.length, expanded, hiddenCount, expandable)}
+                      {renderSectionActions(devices.length)}
                     </header>
                     <div className={styles.deviceGrid}>{visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}</div>
+                    {renderSectionFooter(category, label, devices.length, expanded, hiddenCount, expandable)}
                   </section>
                 );
               })

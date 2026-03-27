@@ -350,36 +350,99 @@
 .sectionMetaGroup {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   min-width: 0;
-  flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.sectionFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 16px 12px 0;
+  border-top: 1px solid color-mix(in srgb, var(--surface-border) 78%, transparent);
+}
+
+.sectionFooter[data-expanded='true'] {
+  margin-top: 16px;
+}
+
+.sectionFooterHint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--text-muted) 92%, var(--text-main) 8%);
+  text-align: center;
 }
 
 .sectionToggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 30px;
-  padding: 0 10px;
+  gap: 10px;
+  min-height: 42px;
+  min-width: min(100%, 240px);
+  max-width: 280px;
+  width: 100%;
+  padding: 0 16px;
   border: 1px solid color-mix(in srgb, var(--mesh-accent) 18%, var(--surface-border));
   border-radius: 999px;
-  background: hsl(var(--card, 0 0% 100%) / 0.72);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--mesh-accent) 10%, hsl(var(--card, 0 0% 100%) / 0.96)),
+    hsl(var(--card, 0 0% 100%) / 0.94)
+  );
   color: var(--text-main);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 800;
   cursor: pointer;
-  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 7%, transparent);
+  transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease;
 }
 
 .sectionToggle:hover {
-  background: hsl(var(--btn-primary, 99 100% 26%) / 0.1);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--mesh-accent) 16%, hsl(var(--card, 0 0% 100%) / 0.98)),
+    hsl(var(--card, 0 0% 100%) / 0.96)
+  );
   border-color: color-mix(in srgb, var(--mesh-accent) 35%, var(--surface-border));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--mesh-accent) 10%, transparent);
+  transform: translateY(-1px);
 }
 
 .sectionToggle:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--mesh-accent) 85%, transparent);
   outline-offset: 2px;
+}
+
+.sectionToggle:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px color-mix(in srgb, #000 7%, transparent);
+}
+
+.sectionToggleLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+}
+
+.sectionToggleChevron {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-right: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.12s ease;
+}
+
+.sectionFooter[data-expanded='true'] .sectionToggleChevron {
+  transform: rotate(-135deg) translateY(-1px);
 }
 
 .deviceGrid {
@@ -1091,7 +1154,7 @@
   }
 
   .sectionMetaGroup {
-    gap: 8px;
+    gap: 4px;
   }
 }
 
@@ -1190,6 +1253,16 @@
     align-items: flex-start;
   }
 
+  .sectionFooter {
+    gap: 8px;
+    margin-top: 12px;
+    padding-inline: 6px;
+  }
+
+  .sectionFooterHint {
+    font-size: 11.5px;
+  }
+
   .deviceContent {
     padding: calc(var(--card-pad-mobile) - 6px) var(--card-pad-mobile) var(--card-pad-mobile);
   }
@@ -1231,8 +1304,9 @@
   }
 
   .sectionToggle {
-    min-height: 28px;
-    padding-inline: 9px;
+    max-width: none;
+    min-height: 40px;
+    padding-inline: 14px;
   }
 
   .cta,
