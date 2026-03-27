@@ -1324,6 +1324,33 @@ kbd.searchHint_iIMx {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--mw-accent) 12%, transparent);
 }
 
+.mwMobileSearch {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+.mwMobileSearchTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.mwMobileSearchLabel {
+  color: var(--mw-muted);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.mwMobileSearchIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--mw-muted);
+  flex: 0 0 auto;
+}
+
 @media (min-width: 768px) {
   .DocSearch-Button {
     width: 10.5rem;
@@ -1368,6 +1395,35 @@ kbd.searchHint_iIMx {
 
   [data-theme='dark'] .mwNavbar {
     background: #0b0f14;
+  }
+
+  .mwNavbar .navbar-sidebar {
+    background: var(--ifm-background-surface-color);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .mwNavbar .navbar-sidebar__backdrop {
+    background: color-mix(in srgb, #000 36%, transparent);
+  }
+
+  .mwNavbar .navbar-sidebar .menu__link {
+    transition: background-color 0.12s ease, color 0.12s ease;
+    box-shadow: none !important;
+  }
+
+  .mwNavbar .navbar-sidebar .menu__link--active {
+    box-shadow: none !important;
+  }
+
+  .mwNavbar .navbar__items--right .clean-btn:not(.DocSearch-Button),
+  .mwNavbar .navbar__toggle.clean-btn {
+    transition: background 0.12s ease, border-color 0.12s ease;
+  }
+
+  .mwNavbar .navbar__items--right .clean-btn:not(.DocSearch-Button):hover,
+  .mwNavbar .navbar__toggle.clean-btn:hover {
+    transform: none;
   }
 
   /* Mobile: prevent local-search dropdown from being clipped/cut off */
@@ -1689,6 +1745,22 @@ html[data-theme='dark'] .mwNavbar .navbar__link--active{
   .mwNavbar .navbar__inner{
     padding-inline: 0.75rem;
     gap: 0.35rem;
+  }
+
+  .mwNavbar .navbar-sidebar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--ifm-background-surface-color);
+  }
+
+  .mwNavbar .navbar-sidebar__backdrop,
+  html[data-theme='light'] .mwNavbar .navbar-sidebar__backdrop {
+    background: color-mix(in srgb, #000 36%, transparent);
+  }
+
+  .mwNavbar .navbar-sidebar .menu__link,
+  html[data-theme='light'] .mwNavbar .navbar-sidebar .menu__link--active {
+    box-shadow: none !important;
   }
 
   .mwNavbar .navbar__items--right{

@@ -1,5 +1,6 @@
 import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Share2, Sun, Wifi, Zap } from './icons/lucide';
+import { useMobileBreakpoint } from '@/hooks/use-mobile-breakpoint';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
 import { DEVICE_CATEGORY_LABELS, DEVICE_DATA } from './portable-catalog/data';
 import type { DeviceCategory, DeviceItem, DeviceTech } from './portable-catalog/types';
@@ -68,6 +69,8 @@ type PurchaseConfirmState = {
   device: DeviceItem;
   open: boolean;
 };
+
+const MOBILE_SECTION_LIMIT = 6;
 
 function getDeviceKey(device: DeviceItem): string {
   return `${device.title}-${device.href}`;
@@ -207,12 +210,14 @@ function renderDeviceCard(
 }
 
 export default function PortableCopyCatalog(): ReactNode {
+  const isMobile = useMobileBreakpoint();
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
   const [techFilter, setTechFilter] = useState<TechFilter>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [sortOption, setSortOption] = useState<SortOption>('default');
   const [purchaseConfirmState, setPurchaseConfirmState] = useState<PurchaseConfirmState | null>(null);
   const [copiedDeviceKey, setCopiedDeviceKey] = useState<string | null>(null);
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const shareResetTimerRef = useRef<number | null>(null);
 
@@ -339,20 +344,80 @@ export default function PortableCopyCatalog(): ReactNode {
     };
   }, []);
 
+  useEffect(() => {
+    if (Object.keys(expandedSections).length === 0) {
+      return;
+    }
+
+    setExpandedSections({});
+  }, [categoryFilter, techFilter, sortOption, viewMode, isMobile]);
+
+  const getSectionDisplay = (sectionKey: string, devices: DeviceItem[]) => {
+    const expandable = isMobile && devices.length > MOBILE_SECTION_LIMIT;
+    const expanded = expandable && expandedSections[sectionKey] === true;
+    const visibleDevices = expandable && !expanded ? devices.slice(0, MOBILE_SECTION_LIMIT) : devices;
+
+    return {
+      expandable,
+      expanded,
+      hiddenCount: devices.length - visibleDevices.length,
+      visibleDevices,
+    };
+  };
+
+  const toggleSection = (sectionKey: string) => {
+    setExpandedSections((current) => ({
+      ...current,
+      [sectionKey]: !current[sectionKey],
+    }));
+  };
+
+  const renderSectionActions = (
+    sectionKey: string,
+    label: string,
+    totalCount: number,
+    expanded: boolean,
+    hiddenCount: number,
+    expandable: boolean,
+  ) => {
+    return (
+      <div className={styles.sectionMetaGroup}>
+        <p className={styles.categoryMeta}>{totalCount} шт.</p>
+        {expandable ? (
+          <button
+            className={styles.sectionToggle}
+            type="button"
+            aria-expanded={expanded}
+            aria-label={expanded ? `Свернуть раздел ${label}` : `Показать все устройства в разделе ${label}`}
+            onClick={() => toggleSection(sectionKey)}
+          >
+            {expanded ? 'Свернуть' : `Показать все${hiddenCount > 0 ? ` +${hiddenCount}` : ''}`}
+          </button>
+        ) : null}
+      </div>
+    );
+  };
+
   return (
     <section className={`${styles.catalog} ${styles.vibe} meshtastic-home`} aria-label="Каталог устройств Meshtastic">
       <div className={styles.layoutGrid}>
         <div className={styles.mainColumn}>
           {!isGlobalPriceSort && featuredDevices.length > 0 ? (
-            <section className={styles.featuredSection} aria-label="Выбор сообщества">
-              <header className={styles.categoryHeader}>
-                <h2 className={styles.categoryTitle}>Выбор сообщества</h2>
-                <p className={styles.categoryMeta}>{featuredDevices.length} шт.</p>
-              </header>
-              <div className={styles.featuredGrid}>
-                {featuredDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, { featured: true }))}
-              </div>
-            </section>
+            (() => {
+              const { expandable, expanded, hiddenCount, visibleDevices } = getSectionDisplay('featured', featuredDevices);
+
+              return (
+                <section className={styles.featuredSection} aria-label="Выбор сообщества">
+                  <header className={styles.categoryHeader}>
+                    <h2 className={styles.categoryTitle}>Выбор сообщества</h2>
+                    {renderSectionActions('featured', 'Выбор сообщества', featuredDevices.length, expanded, hiddenCount, expandable)}
+                  </header>
+                  <div className={styles.featuredGrid}>
+                    {visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, { featured: true }))}
+                  </div>
+                </section>
+              );
+            })()
           ) : null}
 
           <div className={styles.controlBar}>
@@ -464,28 +529,38 @@ export default function PortableCopyCatalog(): ReactNode {
               globallySortedDevices.length === 0 ? (
                 <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
               ) : (
-                <section className={styles.categorySection} aria-label="Все устройства">
-                  <header className={styles.categoryHeader}>
-                    <h2 className={styles.categoryTitle}>Все устройства</h2>
-                    <p className={styles.categoryMeta}>{globallySortedDevices.length} шт.</p>
-                  </header>
-                  <div className={styles.deviceGrid}>
-                    {globallySortedDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}
-                  </div>
-                </section>
+                (() => {
+                  const { expandable, expanded, hiddenCount, visibleDevices } = getSectionDisplay('all-devices', globallySortedDevices);
+
+                  return (
+                    <section className={styles.categorySection} aria-label="Все устройства">
+                      <header className={styles.categoryHeader}>
+                        <h2 className={styles.categoryTitle}>Все устройства</h2>
+                        {renderSectionActions('all-devices', 'Все устройства', globallySortedDevices.length, expanded, hiddenCount, expandable)}
+                      </header>
+                      <div className={styles.deviceGrid}>
+                        {visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}
+                      </div>
+                    </section>
+                  );
+                })()
               )
             ) : visibleCategories.length === 0 ? (
               <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
             ) : (
-              visibleCategories.map(({ category, label, devices }) => (
-                <section key={category} className={styles.categorySection} aria-label={label}>
-                  <header className={styles.categoryHeader}>
-                    <h2 className={styles.categoryTitle}>{label}</h2>
-                    <p className={styles.categoryMeta}>{devices.length} шт.</p>
-                  </header>
-                  <div className={styles.deviceGrid}>{devices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}</div>
-                </section>
-              ))
+              visibleCategories.map(({ category, label, devices }) => {
+                const { expandable, expanded, hiddenCount, visibleDevices } = getSectionDisplay(category, devices);
+
+                return (
+                  <section key={category} className={styles.categorySection} aria-label={label}>
+                    <header className={styles.categoryHeader}>
+                      <h2 className={styles.categoryTitle}>{label}</h2>
+                      {renderSectionActions(category, label, devices.length, expanded, hiddenCount, expandable)}
+                    </header>
+                    <div className={styles.deviceGrid}>{visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}</div>
+                  </section>
+                );
+              })
             )}
           </div>
         </div>

@@ -1,8 +1,27 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import PortableCopyCatalog from './PortableCopyCatalog';
 import { DEVICE_DATA } from './portable-catalog/data';
+
+const originalMatchMedia = window.matchMedia;
+
+function mockMatchMedia(matches: boolean) {
+  Object.defineProperty(window, 'matchMedia', {
+    configurable: true,
+    writable: true,
+    value: vi.fn().mockImplementation(() => ({
+      matches,
+      media: '(max-width: 996px)',
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  });
+}
 
 /** Find a device card by its heading title and click the "Купить" button inside it. */
 function clickBuyForDevice(deviceTitle: string) {
@@ -11,6 +30,14 @@ function clickBuyForDevice(deviceTitle: string) {
   const buyButton = within(card).getByRole('button', { name: 'Купить' });
   fireEvent.click(buyButton);
 }
+
+afterEach(() => {
+  if (originalMatchMedia) {
+    window.matchMedia = originalMatchMedia;
+  } else {
+    delete (window as Partial<Window>).matchMedia;
+  }
+});
 
 describe('PortableCopyCatalog', () => {
   it('copies device href from the share button with clipboard API and shows copied state', async () => {
@@ -273,5 +300,32 @@ describe('PortableCopyCatalog', () => {
     expect(screen.getByRole('heading', { name: 'Выбор сообщества' })).toBeInTheDocument();
     // Popular devices should be in featured section
     expect(screen.getByRole('heading', { name: 'Heltec WiFi LoRa 32 (V3)' })).toBeInTheDocument();
+  });
+
+  it('limits section cards on mobile until the user expands the section', async () => {
+    mockMatchMedia(true);
+    const visibleBoardDevices = DEVICE_DATA.boards.filter((device) => !device.popular);
+
+    render(<PortableCopyCatalog />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Платы' }));
+
+    const boardsSection = screen.getByRole('region', { name: 'Платы' });
+
+    await waitFor(() => {
+      expect(within(boardsSection).getAllByRole('heading', { level: 3 })).toHaveLength(6);
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Показать все устройства в разделе Платы' }));
+
+    await waitFor(() => {
+      expect(within(boardsSection).getAllByRole('heading', { level: 3 })).toHaveLength(visibleBoardDevices.length);
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Свернуть раздел Платы' }));
+
+    await waitFor(() => {
+      expect(within(boardsSection).getAllByRole('heading', { level: 3 })).toHaveLength(6);
+    });
   });
 });

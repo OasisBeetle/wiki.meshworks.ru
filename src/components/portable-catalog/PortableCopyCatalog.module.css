@@ -347,6 +347,41 @@
   color: var(--text-muted);
 }
 
+.sectionMetaGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.sectionToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--mesh-accent) 18%, var(--surface-border));
+  border-radius: 999px;
+  background: hsl(var(--card, 0 0% 100%) / 0.72);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.sectionToggle:hover {
+  background: hsl(var(--btn-primary, 99 100% 26%) / 0.1);
+  border-color: color-mix(in srgb, var(--mesh-accent) 35%, var(--surface-border));
+}
+
+.sectionToggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--mesh-accent) 85%, transparent);
+  outline-offset: 2px;
+}
+
 .deviceGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -388,6 +423,7 @@
 .deviceMedia {
   position: relative;
   height: var(--card-media-height);
+  aspect-ratio: 6 / 5;
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--mesh-accent) 14%, transparent),
@@ -1053,6 +1089,10 @@
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
+
+  .sectionMetaGroup {
+    gap: 8px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -1146,6 +1186,10 @@
     --card-media-height: 190px;
   }
 
+  .categoryHeader {
+    align-items: flex-start;
+  }
+
   .deviceContent {
     padding: calc(var(--card-pad-mobile) - 6px) var(--card-pad-mobile) var(--card-pad-mobile);
   }
@@ -1184,6 +1228,11 @@
 
   .price {
     align-self: flex-start;
+  }
+
+  .sectionToggle {
+    min-height: 28px;
+    padding-inline: 9px;
   }
 
   .cta,
