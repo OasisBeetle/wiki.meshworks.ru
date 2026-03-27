@@ -86,7 +86,7 @@ describe('PortableCopyCatalog', () => {
     });
   });
 
-  it('renders default sections and cards from multiple categories', () => {
+  it('renders default sections and cards from multiple categories', async () => {
     render(<PortableCopyCatalog />);
 
     expect(screen.getByRole('region', { name: 'Готовые' })).toBeInTheDocument();
@@ -99,7 +99,7 @@ describe('PortableCopyCatalog', () => {
 
     expect(screen.getByRole('heading', { name: 'ThinkNode M1' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'D5 Mini Solar Kit (Heltec V3)' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
   });
 
   it('filters by category', () => {
@@ -293,13 +293,13 @@ describe('PortableCopyCatalog', () => {
 
   /* ── Featured section ──────────────────────────── */
 
-  it('renders the featured "Выбор сообщества" section', () => {
+  it('renders the featured "Выбор сообщества" section', async () => {
     render(<PortableCopyCatalog />);
 
     expect(screen.getByRole('region', { name: 'Выбор сообщества' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Выбор сообщества' })).toBeInTheDocument();
     // Popular devices should be in featured section
-    expect(screen.getByRole('heading', { name: 'Heltec WiFi LoRa 32 (V3)' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Heltec WiFi LoRa 32 (V3)' })).toBeInTheDocument();
   });
 
   it('limits section cards on mobile until the user expands the section', async () => {

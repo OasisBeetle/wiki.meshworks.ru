@@ -1,4 +1,4 @@
-import React, { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import React, { startTransition, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpDown, Battery, Bluetooth, Compass, Cpu, LayoutGrid, List, MapPin, Share2, Sun, Wifi, Zap } from './icons/lucide';
 import { useMobileBreakpoint } from '@/hooks/use-mobile-breakpoint';
 import styles from './portable-catalog/PortableCopyCatalog.module.css';
@@ -71,6 +71,7 @@ type PurchaseConfirmState = {
 };
 
 const MOBILE_SECTION_LIMIT = 6;
+const EAGER_IMAGE_COUNT = 2;
 
 function getDeviceKey(device: DeviceItem): string {
   return `${device.title}-${device.href}`;
@@ -127,9 +128,11 @@ function renderDeviceCard(
   onPurchaseClick: (device: DeviceItem) => void,
   onShareClick: (device: DeviceItem) => void,
   copiedDeviceKey: string | null,
-  opts?: { featured?: boolean },
+  opts?: { featured?: boolean; eagerImage?: boolean; highPriorityImage?: boolean },
 ): ReactNode {
   const featured = Boolean(opts?.featured);
+  const eagerImage = Boolean(opts?.eagerImage);
+  const highPriorityImage = Boolean(opts?.highPriorityImage);
   const ctaText = device.ctaLabel ?? 'Купить';
   const videoText = device.videoLabel ?? 'Видео';
   const deviceKey = getDeviceKey(device);
@@ -154,7 +157,8 @@ function renderDeviceCard(
           className={styles.deviceImage}
           src={device.image}
           alt={device.alt}
-          loading="lazy"
+          loading={eagerImage ? 'eager' : 'lazy'}
+          fetchPriority={highPriorityImage ? 'high' : 'auto'}
           decoding="async"
         />
         {device.popular ? <span className={styles.popularPill}>Выбор сообщества</span> : null}
@@ -230,6 +234,7 @@ function renderDeviceCard(
 
 export default function PortableCopyCatalog(): ReactNode {
   const isMobile = useMobileBreakpoint();
+  const [hasHydrated, setHasHydrated] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
   const [techFilter, setTechFilter] = useState<TechFilter>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
@@ -241,6 +246,7 @@ export default function PortableCopyCatalog(): ReactNode {
   const shareResetTimerRef = useRef<number | null>(null);
 
   const isGlobalPriceSort = categoryFilter === 'all' && sortOption !== 'default';
+  const shouldLimitInitialRender = !hasHydrated || isMobile;
 
   const featuredDevices = useMemo(() => {
     const all: Array<{ category: DeviceCategory; device: DeviceItem }> = [];
@@ -285,6 +291,10 @@ export default function PortableCopyCatalog(): ReactNode {
       })
       .filter((entry) => entry.devices.length > 0);
   }, [categoryFilter, techFilter, featuredKeys, sortOption]);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
 
   useEffect(() => {
     if (!purchaseConfirmState?.open) {
@@ -372,7 +382,7 @@ export default function PortableCopyCatalog(): ReactNode {
   }, [categoryFilter, techFilter, sortOption, viewMode, isMobile]);
 
   const getSectionDisplay = (sectionKey: string, devices: DeviceItem[]) => {
-    const expandable = isMobile && devices.length > MOBILE_SECTION_LIMIT;
+    const expandable = shouldLimitInitialRender && devices.length > MOBILE_SECTION_LIMIT;
     const expanded = expandable && expandedSections[sectionKey] === true;
     const visibleDevices = expandable && !expanded ? devices.slice(0, MOBILE_SECTION_LIMIT) : devices;
 
@@ -385,10 +395,12 @@ export default function PortableCopyCatalog(): ReactNode {
   };
 
   const toggleSection = (sectionKey: string) => {
-    setExpandedSections((current) => ({
-      ...current,
-      [sectionKey]: !current[sectionKey],
-    }));
+    startTransition(() => {
+      setExpandedSections((current) => ({
+        ...current,
+        [sectionKey]: !current[sectionKey],
+      }));
+    });
   };
 
   const renderSectionActions = (
@@ -451,7 +463,13 @@ export default function PortableCopyCatalog(): ReactNode {
                     {renderSectionActions(featuredDevices.length)}
                   </header>
                   <div className={styles.featuredGrid}>
-                    {visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, { featured: true }))}
+                    {visibleDevices.map((device, index) =>
+                      renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, {
+                        featured: true,
+                        eagerImage: index < EAGER_IMAGE_COUNT,
+                        highPriorityImage: index === 0,
+                      }),
+                    )}
                   </div>
                   {renderSectionFooter('featured', 'Выбор сообщества', featuredDevices.length, expanded, hiddenCount, expandable)}
                 </section>
@@ -469,7 +487,11 @@ export default function PortableCopyCatalog(): ReactNode {
                     type="button"
                     aria-label={option.label}
                     aria-pressed={categoryFilter === option.value}
-                    onClick={() => setCategoryFilter(option.value)}
+                    onClick={() => {
+                      startTransition(() => {
+                        setCategoryFilter(option.value);
+                      });
+                    }}
                   >
                     {renderOptionLabel(option)}
                   </button>
@@ -484,7 +506,11 @@ export default function PortableCopyCatalog(): ReactNode {
                     type="button"
                     aria-label={option.label}
                     aria-pressed={techFilter === option.value}
-                    onClick={() => setTechFilter(option.value)}
+                    onClick={() => {
+                      startTransition(() => {
+                        setTechFilter(option.value);
+                      });
+                    }}
                   >
                     {renderOptionLabel(option)}
                   </button>
@@ -498,7 +524,12 @@ export default function PortableCopyCatalog(): ReactNode {
                 <select 
                   className={styles.sortSelect} 
                   value={sortOption} 
-                  onChange={(e) => setSortOption(e.target.value as SortOption)}
+                  onChange={(e) => {
+                    const nextValue = e.target.value as SortOption;
+                    startTransition(() => {
+                      setSortOption(nextValue);
+                    });
+                  }}
                   aria-label="Сортировка"
                 >
                   <option value="default">По умолчанию</option>
@@ -510,7 +541,11 @@ export default function PortableCopyCatalog(): ReactNode {
               <div className={styles.viewToggle}>
                 <button
                   className={`${styles.viewBtn} ${viewMode === 'grid' ? styles.viewBtnActive : ''}`}
-                  onClick={() => setViewMode('grid')}
+                  onClick={() => {
+                    startTransition(() => {
+                      setViewMode('grid');
+                    });
+                  }}
                   aria-label="Сетка"
                   title="Сетка"
                 >
@@ -518,7 +553,11 @@ export default function PortableCopyCatalog(): ReactNode {
                 </button>
                 <button
                   className={`${styles.viewBtn} ${viewMode === 'list' ? styles.viewBtnActive : ''}`}
-                  onClick={() => setViewMode('list')}
+                  onClick={() => {
+                    startTransition(() => {
+                      setViewMode('list');
+                    });
+                  }}
                   aria-label="Список"
                   title="Список"
                 >
@@ -578,7 +617,12 @@ export default function PortableCopyCatalog(): ReactNode {
                         {renderSectionActions(globallySortedDevices.length)}
                       </header>
                       <div className={styles.deviceGrid}>
-                        {visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}
+                        {visibleDevices.map((device, index) =>
+                          renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, {
+                            eagerImage: index < EAGER_IMAGE_COUNT,
+                            highPriorityImage: index === 0,
+                          }),
+                        )}
                       </div>
                       {renderSectionFooter('all-devices', 'Все устройства', globallySortedDevices.length, expanded, hiddenCount, expandable)}
                     </section>
@@ -588,8 +632,9 @@ export default function PortableCopyCatalog(): ReactNode {
             ) : visibleCategories.length === 0 ? (
               <p className={styles.emptyState}>Нет устройств для выбранных фильтров.</p>
             ) : (
-              visibleCategories.map(({ category, label, devices }) => {
+              visibleCategories.map(({ category, label, devices }, sectionIndex) => {
                 const { expandable, expanded, hiddenCount, visibleDevices } = getSectionDisplay(category, devices);
+                const shouldPrioritizeImages = featuredDevices.length === 0 && sectionIndex === 0;
 
                 return (
                   <section key={category} className={styles.categorySection} aria-label={label}>
@@ -597,7 +642,14 @@ export default function PortableCopyCatalog(): ReactNode {
                       <h2 className={styles.categoryTitle}>{label}</h2>
                       {renderSectionActions(devices.length)}
                     </header>
-                    <div className={styles.deviceGrid}>{visibleDevices.map((device) => renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey))}</div>
+                    <div className={styles.deviceGrid}>
+                      {visibleDevices.map((device, index) =>
+                        renderDeviceCard(device, onPurchaseClick, onShareClick, copiedDeviceKey, {
+                          eagerImage: shouldPrioritizeImages && index < EAGER_IMAGE_COUNT,
+                          highPriorityImage: shouldPrioritizeImages && index === 0,
+                        }),
+                      )}
+                    </div>
                     {renderSectionFooter(category, label, devices.length, expanded, hiddenCount, expandable)}
                   </section>
                 );
