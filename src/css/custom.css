@@ -1408,6 +1408,11 @@ html[data-theme='dark'] .mwNavbar .navbar__link--active{
   display: inline-flex;
 }
 
+.mwNavbar .navbar__items--right [class*='colorModeToggle']{
+  display: inline-flex;
+  align-items: center;
+}
+
 .mwNavbar .navbar__items--right .clean-btn:not(.DocSearch-Button):hover,
 .mwNavbar .navbar__toggle.clean-btn:hover{
   background: color-mix(in srgb, var(--mw-text) 9%, transparent);
