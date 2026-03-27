@@ -2,7 +2,6 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import OriginalSearchBar from '@theme-original/SearchBar';
-import { useMobileBreakpoint } from '../../hooks/use-mobile-breakpoint';
 
 type SearchBarProps = React.ComponentProps<typeof OriginalSearchBar>;
 
@@ -23,12 +22,14 @@ function SearchIcon(): React.JSX.Element {
 }
 
 export default function SearchBar(props: SearchBarProps): React.JSX.Element {
-  const isMobile = useMobileBreakpoint();
   const searchPageUrl = useBaseUrl('/search');
 
-  if (isMobile) {
-    return (
-      <div className="navbar__search mwMobileSearch" dir="ltr">
+  return (
+    <>
+      <div className="mwSearchDesktop" dir="ltr" data-search-variant="desktop">
+        <OriginalSearchBar {...props} />
+      </div>
+      <div className="navbar__search mwMobileSearch" dir="ltr" data-search-variant="mobile">
         <Link
           to={searchPageUrl}
           className="navbar__search-input mwMobileSearchTrigger"
@@ -39,8 +40,6 @@ export default function SearchBar(props: SearchBarProps): React.JSX.Element {
           <span className="mwMobileSearchLabel">Поиск</span>
         </Link>
       </div>
-    );
-  }
-
-  return <OriginalSearchBar {...props} />;
+    </>
+  );
 }

@@ -1301,6 +1301,11 @@ kbd.searchHint_iIMx {
   min-width: 0;
 }
 
+.mwNavbar .mwSearchDesktop {
+  display: flex;
+  min-width: 0;
+}
+
 .mwNavbar .navbar__search-input {
   height: 38px;
   width: 100%;
@@ -1324,8 +1329,8 @@ kbd.searchHint_iIMx {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--mw-accent) 12%, transparent);
 }
 
-.mwMobileSearch {
-  display: flex;
+.mwNavbar .mwMobileSearch {
+  display: none;
   min-width: 0;
   flex: 1 1 0;
 }
@@ -1429,6 +1434,14 @@ kbd.searchHint_iIMx {
   /* Mobile: prevent local-search dropdown from being clipped/cut off */
   .navbar__search {
     overflow: visible;
+  }
+
+  .mwNavbar .mwSearchDesktop {
+    display: none;
+  }
+
+  .mwNavbar .mwMobileSearch {
+    display: flex;
   }
 
   /* Mobile: keep search bar from being visually clipped (tight navbar width) */
