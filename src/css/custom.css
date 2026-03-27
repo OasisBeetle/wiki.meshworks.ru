@@ -556,11 +556,7 @@ html[data-theme='light'] .theme-doc-sidebar-menu .menu__list-item-collapsible--a
   gap: 0.55rem;
 }
 
-.theme-doc-sidebar-item-link-level-1 > .menu__link::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link::before,
-.theme-doc-sidebar-item-link-level-2 > .menu__link::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link::before {
-  content: 'folder';
+.mwSidebarItemIcon {
   font-family: 'Material Symbols Rounded';
   font-size: 1.15rem;
   line-height: 1;
@@ -571,77 +567,45 @@ html[data-theme='light'] .theme-doc-sidebar-menu .menu__list-item-collapsible--a
   font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
 }
 
-.theme-doc-sidebar-item-link-level-1 > .menu__link:hover::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover::before,
-.theme-doc-sidebar-item-link-level-1 > .menu__link.menu__link--active::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active::before,
-.theme-doc-sidebar-item-link-level-2 > .menu__link:hover::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link:hover::before,
-.theme-doc-sidebar-item-link-level-2 > .menu__link.menu__link--active::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link.menu__link--active::before {
+.theme-doc-sidebar-item-link-level-1 > .menu__link:hover .mwSidebarItemIcon,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover .mwSidebarItemIcon,
+.theme-doc-sidebar-item-link-level-1 > .menu__link.menu__link--active .mwSidebarItemIcon,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active .mwSidebarItemIcon,
+.theme-doc-sidebar-item-link-level-2 > .menu__link:hover .mwSidebarItemIcon,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link:hover .mwSidebarItemIcon,
+.theme-doc-sidebar-item-link-level-2 > .menu__link.menu__link--active .mwSidebarItemIcon,
+.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link.menu__link--active .mwSidebarItemIcon {
   color: var(--mesh-accent);
 }
 
-html[data-theme='light'] .theme-doc-sidebar-item-link-level-1 > .menu__link:hover::before,
-html[data-theme='light'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link:hover::before,
-html[data-theme='light'] .theme-doc-sidebar-item-link-level-1 > .menu__link.menu__link--active::before,
-html[data-theme='light'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active::before,
-html[data-theme='light'] .theme-doc-sidebar-item-link-level-2 > .menu__link:hover::before,
-html[data-theme='light'] .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link:hover::before,
-html[data-theme='light'] .theme-doc-sidebar-item-link-level-2 > .menu__link.menu__link--active::before,
-html[data-theme='light'] .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link.menu__link--active::before {
+html[data-theme='light'] .theme-doc-sidebar-item-link-level-1 > .menu__link:hover .mwSidebarItemIcon,
+html[data-theme='light']
+  .theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link:hover
+  .mwSidebarItemIcon,
+html[data-theme='light'] .theme-doc-sidebar-item-link-level-1 > .menu__link.menu__link--active .mwSidebarItemIcon,
+html[data-theme='light']
+  .theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link.menu__link--active
+  .mwSidebarItemIcon,
+html[data-theme='light'] .theme-doc-sidebar-item-link-level-2 > .menu__link:hover .mwSidebarItemIcon,
+html[data-theme='light']
+  .theme-doc-sidebar-item-category-level-2
+  > .menu__list-item-collapsible
+  > .menu__link:hover
+  .mwSidebarItemIcon,
+html[data-theme='light'] .theme-doc-sidebar-item-link-level-2 > .menu__link.menu__link--active .mwSidebarItemIcon,
+html[data-theme='light']
+  .theme-doc-sidebar-item-category-level-2
+  > .menu__list-item-collapsible
+  > .menu__link.menu__link--active
+  .mwSidebarItemIcon {
   color: rgba(11, 18, 26, 0.72);
 }
 
-/* Icon mapping by section route (levels 1–2). */
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/introduction/network-basics']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/introduction/network-basics']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/introduction/network-basics']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/introduction/network-basics']::before {
-  content: 'schema';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/introduction/use-cases']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/introduction/use-cases']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/introduction/use-cases']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/introduction/use-cases']::before {
-  content: 'explore';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/introduction/limitations']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/introduction/limitations']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/introduction/limitations']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/introduction/limitations']::before {
-  content: 'warning_amber';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/introduction']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/introduction']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/introduction']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/introduction']::before {
-  content: 'menu_book';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/devices']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/devices']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/devices']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/devices']::before {
-  content: 'devices';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices']::before,
-.theme-doc-sidebar-item-category-level-1
-  > .menu__list-item-collapsible
-  > a.menu__link[href^='/catalog-devices']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/catalog-devices']::before,
-.theme-doc-sidebar-item-category-level-2
-  > .menu__list-item-collapsible
-  > a.menu__link[href^='/catalog-devices']::before {
-  content: 'inventory_2';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices'],
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices'] {
+.theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight'] {
   position: relative;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--mesh-accent) 26%, transparent);
@@ -656,24 +620,20 @@ html[data-theme='light'] .theme-doc-sidebar-item-category-level-2 > .menu__list-
   animation: catalogSidebarGlow 9s ease-in-out infinite;
 }
 
-html[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices'],
-html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices'] {
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight'] {
   color: var(--mesh-accent);
   border-color: rgba(198, 253, 80, 0.12);
   background: rgba(15, 18, 22, 0.92);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025), 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices']:hover,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices']:hover,
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices'].menu__link--active,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices'].menu__link--active {
+.theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight']:hover,
+.theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight'].menu__link--active {
   border-color: color-mix(in srgb, var(--mesh-accent) 52%, transparent);
   box-shadow: 0 14px 30px color-mix(in srgb, var(--mesh-accent) 18%, transparent);
 }
 
-html[data-theme='light'] .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices'],
-html[data-theme='light'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices'] {
+html[data-theme='light'] .theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight'] {
   color: #0b121a;
   background:
     radial-gradient(circle at 14% 50%, color-mix(in srgb, var(--mesh-accent) 34%, transparent), transparent 36%),
@@ -684,13 +644,11 @@ html[data-theme='light'] .theme-doc-sidebar-item-category-level-1 > .menu__list-
     );
 }
 
-html[data-theme='light'] .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices']::before,
-html[data-theme='light'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices']::before {
+html[data-theme='light'] .theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight'] .mwSidebarItemIcon {
   color: rgba(11, 18, 26, 0.78);
 }
 
-html[data-theme='dark'] .theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/catalog-devices']::before,
-html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/catalog-devices']::before {
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link[data-sidebar-variant='catalog-highlight'] .mwSidebarItemIcon {
   color: rgba(198, 253, 80, 0.88);
 }
 
@@ -709,259 +667,6 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category-level-1 > .menu__list-i
     box-shadow: 0 8px 18px color-mix(in srgb, var(--mesh-accent) 8%, transparent);
     border-color: color-mix(in srgb, var(--mesh-accent) 22%, transparent);
   }
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/node-setup']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/node-setup']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/node-setup']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/node-setup']::before {
-  content: 'tune';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/antennas']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/antennas']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/antennas']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/antennas']::before {
-  content: 'settings_input_antenna';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/troubleshooting']::before,
-.theme-doc-sidebar-item-category-level-1
-  > .menu__list-item-collapsible
-  > a.menu__link[href^='/troubleshooting']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/troubleshooting']::before,
-.theme-doc-sidebar-item-category-level-2
-  > .menu__list-item-collapsible
-  > a.menu__link[href^='/troubleshooting']::before {
-  content: 'build';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic']::before {
-  content: 'hub';
-}
-
-/* Meshtastic sub-section icons (more specific routes override the section icon). */
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/newbie']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/newbie']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/newbie']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/newbie']::before {
-  content: 'checklist';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/software']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/software']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/software']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/software']::before {
-  content: 'apps';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/faq']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/faq']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/faq']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/faq']::before {
-  content: 'quiz';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/modules']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/modules']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/modules']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/modules']::before {
-  content: 'extension';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshtastic/security']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/security']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshtastic/security']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshtastic/security']::before {
-  content: 'security';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore']::before {
-  content: 'grid_3x3';
-}
-
-/* MeshCore sub-section icons (generated-index slugs in sidebar). */
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/start']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/start']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/start']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/start']::before {
-  content: 'rocket_launch';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/network']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/network']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/network']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/network']::before {
-  content: 'lan';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/infrastructure']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/infrastructure']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/infrastructure']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/infrastructure']::before {
-  content: 'cell_tower';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/hardware']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/hardware']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/hardware']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/hardware']::before {
-  content: 'developer_board';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/ops']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ops']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/ops']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ops']::before {
-  content: 'settings_suggest';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/resources']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/resources']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/resources']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/resources']::before {
-  content: 'library_books';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/ecosystem']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ecosystem']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/ecosystem']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/ecosystem']::before {
-  content: 'account_tree';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/community']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/community']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/community']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/community']::before {
-  content: 'groups';
-}
-
-/* MeshCore "Meshtastic-like" section routes. */
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/newbie']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/newbie']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/newbie']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/newbie']::before {
-  content: 'checklist';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/setup']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/setup']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/setup']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/setup']::before {
-  content: 'tune';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/software']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/software']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/software']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/software']::before {
-  content: 'apps';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/faq']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/faq']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/faq']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/faq']::before {
-  content: 'quiz';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/security']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/security']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/security']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/security']::before {
-  content: 'security';
-}
-
-/* MeshCore leaf pages: make them distinct inside the section. */
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/quick-start']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/quick-start']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/quick-start']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/quick-start']::before {
-  content: 'rocket_launch';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/concepts']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/concepts']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/concepts']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/concepts']::before {
-  content: 'lan';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/servers']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/servers']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/servers']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/servers']::before {
-  content: 'cell_tower';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/observer']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/observer']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/observer']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/observer']::before {
-  content: 'visibility';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/bridge']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/bridge']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/bridge']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/bridge']::before {
-  content: 'swap_horiz';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/t-deck']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/t-deck']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/t-deck']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/t-deck']::before {
-  content: 'keyboard';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/updates']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/updates']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/updates']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/updates']::before {
-  content: 'system_update_alt';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/meshcore/troubleshooting']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/troubleshooting']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/meshcore/troubleshooting']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/meshcore/troubleshooting']::before {
-  content: 'bug_report';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/reticulum']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/reticulum']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/reticulum']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/reticulum']::before {
-  content: 'route';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/community']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/community']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/community']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/community']::before {
-  content: 'forum';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/glossary']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/glossary']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/glossary']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/glossary']::before {
-  content: 'auto_stories';
-}
-
-.theme-doc-sidebar-item-link-level-1 > a.menu__link[href^='/regulations']::before,
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > a.menu__link[href^='/regulations']::before,
-.theme-doc-sidebar-item-link-level-2 > a.menu__link[href^='/regulations']::before,
-.theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > a.menu__link[href^='/regulations']::before {
-  content: 'gavel';
 }
 
 /* === Docs Right Sidebar (Table of Contents) === */

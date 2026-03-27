@@ -4,6 +4,10 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
+      '@docusaurus/plugin-content-docs/client': path.resolve(
+        __dirname,
+        'test/stubs/docusaurus/plugin-content-docs-client.ts',
+      ),
       '@/': path.resolve(__dirname, 'src') + '/',
       '@site/': path.resolve(__dirname) + '/',
       '@docusaurus/': path.resolve(__dirname, 'test/stubs/docusaurus') + '/',

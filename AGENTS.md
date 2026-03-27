@@ -70,9 +70,11 @@ Before editing, inspect:
 - Keep homepage hydration/order regressions covered:
   - unit test in `src/components/homepage/ecosystem-stats.test.tsx`
   - browser smoke in `e2e/homepage-regression.spec.ts`
+- Docs sidebar icons/highlights are metadata-driven via `sidebars.ts` (`customProps.icon`, optional `customProps.variant`) and rendered through swizzled `src/theme/DocSidebarItem/*`.
 - Keep build perf guards passing:
   - `scripts/verify-build-indexes.mjs`
   - `scripts/verify-build-perf.mjs`
+- Do not reintroduce route-prefix CSS mappings such as `href^='/...']::before` for sidebar icons; `verify-build-perf.mjs` now fails the build if they come back.
 - `@easyops-cn/docusaurus-search-local` is currently trimmed intentionally:
   - `indexPages: false`
   - `language: ['ru']`
