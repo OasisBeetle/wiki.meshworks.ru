@@ -1196,10 +1196,11 @@ kbd.searchHint_iIMx {
     display: none;
   }
 
-  [class*='navbarSearchContainer'] {
-    position: static;
-    transform: none;
-    width: auto;
+  .mwNavbar .navbar__items--right [class*='navbarSearchContainer'] {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: auto !important;
   }
 }
 
@@ -1464,6 +1465,20 @@ html[data-theme='dark'] .mwNavbar .navbar__link--active{
     flex: 1 1 auto;
     justify-content: flex-end;
     gap: 0.35rem;
+  }
+
+  .mwNavbar .navbar__items--right [class*='navbarSearchContainer']{
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .mwNavbar .navbar__items--right [class*='colorModeToggle']{
+    flex: 0 0 38px;
+    min-width: 38px;
+  }
+
+  .mwNavbar .navbar__items--right [class*='colorModeToggle'] .clean-btn{
+    width: 100%;
   }
 
   .mwNavbar .navbar__toggle.clean-btn{

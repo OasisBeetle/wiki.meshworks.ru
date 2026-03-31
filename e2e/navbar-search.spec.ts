@@ -51,6 +51,29 @@ async function assertSearchPageNavigation(link: Locator, page: Page) {
   await expect(page).toHaveURL(/\/search$/);
 }
 
+async function expectMobileSearchToLeaveThemeToggleAccessible(page: Page) {
+  const metrics = await page.evaluate(() => {
+    const search = document.querySelector('[data-search-variant="mobile"] [data-search-trigger="page"]');
+    const toggleRoot = document.querySelector('.navbar__items--right [class*="colorModeToggle"]');
+    const toggleButton = toggleRoot?.querySelector('button, .clean-btn') ?? toggleRoot;
+
+    if (!(search instanceof HTMLElement) || !(toggleButton instanceof HTMLElement)) {
+      return null;
+    }
+
+    const searchRect = search.getBoundingClientRect();
+    const toggleRect = toggleButton.getBoundingClientRect();
+
+    return {
+      searchRight: searchRect.right,
+      toggleLeft: toggleRect.left,
+    };
+  });
+
+  expect(metrics).not.toBeNull();
+  expect(metrics!.searchRight).toBeLessThan(metrics!.toggleLeft);
+}
+
 test('desktop navbar search', async ({ page }) => {
   await openAndReload(page, '/introduction', { width: 1280, height: 900 });
 
@@ -59,9 +82,10 @@ test('desktop navbar search', async ({ page }) => {
 });
 
 test('mobile navbar search', async ({ page }) => {
-  await openAndReload(page, '/introduction', { width: 390, height: 844 });
+  await openAndReload(page, '/introduction', { width: 320, height: 844 });
 
   await expectSingleVisibleSearchVariant(page, 'mobile');
+  await expectMobileSearchToLeaveThemeToggleAccessible(page);
   await assertSearchPageNavigation(page.locator('[data-search-variant="mobile"] [data-search-trigger="page"]'), page);
 });
 
