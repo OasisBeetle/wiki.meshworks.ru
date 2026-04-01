@@ -133,7 +133,40 @@ describe('PortableCopyCatalog', () => {
 
     expect(screen.getByRole('region', { name: 'Платы' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'FakeTec V5.5' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Sparrow' })).not.toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'ThinkNode M1' })).not.toBeInTheDocument();
+  });
+
+  it('shows Sparrow first for NRF ready-made devices in default order', () => {
+    render(<PortableCopyCatalog />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Готовые' }));
+
+    const techGroup = screen.getByRole('group', { name: 'Фильтр по чипу' });
+    fireEvent.click(within(techGroup).getByRole('button', { name: 'NRF' }));
+
+    const readySection = screen.getByRole('region', { name: 'Готовые' });
+    const titles = within(readySection)
+      .getAllByRole('heading', { level: 3 })
+      .map((heading) => heading.textContent);
+
+    expect(titles[0]).toBe('Sparrow');
+  });
+
+  it('shows Athlas first for ESP ready-made devices in default order', () => {
+    render(<PortableCopyCatalog />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Готовые' }));
+
+    const techGroup = screen.getByRole('group', { name: 'Фильтр по чипу' });
+    fireEvent.click(within(techGroup).getByRole('button', { name: 'ESP' }));
+
+    const readySection = screen.getByRole('region', { name: 'Готовые' });
+    const titles = within(readySection)
+      .getAllByRole('heading', { level: 3 })
+      .map((heading) => heading.textContent);
+
+    expect(titles[0]).toBe('Athlas');
   });
 
   it('exposes aria-pressed state on filter buttons', () => {

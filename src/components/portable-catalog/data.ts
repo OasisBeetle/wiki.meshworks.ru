@@ -9,6 +9,21 @@ export const DEVICE_CATEGORY_LABELS: Record<DeviceCategory, string> = {
 export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
   universal: [
     {
+      title: 'Sparrow',
+      image: '/img/wiki/sparrow.png',
+      alt: 'Sparrow на базе FakeTec v5.5',
+      badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ❌', off: true }, { label: 'GPS ❌', off: true }],
+      shippingLabel: 'БЫСТРАЯ ДОСТАВКА',
+      descriptionLines: [
+        'Готовая нода Sparrow на базе и nRF, с высокой автономностью (7 дней+)',
+        'Подходит как личная нода или повседневное переносное устройство с быстрой локальной доставкой.',
+      ],
+      price: '5 990 ₽',
+      href: 'https://www.avito.ru/domodedovo/telefony/meshtastic_2500mah_faketec_nrf_7818166830',
+      ctaLabel: 'Avito',
+      tech: 'NRF',
+    },
+    {
       title: 'ThinkNode M1',
       image: '/img/wiki/thinknode-m1.webp',
       alt: 'ThinkNode M1',
@@ -74,6 +89,21 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
       tech: 'NRF',
     },
     {
+      title: 'Athlas',
+      image: '/img/wiki/athlas.png',
+      alt: 'Athlas на базе Heltec V3',
+      badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ❌', off: true }],
+      shippingLabel: 'БЫСТРАЯ ДОСТАВКА',
+      descriptionLines: [
+        'Готовая нода Athlas на базе Heltec V3 и ESP для повседневного использования и выездных сценариев.',
+        'Подходит как личная или автомобильная нода с быстрой локальной доставкой и готовым корпусом.',
+      ],
+      price: '5 990 ₽',
+      href: 'https://www.avito.ru/domodedovo/telefony/meshtastic_heltec_v3_node_5000mah_8010089440',
+      ctaLabel: 'Avito',
+      tech: 'ESP',
+    },
+    {
       title: 'LILYGO T-Deck Plus',
       image: '/img/wiki/lilygo-t-deck-plus.webp',
       alt: 'LILYGO T-Deck Plus',
@@ -131,7 +161,7 @@ export const DEVICE_DATA: Record<DeviceCategory, DeviceItem[]> = {
       alt: 'Heltec V4 Case Ready',
       badges: [{ label: 'Bluetooth ✅' }, { label: 'Wi-Fi ✅' }, { label: 'GPS ✅' }],
       descriptionLines: [
-        'Нода на Heltec V4 в комплекте с корпусом, GPS и антенной.',
+        'Нода на Heltec V4 в комплекте с корпусом, GPS и антенной, без батареи.',
         'Требует самостоятельной сборки, батарея покупается отдельно.',
       ],
       price: '≈ 3 200 ₽',
